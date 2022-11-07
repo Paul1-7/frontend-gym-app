@@ -6,7 +6,6 @@ import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton } from '@
 // components
 import MenuPopover from '../../components/MenuPopover';
 // mocks_
-import account from '../../_mock/account';
 
 // ----------------------------------------------------------------------
 
@@ -63,7 +62,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={account.photoURL} alt="photoURL" />
+        <Avatar src="{account.photoURL}" alt="photoURL" />
       </IconButton>
 
       <MenuPopover
@@ -82,10 +81,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {account.displayName}
+            {'account.displayName'}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {'account.email'}
           </Typography>
         </Box>
 

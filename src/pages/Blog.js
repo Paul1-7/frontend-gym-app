@@ -6,7 +6,7 @@ import Page from '../components/Page';
 import Iconify from '../components/Iconify';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
 // mock
-import POSTS from '../_mock/blog';
+// import POSTS from '../_mock/blog';
 
 // ----------------------------------------------------------------------
 
@@ -32,14 +32,14 @@ export default function Blog() {
         </Stack>
 
         <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
-          <BlogPostsSearch posts={POSTS} />
+          {/* <BlogPostsSearch posts={POSTS} /> */}
           <BlogPostsSort options={SORT_OPTIONS} />
         </Stack>
 
         <Grid container spacing={3}>
-          {POSTS.map((post, index) => (
+          {/* {POSTS.map((post, index) => (
             <BlogPostCard key={post.id} post={post} index={index} />
-          ))}
+          ))} */}
         </Grid>
       </Container>
     </Page>
