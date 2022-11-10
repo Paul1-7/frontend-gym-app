@@ -6,7 +6,7 @@ const productos = yup.object().shape({
   stock: yup.string().matches(regex.number, msg.number).required(),
   precioCompra: yup.string().matches(regex.float, msg.float).required(),
   precioVenta: yup.string().matches(regex.float, msg.float).required(),
-  fechaVencimiento: yup.date().typeError('fecha incorrecta').required(),
+  fechaVencimiento: yup.date().typeError('la fecha introducida es incorrecta').required(),
 });
 
 export default productos;

@@ -9,6 +9,17 @@ const ITEMS_RADIO_GROUP = [
   },
 ];
 
+const EXPANSIBLE_ITEMS_RADIO_GROUP = [
+  {
+    id: '1',
+    title: 'Si',
+  },
+  {
+    id: '0',
+    title: 'No',
+  },
+];
+
 const ITEMS_SELECTS = [
   {
     idRol: '35b63ba1-8019-4836-83a4-c51a42b2f3ec',
@@ -28,4 +39,4 @@ const ITEMS_SELECTS = [
   },
 ];
 
-export { ITEMS_RADIO_GROUP, ITEMS_SELECTS };
+export { ITEMS_RADIO_GROUP, ITEMS_SELECTS, EXPANSIBLE_ITEMS_RADIO_GROUP };

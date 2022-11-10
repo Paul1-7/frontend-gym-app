@@ -191,6 +191,9 @@ const DataTable = ({
                       if (type === 'states') {
                         return <DataTableCell.States key={index} align={align} value={value} />;
                       }
+                      if (type === 'extendable') {
+                        return <DataTableCell.Extendable key={index} align={align} value={value} />;
+                      }
                       if (type === 'date') {
                         return <DataTableCell.Date key={index} align={align} value={value} />;
                       }

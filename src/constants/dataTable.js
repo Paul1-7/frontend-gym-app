@@ -18,6 +18,7 @@ const COLUMNS = {
   ],
   salones: [
     { field: 'nombre', header: 'nombre', type: '' },
+    { field: 'capacidad', header: 'capacidad', type: '' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
   productos: [
@@ -27,22 +28,36 @@ const COLUMNS = {
     { field: 'stock', header: 'stock', type: 'stock' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
-  brands: [
-    { field: 'nombre', header: 'nombre', type: '' },
+  disciplinas: [
+    { field: 'nombre', header: 'Nombre', type: '' },
+    { field: 'descripcion', header: 'Descripción', type: '' },
+    { field: 'estado', header: 'Estado', type: 'states' },
+  ],
+  horarios: [
+    { field: 'disciplina', header: 'disciplina', type: '' },
+    { field: 'salon', header: 'salon', type: '' },
+    { field: 'entrenador', header: 'entrenador', type: '' },
+    { field: 'horarioEntrada', header: 'horario de entrada', type: '' },
+    { field: 'horarioSalida', header: 'horario de salida', type: '' },
+    { field: 'dia', header: 'dia', type: '' },
+    { field: 'capacidad', header: 'capacidad', type: '' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
-
-  providers: [
+  planes: [
     { field: 'nombre', header: 'nombre', type: '' },
-    { field: 'tel', header: 'teléfono', type: '' },
-    { field: 'nombreEnc', header: 'nombre del encargado', type: '' },
-    { field: 'apEnc', header: 'apellido del encargado', type: '' },
+    { field: 'precio', header: 'precio', type: '' },
+    { field: 'duracion', header: 'duración', type: '' },
+    { field: 'esExpandible', header: 'es expandible', type: 'extendable' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
-  subsidiaries: [
-    { field: 'nombre', header: 'nombre', type: '' },
-    { field: 'direccion', header: 'dirección', type: '' },
-    { field: 'tel', header: 'teléfono', type: '' },
+  suscripciones: [
+    { field: 'socio', header: 'socio', type: '' },
+    { field: 'ci', header: 'ci', type: '' },
+    { field: 'fechaInicio', header: 'fecha de inicio', type: '' },
+    { field: 'fechaFin', header: 'fecha fin', type: '' },
+    { field: 'plan', header: 'plan', type: '' },
+    { field: 'cantidad', header: 'cantidad', type: '' },
+    { field: 'montoCancelado', header: 'monto cancelado', type: '' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
   sells: [
@@ -58,16 +73,16 @@ const COLUMNS = {
     { field: 'cantidad', header: 'cantidad', type: 'stock' },
     { field: 'precio', header: 'precio uni.', type: 'currency' },
   ],
-  defectiveProductsToSell: [
-    { field: 'nombre', header: 'nombre', type: '' },
-    { field: 'stock', header: 'stock', type: '' },
-  ],
 };
 
 const TABLE_STATES = {
   active: [
     { name: 'Deshabilitado', variant: 'error' },
     { name: 'Habilitado', variant: 'success' },
+  ],
+  extendable: [
+    { name: 'No', variant: 'error' },
+    { name: 'Si', variant: 'success' },
   ],
   salesTypes: [
     { name: 'Directa', variant: 'info' },

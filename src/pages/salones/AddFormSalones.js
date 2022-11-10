@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Axios from 'apis';
-import { Alert, Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import { LoadingButton } from '@mui/lab';
 import useAxios from 'hooks/useAxios';
@@ -10,9 +10,14 @@ import { FormProvider, useForm } from 'react-hook-form';
 import Input from 'components/forms/container/Input';
 import RadioGroup from 'components/forms/container/RadioGroup';
 import { ITEMS_RADIO_GROUP } from 'constants/inputs';
+import { useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Navigate } from 'react-router-dom';
 
 const initialForm = {
   nombre: '',
+  capacidad: '',
   estado: 1,
 };
 
@@ -38,6 +43,17 @@ const AddFormSalones = () => {
     });
   };
 
+  useEffect(() => {
+    if (!errorPost) return;
+
+    if (!loadingPost && errorPost)
+      toast.error(errorPost.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [errorPost]);
+
   return (
     <Container sx={{ padding: '16px', position: 'relative' }}>
       <Typography variant="h2" gutterBottom>
@@ -48,6 +64,7 @@ const AddFormSalones = () => {
           <Grid container sx={{ display: 'grid' }} spacing={2}>
             <Grid item xs={12} wrap="wrap" container spacing={2}>
               <Input label="Nombre" name="nombre" />
+              <Input label="Capacidad" name="capacidad" type="number" />
               <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
             </Grid>
           </Grid>
@@ -66,15 +83,9 @@ const AddFormSalones = () => {
         </form>
       </FormProvider>
       {!loadingPost && !errorPost && !Array.isArray(resPost) && (
-        <Alert severity="success" sx={{ position: 'absolute', zIndex: 9999 }} variant="filled">
-          se guardo con exito
-        </Alert>
+        <Navigate to="/dashboard/salones/" replace state={resPost} />
       )}
-      {!loadingPost && errorPost && Array.isArray(resPost) && (
-        <Alert severity="error" sx={{ position: 'absolute', zIndex: 9999 }} variant="filled">
-          ocurrio un error
-        </Alert>
-      )}
+      <ToastContainer draggablePercent={60} />
     </Container>
   );
 };

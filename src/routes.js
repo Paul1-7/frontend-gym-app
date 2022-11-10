@@ -12,6 +12,10 @@ import Salones from 'pages/salones/Salones';
 import AddFormSalones from 'pages/salones/AddFormSalones';
 import AddFormProductos from 'pages/productos/AddFormProductos';
 import Productos from 'pages/productos/Productos';
+import Planes from 'pages/planes/Planes';
+import AddFormPlanes from 'pages/planes/AddFormPlanes';
+import Suscripciones from 'pages/suscripciones/Suscripciones';
+import AddFormSuscripciones from 'pages/suscripciones/AddFormSuscripciones';
 import DashboardLayout from './layouts/dashboard';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
@@ -45,8 +49,16 @@ export default function Router() {
         // productos
         { path: 'productos', element: <Productos /> },
         { path: 'productos/nuevo', element: <AddFormProductos /> },
+        // salones
         { path: 'salones', element: <Salones /> },
         { path: 'salones/nuevo', element: <AddFormSalones /> },
+        // planes
+        { path: 'planes', element: <Planes /> },
+        { path: 'planes/nuevo', element: <AddFormPlanes /> },
+        { path: 'blog', element: <Blog /> },
+        // suscripciones
+        { path: 'suscripciones', element: <Suscripciones /> },
+        { path: 'suscripciones/nuevo', element: <AddFormSuscripciones /> },
         { path: 'blog', element: <Blog /> },
       ],
     },

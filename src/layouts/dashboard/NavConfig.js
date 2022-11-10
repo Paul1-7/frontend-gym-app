@@ -42,6 +42,16 @@ const navConfig = [
     icon: getIcon('emojione-monotone:shopping-cart'),
   },
   {
+    title: 'planes',
+    path: '/dashboard/planes',
+    icon: getIcon('fluent:notebook-16-filled'),
+  },
+  {
+    title: 'suscripciones',
+    path: '/dashboard/suscripciones',
+    icon: getIcon('fa6-solid:file-invoice-dollar'),
+  },
+  {
     title: 'blog',
     path: '/dashboard/blog',
     icon: getIcon('eva:file-text-fill'),

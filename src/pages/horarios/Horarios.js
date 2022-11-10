@@ -7,40 +7,21 @@ import Iconify from 'components/Iconify';
 import useAxios from 'hooks/useAxios';
 import Axios from 'apis';
 import DataTable from 'components/dataTable/DataTable';
-
-const columnsData = [
-  { field: 'nombre', header: 'disciplina' },
-  { field: 'salon', header: 'Nombre' },
-  { field: 'estado', header: 'Estado' },
-  {
-    field: 'usuarios',
-    children: [
-      { field: 'nombre', header: 'Nombre' },
-      { field: 'apellido', header: 'apellido' },
-      { field: 'celular', header: 'celular' },
-      { field: 'horarioEntrada', header: 'horario de entrada' },
-      { field: 'horarioSalida', header: 'horario de salida' },
-    ],
-  },
-];
-
-const obtenerEmpleadosParaHorarios = (usuarios) =>
-  usuarios.map((usuario) => ({
-    nombre: usuario.nombre,
-    apellido: usuario.apellidoP + usuario.apellidoM,
-    celular: usuario.celular,
-    horarioEntrada: usuario.Horarios.horarioEntrada,
-    horarioSalida: usuario.Horarios.horarioSalida,
-  }));
+import { COLUMNS } from 'constants/dataTable';
 
 const datosPersonalizados = ({ data }) => {
   const newData = data.map((item) => ({
     ...item,
-    usuarios: obtenerEmpleadosParaHorarios(item.usuarios),
+    disciplina: item.disciplina.nombre,
+    entrenador: `${item.entrenador.nombre} ${item.entrenador.apellidoP}`,
+    salon: item.salon.nombre,
+    capacidad: item.salon.capacidad,
   }));
 
   return { data: newData };
 };
+
+const buttonsActions = { edit: true, remove: true };
 
 export default function Horarios() {
   const [resGet, errorGet, loadingGet, axiosFetchGet] = useAxios(datosPersonalizados);
@@ -49,7 +30,7 @@ export default function Horarios() {
     axiosFetchGet({
       axiosInstance: Axios,
       method: 'GET',
-      url: '/api/v1/disciplinas',
+      url: '/api/v1/horarios',
     });
     // eslint-disable-next-line
   }, []);
@@ -70,12 +51,13 @@ export default function Horarios() {
           </Button>
         </Stack>
         <DataTable
-          columns={columnsData}
+          columns={COLUMNS.horarios}
           rows={resGet}
           error={errorGet}
           loading={loadingGet}
+          numeration
+          btnActions={buttonsActions}
           orderByDefault="nombre"
-          collapse="usuarios"
         />
       </Container>
     </Page>

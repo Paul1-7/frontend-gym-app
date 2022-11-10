@@ -1,29 +1,29 @@
 import { useFormContext } from 'react-hook-form';
 import PropTypes from 'prop-types';
-import SelectMemo from '../memo/SelectMemo';
+import AutocompleteMemo from '../memo/AutocompleteMemo';
 
-const Select = ({ name, isArray, label, onChange, items, ...others }) => {
+const Autocomplete = ({ name, loading, label, isArray, items, ...others }) => {
   const methods = useFormContext();
   return (
-    <SelectMemo
+    <AutocompleteMemo
       name={name}
       label={label}
-      isArray={isArray}
       methods={methods}
       {...others}
       items={items}
-      onChange={onChange}
+      isArray={isArray}
+      loading={loading}
     />
   );
 };
 
-export default Select;
+export default Autocomplete;
 
-Select.propTypes = {
+Autocomplete.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.object),
   others: PropTypes.object,
   isArray: PropTypes.bool,
-  onChange: PropTypes.func,
+  loading: PropTypes.bool,
 };

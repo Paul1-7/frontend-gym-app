@@ -32,12 +32,15 @@ const DatePickerMemo = memo(
                   label={label}
                   {...field}
                   {...others}
-                  onChange={(value) => field.onChange(convertValueToEvent('fechaInicio', value))}
+                  value={field.value}
+                  onChange={(value) => {
+                    field.onChange(convertValueToEvent('fechaInicio', value));
+                  }}
                   renderInput={(params) => <TextField fullWidth size="small" {...params} />}
                 />
               </LocalizationProvider>
               <FormHelperText error={errorValue} color="error">
-                {errorValue?.message}
+                {errorValue?.message ?? ''}
               </FormHelperText>
             </>
           )}

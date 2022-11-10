@@ -9,19 +9,21 @@ import schema from 'schemas';
 import { FormProvider, useForm } from 'react-hook-form';
 import Input from 'components/forms/container/Input';
 import RadioGroup from 'components/forms/container/RadioGroup';
-import { ITEMS_RADIO_GROUP } from 'constants/inputs';
+import { EXPANSIBLE_ITEMS_RADIO_GROUP, ITEMS_RADIO_GROUP } from 'constants/inputs';
 
 const initialForm = {
   nombre: '',
-  descripcion: '',
+  precio: '',
+  duracion: '',
+  exExpandible: 0,
   estado: 1,
 };
 
-const FormularioDisciplina = () => {
+const AddFormPlanes = () => {
   const [resPost, errorPost, loadingPost, axiosFetchPost] = useAxios();
 
   const methods = useForm({
-    resolver: yupResolver(schema.disciplinas),
+    resolver: yupResolver(schema.planes),
     defaultValues: initialForm,
     mode: 'all',
     criteriaMode: 'all',
@@ -32,7 +34,7 @@ const FormularioDisciplina = () => {
     axiosFetchPost({
       axiosInstance: Axios,
       method: 'post',
-      url: '/api/v1/disciplinas',
+      url: '/api/v1/planes',
       requestConfig: {
         ...data,
       },
@@ -42,14 +44,18 @@ const FormularioDisciplina = () => {
   return (
     <Container sx={{ padding: '16px', position: 'relative' }}>
       <Typography variant="h2" gutterBottom>
-        Nueva disciplina
+        Nuevo plan
       </Typography>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <Grid container sx={{ display: 'grid' }} spacing={2}>
             <Grid item xs={12} wrap="wrap" container spacing={2}>
               <Input label="Nombre" name="nombre" />
-              <Input label="Descripción" name="descripcion" />
+              <Input label="Duracion en días" name="duracion" type="number" />
+              <Input label="Precio" name="precio" />
+            </Grid>
+            <Grid item xs={12} wrap="wrap" container spacing={2}>
+              <RadioGroup name="esExpandible" label="Es Expandible" items={EXPANSIBLE_ITEMS_RADIO_GROUP} />
               <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
             </Grid>
           </Grid>
@@ -81,8 +87,8 @@ const FormularioDisciplina = () => {
   );
 };
 
-export default FormularioDisciplina;
+export default AddFormPlanes;
 
-FormularioDisciplina.propTypes = {
+AddFormPlanes.propTypes = {
   title: PropTypes.string,
 };

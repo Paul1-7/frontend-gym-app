@@ -12,9 +12,6 @@ setLocale({
     min: ({ min }) => ({ key: `El valor debe de ser mayor a ${min}`, values: { min } }),
     max: ({ max }) => ({ key: `El valor debe de ser menor a ${max}`, values: { max } }),
   },
-  date: {
-    typeError: 'la fecha introducida es incorrecta',
-  },
   string: {
     uuid: 'no es correcto el id',
   },

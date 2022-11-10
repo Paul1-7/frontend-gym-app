@@ -6,6 +6,7 @@ import ValuesArray from './ValuesArray';
 import Currency from './Currency';
 import Default from './Default';
 import Stock from './Stock';
+import Extendable from './Extendable';
 
 const DataTableCell = {
   States,
@@ -15,7 +16,8 @@ const DataTableCell = {
   ValuesArray,
   Currency,
   Stock,
-  Default
+  Extendable,
+  Default,
 };
 
 export default DataTableCell;

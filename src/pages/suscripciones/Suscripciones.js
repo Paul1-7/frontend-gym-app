@@ -10,15 +10,24 @@ import DataTable from 'components/dataTable/DataTable';
 import { COLUMNS } from 'constants/dataTable';
 
 const buttonsActions = { edit: true, remove: true };
+const customData = ({ data }) => {
+  const newData = data.map((item) => ({
+    ...item,
+    plan: item.plan.nombre,
+    socio: `${item.socio.nombre} ${item.socio.apellidoP}`,
+    ci: item.socio.ci,
+  }));
 
-export default function Disciplinas() {
-  const [resGet, errorGet, loadingGet, axiosFetchGet] = useAxios();
+  return { data: newData };
+};
+export default function Suscripciones() {
+  const [resGet, errorGet, loadingGet, axiosFetchGet] = useAxios(customData);
 
   const getData = () => {
     axiosFetchGet({
       axiosInstance: Axios,
       method: 'GET',
-      url: '/api/v1/disciplinas',
+      url: '/api/v1/suscripciones',
     });
   };
 
@@ -27,23 +36,23 @@ export default function Disciplinas() {
     // eslint-disable-next-line
   }, []);
   return (
-    <Page title="Disciplinas">
+    <Page title="Suscripciones">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Disciplinas
+            Suscripciones
           </Typography>
           <Button
             variant="contained"
             component={RouterLink}
-            to="/dashboard/disciplinas/nuevo"
+            to="/dashboard/suscripciones/nuevo"
             startIcon={<Iconify icon="eva:plus-fill" />}
           >
-            Nueva disciplina
+            Nueva suscripción
           </Button>
         </Stack>
         <DataTable
-          columns={COLUMNS.disciplinas}
+          columns={COLUMNS.suscripciones}
           rows={resGet}
           error={errorGet}
           loading={loadingGet}
