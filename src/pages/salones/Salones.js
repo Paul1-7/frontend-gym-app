@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import { useEffect } from 'react';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 // material
@@ -9,7 +10,6 @@ import Axios from 'apis';
 import DataTable from 'components/dataTable/DataTable';
 import { COLUMNS } from 'constants/dataTable';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const buttonsActions = { edit: true, remove: true };
 
@@ -17,14 +17,6 @@ export default function Salones() {
   const [resGet, errorGet, loadingGet, axiosFetchGet] = useAxios();
   const navigate = useNavigate();
   const location = useLocation();
-
-  const getData = () => {
-    axiosFetchGet({
-      axiosInstance: Axios,
-      method: 'GET',
-      url: '/api/v1/salones',
-    });
-  };
 
   useEffect(() => {
     let message;
@@ -53,7 +45,11 @@ export default function Salones() {
   }, [location]);
 
   useEffect(() => {
-    getData();
+    axiosFetchGet({
+      axiosInstance: Axios,
+      method: 'GET',
+      url: '/api/v1/salones',
+    });
     // eslint-disable-next-line
   }, []);
   return (

@@ -10,7 +10,7 @@ const AutocompleteMemo = memo(
   ({ name, label, isArray, loading, methods, items, ...others }) => {
     const [inputValue, setInputValue] = useState('');
     const defaultValue = { nombre: 'Ninguno', id: '0' };
-    items = [...items, ...[defaultValue]];
+    items = [...[defaultValue], ...items];
 
     const error = methods.formState.errors;
     const errorValue = isArray ? objectByString(error, name) : error[name];

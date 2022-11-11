@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Axios from 'apis';
-import { Alert, Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import { LoadingButton } from '@mui/lab';
 import useAxios from 'hooks/useAxios';
@@ -14,6 +14,8 @@ import { useEffect, useRef, useState } from 'react';
 import { getBOBCurrency } from 'utils/dataHandler';
 import dayjs from 'dayjs';
 import Autocomplete from 'components/forms/container/AutocompleteContainer';
+import { toast, ToastContainer } from 'react-toastify';
+import { Navigate } from 'react-router-dom';
 
 const initialForm = {
   idPlan: '0',
@@ -59,6 +61,17 @@ const AddFormSuscripciones = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (!errorPost) return;
+
+    if (!loadingPost && errorPost)
+      toast.error(errorPost.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [errorPost]);
+
   const onSubmit = (data) => {
     console.log('TCL: onSubmit -> data', data);
     data.idSocio = data.idSocio.id;
@@ -101,11 +114,21 @@ const AddFormSuscripciones = () => {
               <Grid item xs={12} md={6}>
                 <Autocomplete name="idSocio" label="Socio" items={resGetSocios} loading={loadingGetSocios} />
               </Grid>
-              <Select name="idPlan" label="Planes" items={resGetPlanes} disabled={!idSocio} />
-              <Input label="Cantidad" name="cantidad" type="number" disabled={isExpandable} />
-              <Input label="Precio" name="montoCancelado" disabled />
-              <DatePicker label="Fecha de inicio" name={'fechaInicio'} disabled />
-              <DatePicker label="Fecha fin" name={'fechaFin'} disabled />
+              <Grid item xs={12} md={6}>
+                <Select name="idPlan" label="Planes" items={resGetPlanes} disabled={!idSocio} />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Input label="Cantidad" name="cantidad" type="number" disabled={isExpandable} />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Input label="Precio" name="montoCancelado" disabled />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <DatePicker label="Fecha de inicio" name={'fechaInicio'} disabled />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <DatePicker label="Fecha fin" name={'fechaFin'} disabled />
+              </Grid>
             </Grid>
           )}
           <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -123,15 +146,9 @@ const AddFormSuscripciones = () => {
         </form>
       </FormProvider>
       {!loadingPost && !errorPost && !Array.isArray(resPost) && (
-        <Alert severity="success" sx={{ position: 'absolute', zIndex: 9999 }} variant="filled">
-          se guardo con exito
-        </Alert>
+        <Navigate to="/dashboard/suscripciones/" replace state={resPost} />
       )}
-      {!loadingPost && errorPost && Array.isArray(resPost) && (
-        <Alert severity="error" sx={{ position: 'absolute', zIndex: 9999 }} variant="filled">
-          ocurrio un error
-        </Alert>
-      )}
+      <ToastContainer draggablePercent={60} />
     </Container>
   );
 };

@@ -6,6 +6,7 @@ import salones from './salones';
 import productos from './productos';
 import planes from './planes';
 import suscripciones from './suscripciones';
+import ventas from './ventas';
 
 const schema = {
   socios,
@@ -16,6 +17,7 @@ const schema = {
   productos,
   planes,
   suscripciones,
+  ventas,
 };
 
 export default schema;

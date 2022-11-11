@@ -16,6 +16,8 @@ import Planes from 'pages/planes/Planes';
 import AddFormPlanes from 'pages/planes/AddFormPlanes';
 import Suscripciones from 'pages/suscripciones/Suscripciones';
 import AddFormSuscripciones from 'pages/suscripciones/AddFormSuscripciones';
+import AddFormVentas from 'pages/ventas/AddFormVentas';
+import Ventas from 'pages/ventas/Ventas';
 import DashboardLayout from './layouts/dashboard';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
@@ -59,6 +61,9 @@ export default function Router() {
         // suscripciones
         { path: 'suscripciones', element: <Suscripciones /> },
         { path: 'suscripciones/nuevo', element: <AddFormSuscripciones /> },
+        // ventas
+        { path: 'ventas', element: <Ventas /> },
+        { path: 'ventas/nuevo', element: <AddFormVentas /> },
         { path: 'blog', element: <Blog /> },
       ],
     },

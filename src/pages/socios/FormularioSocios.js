@@ -1,5 +1,5 @@
 import Axios from 'apis';
-import { Alert, Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import { LoadingButton } from '@mui/lab';
 import useAxios from 'hooks/useAxios';
@@ -14,6 +14,8 @@ import { useEffect, useRef, useState } from 'react';
 import Select from 'components/forms/container/Select';
 import dayjs from 'dayjs';
 import { getBOBCurrency } from 'utils/dataHandler';
+import { Navigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const intialFormSocios = {
   ci: '',
@@ -73,6 +75,17 @@ const FormularioSocio = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (!errorPost) return;
+
+    if (!loadingPost && errorPost)
+      toast.error(errorPost.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [errorPost]);
+
   const onSubmit = (data) => {
     axiosFetchPost({
       axiosInstance: Axios,
@@ -94,24 +107,50 @@ const FormularioSocio = () => {
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <Grid container sx={{ display: 'grid' }} spacing={2}>
               <Grid item xs={12} wrap="wrap" container spacing={2}>
-                <Input label="Ci" name="ci" />
-                <Input label="Nombre" name="nombre" />
-                <Input label="Apellido Paterno" name="apellidoP" />
-                <Input label="Apellido Materno" name="apellidoM" />
-                <Input label="Celular" name="celular" type="number" />
-                <Input label="Direccion" name="direccion" />
-                <Input label="Edad" name="edad" type="number" />
-                <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
+                <Grid item xs={12} md={6}>
+                  <Input label="Ci" name="ci" />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Input label="Nombre" name="nombre" />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Input label="Apellido Paterno" name="apellidoP" />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Input label="Apellido Materno" name="apellidoM" />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Input label="Celular" name="celular" type="number" />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Input label="Direccion" name="direccion" />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Input label="Edad" name="edad" type="number" />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
+                </Grid>
               </Grid>
               <Typography variant="h3" gutterBottom>
                 Suscripcion
               </Typography>
               <Grid item xs={12} wrap="wrap" container spacing={2}>
-                <Select name="idPlan" label="Planes" items={resGetPlanes} />
-                <Input label="Cantidad" name="cantidad" type="number" disabled={isExpandable} />
-                <Input label="Precio" name="precio" disabled />
-                <DatePicker label="Fecha de inicio" name={'fechaInicio'} disabled />
-                <DatePicker label="Fecha fin" name={'fechaFin'} disabled />
+                <Grid item xs={12} md={6}>
+                  <Select name="idPlan" label="Planes" items={resGetPlanes} />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Input label="Cantidad" name="cantidad" type="number" disabled={isExpandable} />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Input label="Precio" name="precio" disabled />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <DatePicker label="Fecha de inicio" name={'fechaInicio'} disabled />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <DatePicker label="Fecha fin" name={'fechaFin'} disabled />
+                </Grid>
               </Grid>
             </Grid>
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
@@ -130,15 +169,9 @@ const FormularioSocio = () => {
         </FormProvider>
       )}
       {!loadingPost && !errorPost && !Array.isArray(resPost) && (
-        <Alert severity="success" sx={{ position: 'absolute', zIndex: 9999 }} variant="filled">
-          se guardo con exito
-        </Alert>
+        <Navigate to="/dashboard/socios/" replace state={resPost} />
       )}
-      {!loadingPost && errorPost && Array.isArray(resPost) && (
-        <Alert severity="error" sx={{ position: 'absolute', zIndex: 9999 }} variant="filled">
-          ocurrio un error
-        </Alert>
-      )}
+      <ToastContainer draggablePercent={60} />
     </Container>
   );
 };

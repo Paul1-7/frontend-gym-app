@@ -4,7 +4,7 @@ import 'simplebar/src/simplebar.css';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-
+import 'react-toastify/dist/ReactToastify.css';
 //
 import App from './App';
 import * as serviceWorker from './serviceWorker';

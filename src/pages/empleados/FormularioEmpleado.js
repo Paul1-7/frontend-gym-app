@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Axios from 'apis';
-import { Alert, Container, Grid, Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import { LoadingButton } from '@mui/lab';
 import useAxios from 'hooks/useAxios';
@@ -13,6 +13,9 @@ import { ITEMS_RADIO_GROUP, ITEMS_SELECTS } from 'constants/inputs';
 import Horarios from 'components/Horarios';
 import Fieldset from 'components/forms/Fieldset';
 import SelectChip from 'components/forms/container/SelectChip';
+import { useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import { Navigate } from 'react-router-dom';
 
 const initialForm = {
   ci: '',
@@ -61,6 +64,17 @@ const FormularioEmpleado = () => {
     });
   };
 
+  useEffect(() => {
+    if (!errorPost) return;
+
+    if (!loadingPost && errorPost)
+      toast.error(errorPost.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [errorPost]);
+
   return (
     <Container sx={{ padding: '16px', position: 'relative' }}>
       <Typography variant="h2" gutterBottom>
@@ -72,15 +86,33 @@ const FormularioEmpleado = () => {
             <Grid item xs={12} wrap="wrap" container spacing={2}>
               <Fieldset title="Datos del empleado">
                 <Grid container wrap="wrap" spacing={1}>
-                  <Input label="Ci" name="ci" />
-                  <Input label="Nombre" name="nombre" />
-                  <Input label="Apellido Paterno" name="apellidoP" />
-                  <Input label="Apellido Materno" name="apellidoM" />
-                  <Input label="Celular" name="celular" type="number" />
-                  <Input label="Direccion" name="direccion" />
-                  <Input label="Edad" name="edad" type="number" />
-                  <SelectChip name="roles" label="Roles" items={ITEMS_SELECTS} />
-                  <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
+                  <Grid item xs={12} md={6}>
+                    <Input label="Ci" name="ci" />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Input label="Nombre" name="nombre" />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Input label="Apellido Paterno" name="apellidoP" />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Input label="Apellido Materno" name="apellidoM" />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Input label="Celular" name="celular" type="number" />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Input label="Direccion" name="direccion" />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Input label="Edad" name="edad" type="number" />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <SelectChip name="roles" label="Roles" items={ITEMS_SELECTS} />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
+                  </Grid>
                 </Grid>
               </Fieldset>
               <Fieldset title="Datos del usuario">
@@ -108,15 +140,9 @@ const FormularioEmpleado = () => {
         </form>
       </FormProvider>
       {!loadingPost && !errorPost && !Array.isArray(resPost) && (
-        <Alert severity="success" sx={{ position: 'absolute', zIndex: 9999 }} variant="filled">
-          se guardo con exito
-        </Alert>
+        <Navigate to="/dashboard/empleados/" replace state={resPost} />
       )}
-      {!loadingPost && errorPost && Array.isArray(resPost) && (
-        <Alert severity="error" sx={{ position: 'absolute', zIndex: 9999 }} variant="filled">
-          ocurrio un error
-        </Alert>
-      )}
+      <ToastContainer draggablePercent={60} />
     </Container>
   );
 };

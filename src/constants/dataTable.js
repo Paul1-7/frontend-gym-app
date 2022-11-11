@@ -57,21 +57,19 @@ const COLUMNS = {
     { field: 'fechaFin', header: 'fecha fin', type: '' },
     { field: 'plan', header: 'plan', type: '' },
     { field: 'cantidad', header: 'cantidad', type: '' },
-    { field: 'montoCancelado', header: 'monto cancelado', type: '' },
-    { field: 'estado', header: 'estado', type: 'states' },
+    { field: 'montoCancelado', header: 'monto cancelado', type: 'currency' },
   ],
-  sells: [
-    { field: 'codVenta', header: 'código de venta', type: '' },
+  ventas: [
+    { field: 'id', header: 'código de venta', type: '' },
     { field: 'fecha', header: 'fecha', type: 'date' },
-    { field: 'tipoVenta', header: 'tipo de venta', type: 'salesTypes' },
-    { field: 'metodoPago', header: 'método de pago', type: 'paymentsMethods' },
-    { field: 'cliente', header: 'cliente', type: '' },
+    { field: 'socio', header: 'socio', type: '' },
+    { field: 'ci', header: 'ci del socio', type: '' },
     { field: 'vendedor', header: 'vendedor', type: '' },
   ],
-  productsToSell: [
+  productosParaVenta: [
     { field: 'nombre', header: 'nombre', type: '' },
-    { field: 'cantidad', header: 'cantidad', type: 'stock' },
-    { field: 'precio', header: 'precio uni.', type: 'currency' },
+    { field: 'stock', header: 'cantidad', type: 'stock' },
+    { field: 'precioVenta', header: 'precio uni.', type: 'currency' },
   ],
 };
 

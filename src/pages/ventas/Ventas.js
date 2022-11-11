@@ -11,11 +11,21 @@ import DataTable from 'components/dataTable/DataTable';
 import { COLUMNS } from 'constants/dataTable';
 import { toast, ToastContainer } from 'react-toastify';
 
-const buttonsActions = { edit: true, remove: true };
+const buttonsActions = { edit: true, remove: true, detail: true };
 
-export default function Planes() {
-  const [resGet, errorGet, loadingGet, axiosFetchGet] = useAxios();
+const customData = ({ data }) => {
+  const newData = data.map((item) => ({
+    ...item,
+    socio: ` ${item.socio.nombre} ${item.socio.apellidoP}`,
+    ci: item.socio.ci,
+    vendedor: ` ${item.vendedor.nombre} ${item.vendedor.apellidoP}`,
+  }));
 
+  return { data: newData };
+};
+
+export default function Ventas() {
+  const [resGet, errorGet, loadingGet, axiosFetchGet] = useAxios(customData);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -49,34 +59,34 @@ export default function Planes() {
     axiosFetchGet({
       axiosInstance: Axios,
       method: 'GET',
-      url: '/api/v1/planes',
+      url: '/api/v1/ventas',
     });
     // eslint-disable-next-line
   }, []);
   return (
-    <Page title="Planes">
+    <Page title="Ventas">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Planes
+            Ventas
           </Typography>
           <Button
             variant="contained"
             component={RouterLink}
-            to="/dashboard/planes/nuevo"
+            to="/dashboard/ventas/nuevo"
             startIcon={<Iconify icon="eva:plus-fill" />}
           >
-            Nuevo plan
+            Nueva venta
           </Button>
         </Stack>
         <DataTable
-          columns={COLUMNS.planes}
+          columns={COLUMNS.ventas}
           rows={resGet}
           error={errorGet}
           loading={loadingGet}
           numeration
           btnActions={buttonsActions}
-          orderByDefault="nombre"
+          orderByDefault="fecha"
         />
         <ToastContainer draggablePercent={60} />
       </Container>

@@ -52,6 +52,11 @@ const navConfig = [
     icon: getIcon('fa6-solid:file-invoice-dollar'),
   },
   {
+    title: 'ventas',
+    path: '/dashboard/ventas',
+    icon: getIcon('ic:round-point-of-sale'),
+  },
+  {
     title: 'blog',
     path: '/dashboard/blog',
     icon: getIcon('eva:file-text-fill'),
