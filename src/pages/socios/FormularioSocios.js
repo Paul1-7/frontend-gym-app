@@ -87,6 +87,7 @@ const FormularioSocio = () => {
   }, [errorPost]);
 
   const onSubmit = (data) => {
+    console.log('TCL: onSubmit -> data', data);
     axiosFetchPost({
       axiosInstance: Axios,
       method: 'post',

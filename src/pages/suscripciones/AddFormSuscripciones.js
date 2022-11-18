@@ -13,6 +13,7 @@ import DatePicker from 'components/forms/container/DatePicker';
 import { useEffect, useRef, useState } from 'react';
 import { getBOBCurrency } from 'utils/dataHandler';
 import dayjs from 'dayjs';
+import add from 'date-fns/add';
 import Autocomplete from 'components/forms/container/AutocompleteContainer';
 import { toast, ToastContainer } from 'react-toastify';
 import { Navigate } from 'react-router-dom';
@@ -26,10 +27,19 @@ const initialForm = {
   fechaFin: new Date(),
 };
 
+const customDataSocios = ({ data }) => {
+  const newData = data.map(({ id, nombre, apellidoP, ci }) => ({
+    id,
+    nombre: `${nombre} ${apellidoP} - ${ci}`,
+  }));
+
+  return { data: newData };
+};
+
 const AddFormSuscripciones = () => {
   const [resPost, errorPost, loadingPost, axiosFetchPost] = useAxios();
   const [resGetPlanes, errorGetPlanes, loadingGetPlanes, axiosFetchGetPlanes] = useAxios();
-  const [resGetSocios, , loadingGetSocios, axiosFetchGetSocios] = useAxios();
+  const [resGetSocios, , loadingGetSocios, axiosFetchGetSocios] = useAxios(customDataSocios);
   const [isExpandable, setIsExpandable] = useState(true);
   const planRef = useRef(null);
 
@@ -97,7 +107,7 @@ const AddFormSuscripciones = () => {
     setIsExpandable(!esExpandible);
 
     if (!esExpandible) setValue('cantidad', 1);
-    setValue('fechaFinal', dayjs().add(8, 'day'));
+    setValue('fechaFin', add(new Date(), { days: planRef.current.duracion * cantidad }));
     setValue('montoCancelado', getBOBCurrency(planRef.current.precio * cantidad));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idPlan, cantidad]);
@@ -109,7 +119,7 @@ const AddFormSuscripciones = () => {
       </Typography>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          {!loadingGetPlanes && !errorGetPlanes && resGetPlanes.length && (
+          {!loadingGetPlanes && !errorGetPlanes && !!resGetPlanes.length && (
             <Grid item xs={12} wrap="wrap" container spacing={2}>
               <Grid item xs={12} md={6}>
                 <Autocomplete name="idSocio" label="Socio" items={resGetSocios} loading={loadingGetSocios} />

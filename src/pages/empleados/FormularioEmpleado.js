@@ -29,14 +29,7 @@ const initialForm = {
   usuario: '',
   password: '',
   repetirPassword: '',
-  roles: [ITEMS_SELECTS[0].idRol],
-  horarios: [
-    {
-      idDisciplina: '0',
-      horarioEntrada: '',
-      horarioSalida: '',
-    },
-  ],
+  roles: [],
 };
 
 const FormularioEmpleado = () => {
@@ -123,7 +116,6 @@ const FormularioEmpleado = () => {
                 </Grid>
               </Fieldset>
             </Grid>
-            <Horarios />
           </Grid>
           <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
             <LoadingButton
