@@ -1,26 +1,27 @@
 import React, { useContext } from 'react';
 import { Add, Article, Delete, Edit } from '@mui/icons-material';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button } from '@mui/material';
 import DataTableContext from 'context/DataTableContext';
 
 const DataTablesButtons = ({ data, buttons }) => {
   const { remove, edit, detail, add } = buttons || {};
-  const location = window.location.pathname;
+
+  const location = useLocation().pathname;
 
   const { disableButton, disabledButtons, handleOpenDialog, setOpenDialog } = useContext(DataTableContext) || {};
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       {detail && (
-        <Button aria-label="detalle" LinkComponent={Link} to={`${location}/detalle/${data.id}`}>
+        <Button aria-label="detalle" component={Link} to={`${location}/detalle/${data.id}`}>
           <Article color="primary" />
         </Button>
       )}
       {edit && (
-        <Button aria-label="modificar" LinkComponent={Link} to={`${location}/modificar/${data.id}`}>
+        <Button aria-label="modificar" component={Link} to={`${location}/modificar/${data.id}`}>
           <Edit color="warning" />
         </Button>
       )}

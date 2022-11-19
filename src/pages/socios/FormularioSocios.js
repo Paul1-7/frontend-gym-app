@@ -12,10 +12,10 @@ import { ITEMS_RADIO_GROUP } from 'constants/inputs';
 import DatePicker from 'components/forms/container/DatePicker';
 import { useEffect, useRef, useState } from 'react';
 import Select from 'components/forms/container/Select';
-import dayjs from 'dayjs';
 import { getBOBCurrency } from 'utils/dataHandler';
 import { Navigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import add from 'date-fns/add';
 
 const intialFormSocios = {
   ci: '',
@@ -30,7 +30,7 @@ const intialFormSocios = {
   cantidad: '1',
   precio: getBOBCurrency(0),
   fechaInicio: new Date(),
-  fechaFinal: new Date(),
+  fechaFin: new Date(),
 };
 
 const FormularioSocio = () => {
@@ -60,7 +60,7 @@ const FormularioSocio = () => {
     setIsExpandable(!esExpandible);
 
     if (!esExpandible) setValue('cantidad', 1);
-    setValue('fechaFinal', dayjs().add(8, 'day'));
+    setValue('fechaFin', add(new Date(), { days: planRef.current.duracion * cantidad }));
     setValue('precio', getBOBCurrency(planRef.current.precio * cantidad));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idPlan, cantidad]);

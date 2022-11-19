@@ -28,6 +28,7 @@ export default function Ventas() {
   const [resGet, errorGet, loadingGet, axiosFetchGet] = useAxios(customData);
   const navigate = useNavigate();
   const location = useLocation();
+  console.log('TCL: Ventas -> location', location);
 
   useEffect(() => {
     let message;

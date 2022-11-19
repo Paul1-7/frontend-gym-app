@@ -155,7 +155,7 @@ const AddFormVentas = () => {
           </form>
         </FormProvider>
         {!loadingPost && !errorPost && !Array.isArray(resPost) && (
-          <Navigate to="/dashboard/ventas/" replace state={resPost} />
+          <Navigate to="/dashboard/ventas" replace state={resPost} />
         )}
         <ToastContainer draggablePercent={60} />
       </DataTableProvider>

@@ -12,7 +12,6 @@ import Select from 'components/forms/container/Select';
 import DatePicker from 'components/forms/container/DatePicker';
 import { useEffect, useRef, useState } from 'react';
 import { getBOBCurrency } from 'utils/dataHandler';
-import dayjs from 'dayjs';
 import add from 'date-fns/add';
 import Autocomplete from 'components/forms/container/AutocompleteContainer';
 import { toast, ToastContainer } from 'react-toastify';
