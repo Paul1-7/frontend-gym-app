@@ -56,6 +56,15 @@ const navConfig = [
     path: '/dashboard/ventas',
     icon: getIcon('ic:round-point-of-sale'),
   },
+  {
+    title: 'reportes',
+    path: '/dashboard/reportes',
+    icon: getIcon('material-symbols:book'),
+    children: [
+      { title: 'Reporte de ventas', path: '/dashboard/reportes/ventas' },
+      { title: 'Reporte del inventario', path: '/dashboard/reportes/productos' },
+    ],
+  },
 ];
 
 export default navConfig;

@@ -1,6 +1,7 @@
 import { KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import {
   Box,
+  Button,
   Checkbox,
   CircularProgress,
   Collapse,
@@ -19,10 +20,24 @@ import {
 
 import PropTypes from 'prop-types';
 import { Fragment, useState } from 'react';
+import { CSVLink } from 'react-csv';
+import reporteInventario from 'utils/reporteInventario';
 import SearchBar from '../SearchBar';
 import DataTableCell from './DataTableCell';
 import DataTableHead from './DataTableHead';
 import DataTablesButtons from './DataTablesButtons';
+
+const headers = [
+  { label: 'First Name', key: 'firstname' },
+  { label: 'Last Name', key: 'lastname' },
+  { label: 'Email', key: 'email' },
+];
+
+const data = [
+  { firstname: 'Ahmed', lastname: 'Tomi', email: 'ah@smthing.co.com' },
+  { firstname: 'Raed', lastname: 'Labes', email: 'rl@smthing.co.com' },
+  { firstname: 'Yezzi', lastname: 'Min l3b', email: 'ymin@cocococo.com' },
+];
 
 const filterData = (query, data) => {
   if (!query) {
@@ -73,6 +88,9 @@ const DataTable = ({
   width = null,
   filterCheck = null,
   labelFilterCheck = null,
+  generateReports = false,
+  dataToReportsPdf = null,
+  dataToReportsCSV = null,
   ...others
 }) => {
   const [order, setOrder] = useState('asc');
@@ -114,8 +132,29 @@ const DataTable = ({
   return (
     <Box sx={{ marginTop: '16px' }}>
       <Grid container justifyContent="space-between">
-        <Grid item>
+        <Grid item container justifyContent="space-between">
           <SearchBar setSearchQuery={setSearchQuery} sx={{ marginBottom: '16px' }} />
+          {generateReports && (
+            <Grid>
+              <Button
+                variant="outlined"
+                size="small"
+                sx={{ marginRight: 1 }}
+                onClick={() => reporteInventario(dataToReportsPdf)}
+              >
+                inventario en PDF
+              </Button>
+              <CSVLink
+                data={dataToReportsCSV.data}
+                headers={dataToReportsCSV.header}
+                style={{ textDecoration: 'none' }}
+              >
+                <Button variant="outlined" size="small">
+                  inventario en CSV
+                </Button>
+              </CSVLink>
+            </Grid>
+          )}
         </Grid>
         {filterCheck && (
           <Grid item>

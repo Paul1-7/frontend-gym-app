@@ -1,7 +1,7 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
 import Socios from 'pages/socios/Socios';
-import FormularioSocios from 'pages/socios/FormularioSocios';
+import FormularioSocios from 'pages/socios/AddFormSocios';
 import Disciplinas from 'pages/disciplina/Disciplinas';
 import FormularioDisciplina from 'pages/disciplina/FormularioDisciplinas';
 import FormularioEmpleado from 'pages/empleados/FormularioEmpleado';
@@ -19,6 +19,8 @@ import AddFormSuscripciones from 'pages/suscripciones/AddFormSuscripciones';
 import AddFormVentas from 'pages/ventas/AddFormVentas';
 import Ventas from 'pages/ventas/Ventas';
 import DetalleVentas from 'pages/ventas/DetalleVentas';
+import ModificarFormSocios from 'pages/socios/ModificarFormSocios';
+import { DataTableProvider } from 'context/DataTableContext';
 import DashboardLayout from './layouts/dashboard';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
@@ -38,8 +40,16 @@ export default function Router() {
       children: [
         { path: 'app', element: <DashboardApp /> },
         // socios
-        { path: 'socios', element: <Socios /> },
+        {
+          path: 'socios',
+          element: (
+            <DataTableProvider>
+              <Socios />
+            </DataTableProvider>
+          ),
+        },
         { path: 'socios/nuevo', element: <FormularioSocios /> },
+        { path: 'socios/modificar/:id', element: <ModificarFormSocios /> },
         // disciplinas
         { path: 'disciplinas', element: <Disciplinas /> },
         { path: 'disciplinas/nuevo', element: <FormularioDisciplina /> },
