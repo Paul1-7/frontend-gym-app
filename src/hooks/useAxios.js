@@ -4,7 +4,7 @@ const useAxios = (callback = null) => {
   const [response, setResponse] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [controller, setController] = useState();
+  const [controller, setController] = useState(null);
 
   const axiosFetch = async (configObj) => {
     const { axiosInstance, method, url, requestConfig = {} } = configObj;
@@ -38,7 +38,7 @@ const useAxios = (callback = null) => {
     [controller]
   );
 
-  return [response, error, loading, axiosFetch, setResponse, setError];
+  return [response, error, loading, axiosFetch, setResponse, setError, controller];
 };
 
 export default useAxios;

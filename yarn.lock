@@ -1830,10 +1830,10 @@
     "prop-types" "^15.8.1"
     "reselect" "^4.1.6"
 
-"@mui/x-date-pickers@^5.0.0-alpha.7", "@mui/x-date-pickers@^5.0.1":
-  "integrity" "sha512-S+qUdhs3M/awoON9tfcoCtjBqn7tyfmU9gQUG1WwdGj6jySpze2bIjS7v7uhwydjddk7AlJGyrLOIc17F6ZVIA=="
-  "resolved" "https://registry.npmjs.org/@mui/x-date-pickers/-/x-date-pickers-5.0.1.tgz"
-  "version" "5.0.1"
+"@mui/x-date-pickers@^5.0.0-alpha.7", "@mui/x-date-pickers@^5.0.10":
+  "integrity" "sha512-k+SKBqlpYsY49JVs7PORDvnfoXw9nJELfImR/3jTgHqP8hQQ6loFjB9ZFvc5NjV4Jf2NIJFmdcp6g8cO31Wmbg=="
+  "resolved" "https://registry.npmjs.org/@mui/x-date-pickers/-/x-date-pickers-5.0.10.tgz"
+  "version" "5.0.10"
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@date-io/core" "^2.15.0"
@@ -1841,7 +1841,7 @@
     "@date-io/dayjs" "^2.15.0"
     "@date-io/luxon" "^2.15.0"
     "@date-io/moment" "^2.15.0"
-    "@mui/utils" "^5.9.3"
+    "@mui/utils" "^5.10.3"
     "@types/react-transition-group" "^4.4.5"
     "clsx" "^1.2.1"
     "prop-types" "^15.7.2"
@@ -7930,10 +7930,10 @@
     "react-fast-compare" "^3.2.0"
     "shallowequal" "^1.1.0"
 
-"react-hook-form@^7.0.0", "react-hook-form@^7.33.1":
-  "integrity" "sha512-ydTfTxEJdvgjCZBj5DDXRc58oTEfnFupEwwTAQ9FSKzykEJkX+3CiAkGtAMiZG7IPWHuzgT6AOBfogiKhUvKgg=="
-  "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.33.1.tgz"
-  "version" "7.33.1"
+"react-hook-form@^7.0.0", "react-hook-form@^7.40.0":
+  "integrity" "sha512-0rokdxMPJs0k9bvFtY6dbcSydyNhnZNXCR49jgDr/aR03FDHFOK6gfh8ccqB3fl696Mk7lqh04xdm+agqWXKSw=="
+  "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.40.0.tgz"
+  "version" "7.40.0"
 
 "react-is@^16.13.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
@@ -8572,18 +8572,18 @@
   "resolved" "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.7.tgz"
   "version" "3.0.7"
 
-"simplebar-react@^2.4.1":
-  "integrity" "sha512-lw0ZPj+80ez2mh1YTOligFUNzDch2sUbOzDp4WUhU5SpS+qMiyyOzNfMbHa0l4FyWox+tnGNO7jybxqIda3roQ=="
-  "resolved" "https://registry.npmjs.org/simplebar-react/-/simplebar-react-2.4.1.tgz"
-  "version" "2.4.1"
+"simplebar-react@^2.4.3":
+  "integrity" "sha512-Ep8gqAUZAS5IC2lT5RE4t1ZFUIVACqbrSRQvFV9a6NbVUzXzOMnc4P82Hl8Ak77AnPQvmgUwZS7aUKLyBoMAcg=="
+  "resolved" "https://registry.npmjs.org/simplebar-react/-/simplebar-react-2.4.3.tgz"
+  "version" "2.4.3"
   dependencies:
     "prop-types" "^15.6.1"
-    "simplebar" "^5.3.8"
+    "simplebar" "^5.3.9"
 
-"simplebar@^5.3.8":
-  "integrity" "sha512-LOHjyOcihx++zFN+vuktoZBGpCarFCtHIVDWXOf2VELbGDknq3Hw/sddafRp1aCg123VNkHWOFHUDHYEXAtufQ=="
-  "resolved" "https://registry.npmjs.org/simplebar/-/simplebar-5.3.8.tgz"
-  "version" "5.3.8"
+"simplebar@^5.3.8", "simplebar@^5.3.9":
+  "integrity" "sha512-1vIIpjDvY9sVH14e0LGeiCiTFU3ILqAghzO6OI9axeG+mvU/vMSrvXeAXkBolqFFz3XYaY8n5ahH9MeP3sp2Ag=="
+  "resolved" "https://registry.npmjs.org/simplebar/-/simplebar-5.3.9.tgz"
+  "version" "5.3.9"
   dependencies:
     "@juggle/resize-observer" "^3.3.1"
     "can-use-dom" "^0.1.0"

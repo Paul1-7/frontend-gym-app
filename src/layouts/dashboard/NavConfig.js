@@ -62,7 +62,7 @@ const navConfig = [
     icon: getIcon('material-symbols:book'),
     children: [
       { title: 'Reporte de ventas', path: '/dashboard/reportes/ventas' },
-      { title: 'Reporte del inventario', path: '/dashboard/reportes/productos' },
+      { title: 'Reporte de suscripciones', path: '/dashboard/reportes/suscripciones' },
     ],
   },
 ];

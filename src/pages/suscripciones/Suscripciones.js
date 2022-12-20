@@ -15,6 +15,7 @@ const buttonsActions = { edit: true, remove: true };
 const customData = ({ data }) => {
   const newData = data.map((item) => ({
     ...item,
+    fechaInico
     plan: item.plan.nombre,
     socio: `${item.socio.nombre} ${item.socio.apellidoP}`,
     ci: item.socio.ci,

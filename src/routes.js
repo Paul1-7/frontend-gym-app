@@ -21,6 +21,7 @@ import Ventas from 'pages/ventas/Ventas';
 import DetalleVentas from 'pages/ventas/DetalleVentas';
 import ModificarFormSocios from 'pages/socios/ModificarFormSocios';
 import { DataTableProvider } from 'context/DataTableContext';
+import ReporteSuscripciones from 'pages/reportes/ReportesSuscripciones';
 import DashboardLayout from './layouts/dashboard';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
@@ -76,6 +77,9 @@ export default function Router() {
         { path: 'ventas', element: <Ventas /> },
         { path: 'ventas/nuevo', element: <AddFormVentas /> },
         { path: 'ventas/detalle/:id', element: <DetalleVentas /> },
+        // reportes
+        { path: 'reportes/ventas', element: <Ventas /> },
+        { path: 'reportes/suscripciones', element: <ReporteSuscripciones /> },
       ],
     },
     {

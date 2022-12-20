@@ -39,4 +39,27 @@ const ITEMS_SELECTS = [
   },
 ];
 
-export { ITEMS_RADIO_GROUP, ITEMS_SELECTS, EXPANSIBLE_ITEMS_RADIO_GROUP };
+const ITEMS_SUSCRIPCIONES_REPORTE = [
+  { id: '1', nombre: 'Lista de suscripciones' },
+  { id: '2', nombre: 'Socios con mas renovacion de suscripciones' },
+  { id: '3', nombre: 'Informe de resultados' },
+];
+
+const ITEMS_RADIO_REPORTES_SUSC = [
+  {
+    id: '0',
+    title: 'Rango de fechas personalizados',
+  },
+  {
+    id: '1',
+    title: 'Todos los datos historicos',
+  },
+];
+
+export {
+  ITEMS_RADIO_GROUP,
+  ITEMS_SELECTS,
+  EXPANSIBLE_ITEMS_RADIO_GROUP,
+  ITEMS_SUSCRIPCIONES_REPORTE,
+  ITEMS_RADIO_REPORTES_SUSC,
+};
