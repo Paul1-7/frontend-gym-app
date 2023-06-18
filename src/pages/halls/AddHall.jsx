@@ -16,7 +16,6 @@ const AddHall = () => {
     mode: 'all',
     criteriaMode: 'all',
   });
-  console.log('TCL: AddHall -> methods', methods.formState.errors);
 
   const hall = useMutation({
     mutationFn: (data) => {

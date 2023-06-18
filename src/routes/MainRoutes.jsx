@@ -18,11 +18,13 @@ const ModifyDiscipline = lazy(() => import('@/pages/disciplines/ModifyDiscipline
 const Halls = lazy(() => import('@/pages/halls/Halls'));
 const AddHall = lazy(() => import('@/pages/halls/AddHall'));
 const ModifyHall = lazy(() => import('@/pages/halls/ModifyHall'));
+// Products
+const Products = lazy(() => import('@/pages/products/Products'));
+const AddProduct = lazy(() => import('@/pages/products/AddProduct'));
+const ModifyProduct = lazy(() => import('@/pages/products/ModifyProduct'));
 
 const Horarios = lazy(() => import('@/pages/horarios/Horarios'));
 const FormularioHorario = lazy(() => import('@/pages/horarios/FormularioHorario'));
-const Productos = lazy(() => import('@/pages/productos/Productos'));
-const AddFormProductos = lazy(() => import('@/pages/productos/AddFormProductos'));
 
 const Planes = lazy(() => import('@/pages/planes/Planes'));
 const AddFormPlanes = lazy(() => import('@/pages/planes/AddFormPlanes'));
@@ -89,6 +91,17 @@ export default function Router() {
         />
         <Route path={ROUTES.halls.add} element={<AddHall />} />
         <Route path={`${ROUTES.halls.modify}/:id`} element={<ModifyHall />} />
+        {/* Productos */}
+        <Route
+          path={ROUTES.products.default}
+          element={
+            <DataTableProvider>
+              <Products />
+            </DataTableProvider>
+          }
+        />
+        <Route path={ROUTES.products.add} element={<AddProduct />} />
+        <Route path={`${ROUTES.products.modify}/:id`} element={<ModifyProduct />} />
         {/* Horarios */}
         <Route path={ROUTES.schedules.default} element={<Horarios />} />
         <Route path={ROUTES.schedules.add} element={<FormularioHorario />} />
@@ -103,11 +116,6 @@ export default function Router() {
         <Route path={ROUTES.sales.default} element={<Ventas />} />
         {/* <Route path={ROUTES.sales.add} element={<FormularioVenta />} /> */}
         {/* <Route path={`${ROUTES.sales.modify}/:id`} element={<ModificarFormVenta />} /> */}
-
-        {/* Productos */}
-        <Route path={ROUTES.products.default} element={<Productos />} />
-        {/* <Route path={ROUTES.products.add} element={<FormularioProducto />} /> */}
-        {/* <Route path={`${ROUTES.products.modify}/:id`} element={<ModificarFormProducto />} /> */}
 
         {/* Reportes */}
         {/* <Route path={ROUTES.reports.default} element={<Reportes />} />

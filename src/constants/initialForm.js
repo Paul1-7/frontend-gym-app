@@ -48,3 +48,12 @@ export const initialFormHall = {
   capacidad: '',
   estado: 1,
 };
+
+export const initialFormProduct = {
+  nombre: '',
+  stock: '',
+  precioCompra: '',
+  precioVenta: '',
+  fechaVencimiento: new Date(),
+  estado: 1,
+};
