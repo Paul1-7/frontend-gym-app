@@ -57,3 +57,11 @@ export const initialFormProduct = {
   fechaVencimiento: new Date(),
   estado: 1,
 };
+
+export const initialFormPlan = {
+  nombre: '',
+  precio: '',
+  duracion: '',
+  esExpandible: 0,
+  estado: 1,
+};

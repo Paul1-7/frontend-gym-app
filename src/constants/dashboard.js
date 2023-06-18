@@ -1,5 +1,6 @@
 import { ROUTES } from '@/routes/routes';
 import { Inventory } from '@mui/icons-material';
+import { CardMembership } from '@mui/icons-material';
 import { MeetingRoom } from '@mui/icons-material';
 import { FitnessCenter } from '@mui/icons-material';
 import { Person } from '@mui/icons-material';
@@ -98,6 +99,25 @@ export const DASHBOARD = {
     modify: {
       title: 'Modificar producto',
       description: 'Modifica un producto existente',
+    },
+  },
+  plans: {
+    default: {
+      title: 'Planes',
+      description: 'Lista de planes para la suscripción',
+      button: {
+        icon: CardMembership,
+        url: ROUTES.plans.add,
+        name: 'Nuevo plan',
+      },
+    },
+    add: {
+      title: 'Agregar plan',
+      description: 'Agrega un plan en el sistema',
+    },
+    modify: {
+      title: 'Modificar plan',
+      description: 'Modifica un plan existente',
     },
   },
 };

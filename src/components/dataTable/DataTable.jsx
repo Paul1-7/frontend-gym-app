@@ -193,6 +193,12 @@ const DataTable = ({
                       if (type === 'array') {
                         return <DataTableCell.ValuesArray key={index} align={align} value={value} />;
                       }
+                      if (type === 'array') {
+                        return <DataTableCell.ValuesArray key={index} align={align} value={value} />;
+                      }
+                      if (type === 'extendable') {
+                        return <DataTableCell.Extendable key={index} align={align} value={value} />;
+                      }
                       if (type === 'stock') {
                         return <DataTableCell.Stock key={index} align={align} value={value} minStock={minStock} />;
                       }

@@ -22,12 +22,14 @@ const ModifyHall = lazy(() => import('@/pages/halls/ModifyHall'));
 const Products = lazy(() => import('@/pages/products/Products'));
 const AddProduct = lazy(() => import('@/pages/products/AddProduct'));
 const ModifyProduct = lazy(() => import('@/pages/products/ModifyProduct'));
+// Plans
+const Plans = lazy(() => import('@/pages/plans/Plans'));
+const AddPlan = lazy(() => import('@/pages/plans/AddPlan'));
+const ModifyPlan = lazy(() => import('@/pages/plans/ModifyPlan'));
 
 const Horarios = lazy(() => import('@/pages/horarios/Horarios'));
 const FormularioHorario = lazy(() => import('@/pages/horarios/FormularioHorario'));
 
-const Planes = lazy(() => import('@/pages/planes/Planes'));
-const AddFormPlanes = lazy(() => import('@/pages/planes/AddFormPlanes'));
 const Suscripciones = lazy(() => import('@/pages/suscripciones/Suscripciones'));
 const AddFormSuscripciones = lazy(() => import('@/pages/suscripciones/AddFormSuscripciones'));
 const Ventas = lazy(() => import('@/pages/ventas/Ventas'));
@@ -102,6 +104,17 @@ export default function Router() {
         />
         <Route path={ROUTES.products.add} element={<AddProduct />} />
         <Route path={`${ROUTES.products.modify}/:id`} element={<ModifyProduct />} />
+        {/* Plans */}
+        <Route
+          path={ROUTES.plans.default}
+          element={
+            <DataTableProvider>
+              <Plans />
+            </DataTableProvider>
+          }
+        />
+        <Route path={ROUTES.plans.add} element={<AddPlan />} />
+        <Route path={`${ROUTES.plans.modify}/:id`} element={<ModifyPlan />} />
         {/* Horarios */}
         <Route path={ROUTES.schedules.default} element={<Horarios />} />
         <Route path={ROUTES.schedules.add} element={<FormularioHorario />} />

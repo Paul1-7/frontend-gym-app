@@ -6,9 +6,8 @@ import schema from '@/schemas';
 import PartnerForm from './PartnerForm';
 import { Navigate } from 'react-router-dom';
 import { usePlanExpandible } from '@/hooks';
-import { plansList } from '@/services/plans';
 import { DashboardContainer, Form } from '@/components';
-import { addPartner } from '@/services';
+import { addPartner, plansList } from '@/services';
 import { ROUTES } from '@/routes';
 
 const AddPartner = () => {

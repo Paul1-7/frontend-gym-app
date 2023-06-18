@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { DASHBOARD, initialFormHall } from '@/constants';
+import { DASHBOARD, initialFormProduct } from '@/constants';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import schema from '@/schemas';
 import { Navigate } from 'react-router-dom';
@@ -15,7 +15,7 @@ const ModifyProduct = () => {
   const { id } = useParams();
   const methods = useForm({
     resolver: yupResolver(schema.productos),
-    defaultValues: initialFormHall,
+    defaultValues: initialFormProduct,
     mode: 'all',
     criteriaMode: 'all',
   });

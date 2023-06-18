@@ -2,5 +2,5 @@ export * from './disciplinesService';
 export * from './employees';
 export * from './hallsService';
 export * from './partners';
-export * from './plans';
+export * from './plansService';
 export * from './productsService';
