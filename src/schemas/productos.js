@@ -1,4 +1,4 @@
-import { msg, regex } from 'constants/validaciones';
+import { msg, regex } from '@/constants/validaciones';
 import * as yup from 'yup';
 
 const productos = yup.object().shape({

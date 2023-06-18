@@ -20,7 +20,7 @@ const EXPANSIBLE_ITEMS_RADIO_GROUP = [
   },
 ];
 
-const ITEMS_SELECTS = [
+const ROLES_ITEMS = [
   {
     idRol: '35b63ba1-8019-4836-83a4-c51a42b2f3ec',
     nombre: 'Administrador',
@@ -36,6 +36,10 @@ const ITEMS_SELECTS = [
   {
     idRol: 'd036ff13-a438-4469-8a65-f8f62f559319',
     nombre: 'Limpieza',
+  },
+  {
+    idRol: '28e921f8-043e-4911-a111-9ad9f31317f6',
+    nombre: 'Socio',
   },
 ];
 
@@ -56,10 +60,18 @@ const ITEMS_RADIO_REPORTES_SUSC = [
   },
 ];
 
+const DEFAULT_VALUE_ITEM = '0';
+
+const TEXT_MODAL = {
+  delete: '¿Estas seguro de querer eliminar el registro seleccionado ? Esta accion no se puede deshacer',
+};
+
 export {
   ITEMS_RADIO_GROUP,
-  ITEMS_SELECTS,
+  ROLES_ITEMS,
   EXPANSIBLE_ITEMS_RADIO_GROUP,
   ITEMS_SUSCRIPCIONES_REPORTE,
   ITEMS_RADIO_REPORTES_SUSC,
+  TEXT_MODAL,
+  DEFAULT_VALUE_ITEM,
 };

@@ -1,5 +1,5 @@
-const COLUMNS = {
-  socios: [
+const COLUMNS_TABLE = {
+  partners: [
     { field: 'ci', header: 'Ci', type: '' },
     { field: 'nombre', header: 'Nombre', type: '' },
     { field: 'apellidoM', header: 'Ap. Materno', type: '' },
@@ -7,7 +7,7 @@ const COLUMNS = {
     { field: 'edad', header: 'Edad', type: '' },
     { field: 'celular', header: 'Celular', type: '' },
   ],
-  empleados: [
+  employees: [
     { field: 'ci', header: 'Ci', type: '' },
     { field: 'nombre', header: 'Nombre', type: '' },
     { field: 'apellidoM', header: 'Ap. Materno', type: '' },
@@ -101,4 +101,4 @@ const COLUMN_FORMAT = {
   label: '',
 };
 
-export { COLUMNS, COLUMN_FORMAT, TABLE_STATES };
+export { COLUMNS_TABLE, COLUMN_FORMAT, TABLE_STATES };

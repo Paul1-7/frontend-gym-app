@@ -1,7 +1,5 @@
 import { format, formatDistanceToNow } from 'date-fns';
 
-// ----------------------------------------------------------------------
-
 export function fDate(date) {
   return format(new Date(date), 'dd MMMM yyyy');
 }
@@ -18,4 +16,9 @@ export function fToNow(date) {
   return formatDistanceToNow(new Date(date), {
     addSuffix: true,
   });
+}
+
+export function fTime(date) {
+  console.log('TCL: fTime -> data', format(new Date(date), 'hh:mm'));
+  return format(new Date(date), 'hh:mm');
 }

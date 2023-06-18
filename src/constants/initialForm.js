@@ -1,0 +1,50 @@
+import { getBOBCurrency } from '@/utils/dataHandler';
+import { ROLES_ITEMS } from './inputs';
+
+export const initialFormPartner = {
+  ci: '',
+  nombre: '',
+  apellidoP: '',
+  apellidoM: '',
+  edad: '',
+  celular: '',
+  direccion: '',
+  estado: '1',
+  idPlan: '0',
+  cantidad: '1',
+  precio: getBOBCurrency(0),
+  fechaInicio: new Date(),
+  fechaFin: new Date(),
+};
+
+export const initialFormEmployee = {
+  ci: '',
+  nombre: '',
+  apellidoP: '',
+  apellidoM: '',
+  edad: '',
+  celular: '',
+  direccion: '',
+  estado: '1',
+  usuario: '',
+  password: '',
+  repetirPassword: '',
+  roles: [ROLES_ITEMS[2].idRol],
+};
+
+export const initialFormDiscipline = {
+  nombre: '',
+  descripcion: '',
+  estado: 1,
+};
+
+export const initialFormSchedule = {
+  disciplina: '',
+  entrenador: '',
+};
+
+export const initialFormHall = {
+  nombre: '',
+  capacidad: '',
+  estado: 1,
+};

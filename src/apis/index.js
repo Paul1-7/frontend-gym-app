@@ -1,11 +1,13 @@
 import axios from 'axios';
-import configData from 'config';
-
-const { BASE_URL } = configData;
+import { onRequest, onRequestError, onResponse, onResponseError } from '@/interceptors';
+import { config } from '@/config';
 
 const Axios = axios.create({
-  baseURL: BASE_URL,
+  baseURL: config.BASE_URL,
   headers: { 'Content-Type': 'application/json' },
 });
+
+Axios.interceptors.response.use(onResponse, onResponseError);
+Axios.interceptors.request.use(onRequest, onRequestError);
 
 export default Axios;

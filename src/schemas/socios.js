@@ -1,4 +1,4 @@
-import { msg, regex } from 'constants/validaciones';
+import { msg, regex } from '@/constants/validaciones';
 import * as yup from 'yup';
 
 const socios = yup.object().shape({
@@ -10,8 +10,18 @@ const socios = yup.object().shape({
   celular: yup.string().matches(regex.number, msg.number).required(),
   direccion: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
   estado: yup.string().required().matches(regex.number, msg.number).required(),
-  idPlan: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric),
-  cantidad: yup.string().matches(regex.number, msg.number),
+  idPlan: yup
+    .string()
+    .matches(regex.alphaNumeric, msg.alphaNumeric)
+    .test('idPlan-test', 'Debe seleccionar otra opción', (value) => value?.id !== '0'),
+  cantidad: yup
+    .number()
+    .when('idPlan', {
+      is: (val) => val !== '0' && val !== undefined,
+      then: () => yup.number().required('La cantidad es requerida').typeError('debe ser un numero'),
+      otherwise: () => yup.number().typeError('debe ser un numero'),
+    })
+    .typeError('debe ser un numero'),
   precio: yup.string().matches(regex.float, msg.float),
   fechaInicio: yup.date().typeError('la fecha es incorrecta'),
   fechaFin: yup.date().typeError('la fecha es incorrecta'),

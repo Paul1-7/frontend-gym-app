@@ -1,4 +1,4 @@
-import { msg, regex } from 'constants/validaciones';
+import { msg, regex } from '@/constants/validaciones';
 import * as yup from 'yup';
 
 const empleados = yup.object().shape({
@@ -13,7 +13,7 @@ const empleados = yup.object().shape({
   usuario: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
   password: yup.string().required(),
   repetirPassword: yup.string().oneOf([yup.ref('password'), null], 'Las constraseñas no coinciden'),
-  roles: yup.array().required(),
+  roles: yup.array().of(yup.string()).required().min(1, 'tiene que seleccionar un rol'),
 });
 
 export default empleados;
