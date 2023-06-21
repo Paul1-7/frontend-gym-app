@@ -1,3 +1,4 @@
+import { getPartnerListWithFullName } from '@/adapters';
 import Axios from '@/apis';
 
 export const URL_PARTNERS = {
@@ -8,6 +9,11 @@ export const partnersList = async () => {
   const response = await Axios.get(URL_PARTNERS.default);
   if (response.status >= 400) throw response.data;
   return response.data;
+};
+
+export const partnersListFullName = async () => {
+  const response = await Axios.get(URL_PARTNERS.default);
+  return getPartnerListWithFullName(response.data);
 };
 
 export const getPartnerById = async (id) => {

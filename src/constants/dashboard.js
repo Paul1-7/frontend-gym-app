@@ -1,5 +1,6 @@
 import { ROUTES } from '@/routes/routes';
 import { Inventory } from '@mui/icons-material';
+import { Assignment } from '@mui/icons-material';
 import { CardMembership } from '@mui/icons-material';
 import { MeetingRoom } from '@mui/icons-material';
 import { FitnessCenter } from '@mui/icons-material';
@@ -118,6 +119,21 @@ export const DASHBOARD = {
     modify: {
       title: 'Modificar plan',
       description: 'Modifica un plan existente',
+    },
+  },
+  subscriptions: {
+    default: {
+      title: 'Suscripciones',
+      description: 'Lista de suscripciones realizadas',
+      button: {
+        icon: Assignment,
+        url: ROUTES.subscriptions.add,
+        name: 'Nueva suscripción',
+      },
+    },
+    add: {
+      title: 'Agregar suscripción',
+      description: 'Agrega una suscripcion en el sistema',
     },
   },
 };

@@ -44,10 +44,10 @@ const DialogConfirmation = ({ open, handleClickClose, handleDelete, loading, tex
 export default DialogConfirmation;
 
 DialogConfirmation.propTypes = {
-  open: PropTypes.bool.isRequired,
-  handleClickClose: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  textContent: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  open: PropTypes.bool,
+  handleClickClose: PropTypes.func,
+  handleDelete: PropTypes.func,
+  loading: PropTypes.bool,
+  textContent: PropTypes.string,
+  id: PropTypes.string,
 };

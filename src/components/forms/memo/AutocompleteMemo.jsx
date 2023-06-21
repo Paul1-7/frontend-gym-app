@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Controller } from 'react-hook-form';
 
-import { Autocomplete, CircularProgress, FormHelperText, TextField } from '@mui/material';
 import { objectByString } from '@/utils/dataHandler';
+import { Autocomplete, CircularProgress, FormHelperText, TextField } from '@mui/material';
 
 const AutocompleteMemo = memo(
   ({ name, label, isArray, loading, methods, items, HelperTextProps, ...others }) => {

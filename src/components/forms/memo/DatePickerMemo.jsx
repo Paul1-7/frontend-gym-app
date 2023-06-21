@@ -46,9 +46,7 @@ const DatePickerMemo = memo(
     );
   },
   (prevProps, nextProps) =>
-    prevProps.methods.formState.isDirty === nextProps.methods.formState.isDirty &&
-    compare(prevProps.methods.formState.errors, nextProps.methods.formState.errors) &&
-    prevProps.methods.formState.submitCount === nextProps.methods.formState.submitCount
+    prevProps?.disabled === nextProps?.disabled && !compare(prevProps.methods, nextProps.methods)
 );
 DatePickerMemo.displayName = 'DatePickerMemo';
 export default DatePickerMemo;

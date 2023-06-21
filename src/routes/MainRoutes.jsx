@@ -29,9 +29,10 @@ const ModifyPlan = lazy(() => import('@/pages/plans/ModifyPlan'));
 
 const Horarios = lazy(() => import('@/pages/horarios/Horarios'));
 const FormularioHorario = lazy(() => import('@/pages/horarios/FormularioHorario'));
+//Subscriptions
+const Subscriptions = lazy(() => import('@/pages/suscripciones/Subscriptions'));
+const AddSubscription = lazy(() => import('@/pages/suscripciones/AddSubscription'));
 
-const Suscripciones = lazy(() => import('@/pages/suscripciones/Suscripciones'));
-const AddFormSuscripciones = lazy(() => import('@/pages/suscripciones/AddFormSuscripciones'));
 const Ventas = lazy(() => import('@/pages/ventas/Ventas'));
 const AddFormVentas = lazy(() => import('@/pages/ventas/AddFormVentas'));
 const DetalleVentas = lazy(() => import('@/pages/ventas/DetalleVentas'));
@@ -115,15 +116,22 @@ export default function Router() {
         />
         <Route path={ROUTES.plans.add} element={<AddPlan />} />
         <Route path={`${ROUTES.plans.modify}/:id`} element={<ModifyPlan />} />
+
+        {/* Suscripciones */}
+        <Route
+          path={ROUTES.subscriptions.default}
+          element={
+            <DataTableProvider>
+              <Subscriptions />
+            </DataTableProvider>
+          }
+        />
+        <Route path={ROUTES.subscriptions.add} element={<AddSubscription />} />
+
         {/* Horarios */}
         <Route path={ROUTES.schedules.default} element={<Horarios />} />
         <Route path={ROUTES.schedules.add} element={<FormularioHorario />} />
         {/* <Route path={`${ROUTES.schedules.modify}/:id`} element={<ModificarFormHorario />} /> */}
-
-        {/* Suscripciones */}
-        <Route path={ROUTES.subscriptions.default} element={<Suscripciones />} />
-        {/* <Route path={ROUTES.subscriptions.add} element={<FormularioSuscripcion />} /> */}
-        {/* <Route path={`${ROUTES.subscriptions.modify}/:id`} element={<ModificarFormSuscripcion />} /> */}
 
         {/* Ventas */}
         <Route path={ROUTES.sales.default} element={<Ventas />} />

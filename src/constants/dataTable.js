@@ -53,9 +53,10 @@ const COLUMNS_TABLE = {
   suscripciones: [
     { field: 'socio', header: 'socio', type: '' },
     { field: 'ci', header: 'ci', type: '' },
-    { field: 'fechaInicio', header: 'fecha de inicio', type: '' },
-    { field: 'fechaFin', header: 'fecha fin', type: '' },
+    { field: 'fechaInicio', header: 'fecha de inicio', type: 'date' },
+    { field: 'fechaFin', header: 'fecha fin', type: 'date' },
     { field: 'plan', header: 'plan', type: '' },
+    { field: 'diasExtras', header: 'dias extras', type: '' },
     { field: 'cantidad', header: 'cantidad', type: '' },
     { field: 'montoCancelado', header: 'monto cancelado', type: 'currency' },
   ],

@@ -65,3 +65,12 @@ export const initialFormPlan = {
   esExpandible: 0,
   estado: 1,
 };
+
+export const initialFormSubscription = {
+  idPlan: '0',
+  idSocio: { nombre: 'Ninguno', id: '0' },
+  precio: '',
+  cantidad: '1',
+  fechaInicio: new Date(),
+  fechaFin: new Date(),
+};
