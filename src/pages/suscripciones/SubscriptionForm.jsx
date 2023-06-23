@@ -31,7 +31,7 @@ const SubscriptionForm = ({ plans = [], partners = [], isLoading, isExpandable }
         </Grid>
       </Grid>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem', gap: '1rem' }}>
-        <ButtonLink variant="outlined" color="error" to={ROUTES.partners.default}>
+        <ButtonLink variant="outlined" color="error" to={ROUTES.subscriptions.default}>
           Cancelar
         </ButtonLink>
         <LoadingButton
