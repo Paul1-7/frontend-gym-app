@@ -21,20 +21,20 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <HelmetProvider>
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-          <SnackbarProvider
-            autoHideDuration={4000}
-            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-            preventDuplicate
-          >
-            <SnackbarUtilitiesConfigurator />
-            <App />
-          </SnackbarProvider>
-        </QueryClientProvider>
-      </BrowserRouter>
-    </HelmetProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <HelmetProvider>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <SnackbarProvider
+          autoHideDuration={4000}
+          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          preventDuplicate
+        >
+          <SnackbarUtilitiesConfigurator />
+          <App />
+        </SnackbarProvider>
+      </QueryClientProvider>
+    </BrowserRouter>
+  </HelmetProvider>
+  // </React.StrictMode>
 );

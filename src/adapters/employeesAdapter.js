@@ -13,3 +13,10 @@ export const employeeWithIDRols = (data) => {
     roles: data.roles.map(({ id }) => id),
   };
 };
+
+export const getEmployeesListWithFullName = (data) => {
+  return data.map((item) => ({
+    id: item.id,
+    nombre: `${item.nombre} ${item.apellidoP}`,
+  }));
+};

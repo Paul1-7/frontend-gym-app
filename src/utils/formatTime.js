@@ -19,6 +19,5 @@ export function fToNow(date) {
 }
 
 export function fTime(date) {
-  console.log('TCL: fTime -> data', format(new Date(date), 'hh:mm'));
-  return format(new Date(date), 'hh:mm');
+  return format(new Date(date), 'HH:mm');
 }

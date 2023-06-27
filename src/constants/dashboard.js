@@ -136,4 +136,10 @@ export const DASHBOARD = {
       description: 'Agrega una suscripcion en el sistema',
     },
   },
+  schedules: {
+    default: {
+      title: 'Horarios',
+      description: 'Calendario de horarios para las clases',
+    },
+  },
 };

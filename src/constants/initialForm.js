@@ -39,8 +39,9 @@ export const initialFormDiscipline = {
 };
 
 export const initialFormSchedule = {
-  disciplina: '',
-  entrenador: '',
+  idDisciplina: '0',
+  idEntrenador: '0',
+  idSalon: '0',
 };
 
 export const initialFormHall = {

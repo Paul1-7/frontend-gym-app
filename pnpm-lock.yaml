@@ -23,6 +23,9 @@ dependencies:
   '@fullcalendar/react':
     specifier: ^6.1.8
     version: 6.1.8(@fullcalendar/core@6.1.8)(react-dom@18.2.0)(react@18.2.0)
+  '@fullcalendar/rrule':
+    specifier: ^6.1.8
+    version: 6.1.8(@fullcalendar/core@6.1.8)(rrule@2.7.2)
   '@fullcalendar/timegrid':
     specifier: ^6.1.8
     version: 6.1.8(@fullcalendar/core@6.1.8)
@@ -589,6 +592,16 @@ packages:
       '@fullcalendar/core': 6.1.8
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@fullcalendar/rrule@6.1.8(@fullcalendar/core@6.1.8)(rrule@2.7.2):
+    resolution: {integrity: sha512-Ikl1ipRCxeNlQ7UNcG0QC3yxAaiItXo1zYa90hodXwf/UK5Bi9aR0f/bcViIP89U0Uq4trUOy9yFaD61dLuYSg==}
+    peerDependencies:
+      '@fullcalendar/core': ~6.1.8
+      rrule: ^2.6.0
+    dependencies:
+      '@fullcalendar/core': 6.1.8
+      rrule: 2.7.2
     dev: false
 
   /@fullcalendar/timegrid@6.1.8(@fullcalendar/core@6.1.8):

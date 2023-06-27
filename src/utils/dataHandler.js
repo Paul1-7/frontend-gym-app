@@ -1,3 +1,6 @@
+import { format } from 'date-fns';
+import { differenceInMinutes } from 'date-fns';
+
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 const objectByString = (o, s) => {
   s = s.replace(/\[(\w+)\]/g, '?.$1'); // convert indexes to properties
@@ -16,5 +19,29 @@ const objectByString = (o, s) => {
 };
 
 const getBOBCurrency = (value) => new Intl.NumberFormat('es-BO', { style: 'currency', currency: 'BOB' }).format(value);
+
+export function generateColorFromString(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = (hash & 0x00ffffff).toString(16).toUpperCase();
+
+  while (color.length < 6) {
+    color = '0' + color;
+  }
+
+  return '#' + color;
+}
+
+export function getTimeDifferenceWithFormat(date1, date2) {
+  const minutesDifference = differenceInMinutes(date2, date1);
+
+  const hours = Math.floor(minutesDifference / 60);
+  const minutes = minutesDifference % 60;
+
+  return format(new Date().setHours(hours, minutes), 'HH:mm');
+}
 
 export { objectByString, getBOBCurrency };

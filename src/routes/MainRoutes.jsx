@@ -27,8 +27,8 @@ const Plans = lazy(() => import('@/pages/plans/Plans'));
 const AddPlan = lazy(() => import('@/pages/plans/AddPlan'));
 const ModifyPlan = lazy(() => import('@/pages/plans/ModifyPlan'));
 
-const Horarios = lazy(() => import('@/pages/horarios/Horarios'));
-const FormularioHorario = lazy(() => import('@/pages/horarios/FormularioHorario'));
+const Schedules = lazy(() => import('@/pages/schedules/Schedules'));
+const FormularioHorario = lazy(() => import('@/pages/schedules/FormularioHorario'));
 //Subscriptions
 const Subscriptions = lazy(() => import('@/pages/suscripciones/Subscriptions'));
 const AddSubscription = lazy(() => import('@/pages/suscripciones/AddSubscription'));
@@ -128,8 +128,8 @@ export default function Router() {
         />
         <Route path={ROUTES.subscriptions.add} element={<AddSubscription />} />
 
-        {/* Horarios */}
-        <Route path={ROUTES.schedules.default} element={<Horarios />} />
+        {/* Schedules */}
+        <Route path={ROUTES.schedules.default} element={<Schedules />} />
         <Route path={ROUTES.schedules.add} element={<FormularioHorario />} />
         {/* <Route path={`${ROUTES.schedules.modify}/:id`} element={<ModificarFormHorario />} /> */}
 

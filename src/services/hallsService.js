@@ -1,3 +1,4 @@
+import { getActivesRegisters, getHallListWithCapacityAndName } from '@/adapters';
 import Axios from '@/apis';
 
 export const URL_HALL = {
@@ -7,6 +8,12 @@ export const URL_HALL = {
 export const hallsList = async () => {
   const response = await Axios.get(URL_HALL.default);
   return response.data;
+};
+
+export const activeHallsList = async () => {
+  const response = await Axios.get(URL_HALL.default);
+  const activeHalls = getActivesRegisters(response.data);
+  return getHallListWithCapacityAndName(activeHalls);
 };
 
 export const getHallById = async (id) => {

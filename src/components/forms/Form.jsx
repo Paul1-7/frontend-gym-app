@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import { FormProvider } from 'react-hook-form'
+import PropTypes from 'prop-types';
+import { FormProvider } from 'react-hook-form';
 
 function Form({ methods, onSubmit, children, ...props }) {
   return (
@@ -8,13 +8,13 @@ function Form({ methods, onSubmit, children, ...props }) {
         {children}
       </form>
     </FormProvider>
-  )
+  );
 }
 
 Form.propTypes = {
   methods: PropTypes.object,
   onSubmit: PropTypes.func,
-  children: PropTypes.node
-}
+  children: PropTypes.node,
+};
 
-export default Form
+export default Form;
