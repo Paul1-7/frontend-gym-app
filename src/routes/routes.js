@@ -39,7 +39,7 @@ export const ROUTES = {
   sales: {
     default: ADMIN_PATH + '/ventas',
     add: ADMIN_PATH + '/ventas/agregar',
-    modify: ADMIN_PATH + '/ventas/modificar',
+    detail: ADMIN_PATH + '/ventas/detalle',
   },
   products: {
     default: ADMIN_PATH + '/productos',

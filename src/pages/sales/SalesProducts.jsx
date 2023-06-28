@@ -6,17 +6,11 @@ import { getBOBCurrency } from '@/utils/dataHandler';
 
 import Input from '@/components/forms/container/Input';
 import { Clear } from '@mui/icons-material';
+import { useSnackbar } from 'notistack';
 import DataTableContext from '@/context/DataTableContext';
-import { toast, ToastContainer } from 'react-toastify';
 
-// const initialForm = {
-//   id:'',
-//   cantidad: '1',
-//   nombre:'',
-//   precio: ''
-// };
-
-const VentaProductos = ({ data = null }) => {
+const SalesProducts = ({ data = null }) => {
+  const { enqueueSnackbar } = useSnackbar();
   const { control } = useFormContext();
   const { dataRow, enableButton } = useContext(DataTableContext);
   const { fields, append, remove, update } = useFieldArray({
@@ -35,8 +29,6 @@ const VentaProductos = ({ data = null }) => {
         cantidad: '1',
       });
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, dataRow]);
 
   useEffect(() => {
@@ -45,9 +37,7 @@ const VentaProductos = ({ data = null }) => {
     watch.forEach((item, index) => {
       if (item.cantidad > item.stock) {
         const msg = `la cantidad del producto ${item.nombre} excede el stock disponible`;
-        toast.error(msg, {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        });
+        enqueueSnackbar(msg, { variant: 'error' });
 
         update(index, { ...item, cantidad: 1 });
       }
@@ -101,12 +91,11 @@ const VentaProductos = ({ data = null }) => {
           </Typography>
         </Box>
       </Box>
-      <ToastContainer draggablePercent={60} />
     </>
   );
 };
-export default VentaProductos;
+export default SalesProducts;
 
-VentaProductos.propTypes = {
+SalesProducts.propTypes = {
   data: PropTypes.object,
 };

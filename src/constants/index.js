@@ -1,5 +1,6 @@
 export * from './dashboard';
 export * from './dataTable';
+export * from './default';
 export * from './handleError';
 export * from './initialForm';
 export * from './inputs';

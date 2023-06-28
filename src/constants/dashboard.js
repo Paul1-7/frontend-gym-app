@@ -1,6 +1,7 @@
 import { ROUTES } from '@/routes/routes';
 import { Inventory } from '@mui/icons-material';
 import { Assignment } from '@mui/icons-material';
+import { PointOfSale } from '@mui/icons-material';
 import { CardMembership } from '@mui/icons-material';
 import { MeetingRoom } from '@mui/icons-material';
 import { FitnessCenter } from '@mui/icons-material';
@@ -140,6 +141,25 @@ export const DASHBOARD = {
     default: {
       title: 'Horarios',
       description: 'Calendario de horarios para las clases',
+    },
+  },
+  sales: {
+    default: {
+      title: 'Ventas',
+      description: 'Lista de ventas realizadas',
+      button: {
+        icon: PointOfSale,
+        url: ROUTES.sales.add,
+        name: 'Nueva venta',
+      },
+    },
+    add: {
+      title: 'Agregar venta',
+      description: 'Agrega una venta en el sistema',
+    },
+    detail: {
+      title: 'Detalle de la venta',
+      description: 'Muestra la información de la venta realizada',
     },
   },
 };

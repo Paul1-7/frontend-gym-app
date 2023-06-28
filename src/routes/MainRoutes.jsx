@@ -28,14 +28,14 @@ const AddPlan = lazy(() => import('@/pages/plans/AddPlan'));
 const ModifyPlan = lazy(() => import('@/pages/plans/ModifyPlan'));
 
 const Schedules = lazy(() => import('@/pages/schedules/Schedules'));
-const FormularioHorario = lazy(() => import('@/pages/schedules/FormularioHorario'));
+
 //Subscriptions
 const Subscriptions = lazy(() => import('@/pages/suscripciones/Subscriptions'));
 const AddSubscription = lazy(() => import('@/pages/suscripciones/AddSubscription'));
 
-const Ventas = lazy(() => import('@/pages/ventas/Ventas'));
-const AddFormVentas = lazy(() => import('@/pages/ventas/AddFormVentas'));
-const DetalleVentas = lazy(() => import('@/pages/ventas/DetalleVentas'));
+const Sales = lazy(() => import('@/pages/sales/Sales'));
+const AddSale = lazy(() => import('@/pages/sales/AddSale'));
+const SaleDetail = lazy(() => import('@/pages/sales/SaleDetail'));
 const ReporteSuscripciones = lazy(() => import('@/pages/reportes/ReportesSuscripciones'));
 const Login = lazy(() => import('@/pages/Login'));
 const Register = lazy(() => import('@/pages/Register'));
@@ -130,13 +130,18 @@ export default function Router() {
 
         {/* Schedules */}
         <Route path={ROUTES.schedules.default} element={<Schedules />} />
-        <Route path={ROUTES.schedules.add} element={<FormularioHorario />} />
-        {/* <Route path={`${ROUTES.schedules.modify}/:id`} element={<ModificarFormHorario />} /> */}
 
-        {/* Ventas */}
-        <Route path={ROUTES.sales.default} element={<Ventas />} />
-        {/* <Route path={ROUTES.sales.add} element={<FormularioVenta />} /> */}
-        {/* <Route path={`${ROUTES.sales.modify}/:id`} element={<ModificarFormVenta />} /> */}
+        {/* Sales */}
+        <Route path={ROUTES.sales.default} element={<Sales />} />
+        <Route
+          path={ROUTES.sales.add}
+          element={
+            <DataTableProvider>
+              <AddSale />
+            </DataTableProvider>
+          }
+        />
+        <Route path={`${ROUTES.sales.detail}/:id`} element={<SaleDetail />} />
 
         {/* Reportes */}
         {/* <Route path={ROUTES.reports.default} element={<Reportes />} />

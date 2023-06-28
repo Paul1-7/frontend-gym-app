@@ -75,3 +75,10 @@ export const initialFormSubscription = {
   fechaInicio: new Date(),
   fechaFin: new Date(),
 };
+
+export const initialFormSale = {
+  fecha: new Date().toLocaleDateString(),
+  idSocio: { nombre: 'Ninguno', id: '0' },
+  idVendedor: 'd9e42cd8-9399-4e0f-9eed-cb68f2f23549',
+  productos: [],
+};

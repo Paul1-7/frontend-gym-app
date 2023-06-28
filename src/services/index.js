@@ -4,5 +4,6 @@ export * from './hallsService';
 export * from './partners';
 export * from './plansService';
 export * from './productsService';
+export * from './salesService';
 export * from './schedulesService';
 export * from './subscriptionsService';

@@ -61,7 +61,7 @@ const COLUMNS_TABLE = {
     { field: 'montoCancelado', header: 'monto cancelado', type: 'currency' },
   ],
   ventas: [
-    { field: 'id', header: 'código de venta', type: '' },
+    { field: 'codVenta', header: 'código de venta', type: '' },
     { field: 'fecha', header: 'fecha', type: 'date' },
     { field: 'socio', header: 'socio', type: '' },
     { field: 'ci', header: 'ci del socio', type: '' },

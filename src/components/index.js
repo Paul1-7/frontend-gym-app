@@ -1,9 +1,9 @@
+export { default as Backdrop } from './Backdrop';
 export { default as ButtonLink } from './ButtonLink';
 export { default as DashboardContainer } from './DashboardContainer';
 export { default as DialogConfirmation } from './DialogConfirmation';
-export { default as Horarios } from './Horarios';
+export { default as HeaderBussinessInfo } from './HeaderBussinessInfo';
 export { default as Iconify } from './Iconify';
-export { default as Inscripcion } from './Inscripcion';
 export { default as Label } from './Label';
 export { default as Logo } from './Logo';
 export { default as MenuPopover } from './MenuPopover';

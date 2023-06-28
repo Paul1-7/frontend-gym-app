@@ -3,7 +3,7 @@ import * as yup from 'yup';
 
 const products = yup.object().shape({
   id: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
-  cantidad: yup.string().matches(regex.number, msg.number).required(),
+  cantidad: yup.number().required().typeError('solo se permiten números'),
 });
 
 const sells = yup.object().shape({
