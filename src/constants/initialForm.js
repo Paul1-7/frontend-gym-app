@@ -57,6 +57,7 @@ export const initialFormProduct = {
   precioVenta: '',
   fechaVencimiento: new Date(),
   estado: 1,
+  tieneVencimiento: 'false',
 };
 
 export const initialFormPlan = {

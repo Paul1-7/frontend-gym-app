@@ -9,6 +9,17 @@ const ITEMS_RADIO_GROUP = [
   },
 ];
 
+export const ITEMS_RESPONSE_OPTIONS = [
+  {
+    id: 'false',
+    title: 'Si',
+  },
+  {
+    id: 'true',
+    title: 'No',
+  },
+];
+
 const EXPANSIBLE_ITEMS_RADIO_GROUP = [
   {
     id: '1',

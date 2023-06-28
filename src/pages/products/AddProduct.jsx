@@ -17,6 +17,9 @@ const AddProduct = () => {
     criteriaMode: 'all',
   });
 
+  const hasExpiration = methods.watch('tieneVencimiento') === 'true';
+  console.log('TCL: AddProduct -> hasExpiration', hasExpiration);
+
   const product = useMutation({
     mutationFn: (data) => {
       return addProduct({ data });
@@ -26,7 +29,7 @@ const AddProduct = () => {
   return (
     <DashboardContainer data={DASHBOARD.products.add}>
       <Form methods={methods} onSubmit={product.mutate}>
-        <ProductForm isLoading={product.isLoading} />
+        <ProductForm isLoading={product.isLoading} hasExpiration={!hasExpiration} />
       </Form>
       {!product.isLoading && !product.isError && product.isSuccess && <Navigate to={ROUTES.products.default} />}
     </DashboardContainer>

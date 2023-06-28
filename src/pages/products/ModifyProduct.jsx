@@ -20,6 +20,8 @@ const ModifyProduct = () => {
     criteriaMode: 'all',
   });
 
+  const hasExpiration = methods.watch('tieneVencimiento')?.toString() == 'true';
+
   const modifyProductData = useMutation({
     mutationFn: (data) => {
       return modifyProduct({ data, id });
@@ -39,7 +41,7 @@ const ModifyProduct = () => {
   return (
     <DashboardContainer data={DASHBOARD.products.modify}>
       <Form methods={methods} onSubmit={modifyProductData.mutate}>
-        <ProductForm isLoading={modifyProductData.isLoading} />
+        <ProductForm isLoading={modifyProductData.isLoading} hasExpiration={!hasExpiration} />
       </Form>
       {!modifyProductData.isLoading && !modifyProductData.isError && modifyProductData.isSuccess && (
         <Navigate to={ROUTES.products.default} />

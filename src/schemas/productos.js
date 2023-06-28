@@ -15,7 +15,11 @@ const productos = yup.object().shape({
       }
       return schema;
     }),
-  fechaVencimiento: yup.date().typeError('la fecha introducida es incorrecta').required(),
+  fechaVencimiento: yup
+    .date()
+    .typeError('la fecha introducida es incorrecta')
+    .min(new Date(), 'La fecha de vencimiento debe ser mayor que la fecha actual')
+    .required(),
 });
 
 export default productos;
