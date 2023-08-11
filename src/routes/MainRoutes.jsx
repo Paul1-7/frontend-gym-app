@@ -46,15 +46,13 @@ const Login = lazy(() => import('@/pages/Login'));
 const Register = lazy(() => import('@/pages/Register'));
 const LogoOnlyLayout = lazy(() => import('@/layouts/LogoOnlyLayout'));
 const Page404 = lazy(() => import('@/pages/Page404'));
-const DashboardApp = lazy(() => import('@/pages/DashboardApp'));
 const DashboardLayout = lazy(() => import('@/layouts/dashboard'));
 
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to={ROUTES.default} />} />
+      <Route path="/" element={<Navigate to={ROUTES.subscriptions.default} />} />
       <Route element={<DashboardLayout />} path={ADMIN_PATH}>
-        <Route path={ROUTES.default} element={<DashboardApp />} />
         {/* Socios */}
         <Route
           path={ROUTES.partners.default}

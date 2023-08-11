@@ -1,4 +1,4 @@
-export const ADMIN_PATH = '/dashboard';
+export const ADMIN_PATH = '/administracion';
 
 export const ROUTES = {
   default: ADMIN_PATH + '/app',
