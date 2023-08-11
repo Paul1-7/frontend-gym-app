@@ -30,8 +30,7 @@ const AutocompleteMemo = memo(
               loading={loading}
               loadingText="Cargando..."
               onChange={(event, newValue) => {
-                if (newValue === null) methods.setValue(name, defaultValue, { shouldValidate: true });
-                else field.onChange(newValue);
+                field.onChange(newValue);
               }}
               onInputChange={(event, newInputValue) => {
                 setInputValue(newInputValue);
