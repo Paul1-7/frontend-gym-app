@@ -31,6 +31,7 @@ const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
   '& .simplebar-mask': {
     zIndex: 'inherit',
   },
+  
 }));
 
 // ----------------------------------------------------------------------
@@ -47,7 +48,7 @@ export default function Scrollbar({ children, sx, ...other }) {
 
   if (isMobile) {
     return (
-      <Box sx={{ overflowX: 'auto', ...sx }} {...other}>
+      <Box sx={{ overflowX: 'auto', maxHeight: '100vh', ...sx }} {...other}>
         {children}
       </Box>
     );
