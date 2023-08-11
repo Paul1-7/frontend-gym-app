@@ -52,8 +52,12 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const renderContent = (
     <Scrollbar
       sx={{
-        height: 1,
         '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column' },
+        maxHeight: '100vh',
+        overflowY: 'scroll',
+        '& .simplebar-placeholder': {
+          height: '0 !important',
+        },
       }}
     >
       <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>

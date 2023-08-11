@@ -72,6 +72,15 @@ const COLUMNS_TABLE = {
     { field: 'stock', header: 'cantidad', type: 'stock' },
     { field: 'precioVenta', header: 'precio uni.', type: 'currency' },
   ],
+  equipments: [
+    { field: 'nombre', header: 'nombre', type: '' },
+    { field: 'marca', header: 'cantidad', type: '' },
+    { field: 'modelo', header: 'modelo', type: '' },
+    { field: 'capacidad', header: 'capacidad', type: '' },
+    { field: 'precio', header: 'precio', type: 'currency' },
+    { field: 'fechaAdquisicion', header: 'fecha de adquisición.', type: 'date' },
+    { field: 'estado', header: 'estado', type: '' },
+  ],
 };
 
 const TABLE_STATES = {

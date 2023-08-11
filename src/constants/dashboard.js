@@ -162,4 +162,23 @@ export const DASHBOARD = {
       description: 'Muestra la información de la venta realizada',
     },
   },
+  equipments: {
+    default: {
+      title: 'Maquinarias',
+      description: 'Lista de maquinarias o equipos de entranamiento',
+      button: {
+        icon: FitnessCenter,
+        url: ROUTES.equipment.add,
+        name: 'Nueva maquinaria',
+      },
+    },
+    add: {
+      title: 'Agregar maquinaria',
+      description: 'Agrega una maquinaria en el sistema',
+    },
+    modify: {
+      title: 'Modificar datos de la maquinaria',
+      description: 'Modifica los datos de una maquinaria existente',
+    },
+  },
 };

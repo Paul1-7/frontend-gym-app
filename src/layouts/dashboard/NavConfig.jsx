@@ -53,6 +53,11 @@ const navConfig = [
     icon: getIcon('fa6-solid:file-invoice-dollar'),
   },
   {
+    title: 'maquinarias',
+    path: ROUTES.equipment.default,
+    icon: getIcon('mdi:gym'),
+  },
+  {
     title: 'ventas',
     path: ROUTES.sales.default,
     icon: getIcon('ic:round-point-of-sale'),

@@ -1,5 +1,6 @@
 export * from './disciplinesService';
 export * from './employees';
+export * from './equipmentsService';
 export * from './hallsService';
 export * from './partners';
 export * from './plansService';

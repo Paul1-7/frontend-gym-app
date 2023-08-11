@@ -46,6 +46,11 @@ export const ROUTES = {
     add: ADMIN_PATH + '/productos/agregar',
     modify: ADMIN_PATH + '/productos/modificar',
   },
+  equipment: {
+    default: ADMIN_PATH + '/maquinarias',
+    add: ADMIN_PATH + '/maquinarias/agregar',
+    modify: ADMIN_PATH + '/maquinarias/modificar',
+  },
   reports: {
     default: ADMIN_PATH + '/reportes',
     sales: ADMIN_PATH + '/reportes/ventas',

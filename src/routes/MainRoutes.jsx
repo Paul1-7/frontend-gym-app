@@ -33,6 +33,11 @@ const Schedules = lazy(() => import('@/pages/schedules/Schedules'));
 const Subscriptions = lazy(() => import('@/pages/suscripciones/Subscriptions'));
 const AddSubscription = lazy(() => import('@/pages/suscripciones/AddSubscription'));
 
+// Equipments
+const Equipments = lazy(() => import('@/pages/equipments/Equipments'));
+const AddEquipment = lazy(() => import('@/pages/equipments/AddEquipment'));
+const ModifyEquipment = lazy(() => import('@/pages/equipments/ModifyEquipment'));
+
 const Sales = lazy(() => import('@/pages/sales/Sales'));
 const AddSale = lazy(() => import('@/pages/sales/AddSale'));
 const SaleDetail = lazy(() => import('@/pages/sales/SaleDetail'));
@@ -116,6 +121,17 @@ export default function Router() {
         />
         <Route path={ROUTES.plans.add} element={<AddPlan />} />
         <Route path={`${ROUTES.plans.modify}/:id`} element={<ModifyPlan />} />
+        {/* Equipments */}
+        <Route
+          path={ROUTES.equipment.default}
+          element={
+            <DataTableProvider>
+              <Equipments />
+            </DataTableProvider>
+          }
+        />
+        <Route path={ROUTES.equipment.add} element={<AddEquipment />} />
+        <Route path={`${ROUTES.equipment.modify}/:id`} element={<ModifyEquipment />} />
 
         {/* Suscripciones */}
         <Route

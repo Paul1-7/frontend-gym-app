@@ -1,5 +1,6 @@
 export * from './default';
 export * from './employeesAdapter';
+export * from './equipmentAdapter';
 export * from './hallsAdapter';
 export * from './partnersAdapter';
 export * from './productsAdapter';

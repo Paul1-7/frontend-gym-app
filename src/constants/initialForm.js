@@ -83,3 +83,13 @@ export const initialFormSale = {
   idVendedor: 'd9e42cd8-9399-4e0f-9eed-cb68f2f23549',
   productos: [],
 };
+
+export const initialFormEquipment = {
+  nombre: '',
+  marca: '',
+  modelo: '',
+  fechaAdquisicion: new Date(),
+  capacidad: '',
+  precio: '',
+  estado: 'operativa',
+};
