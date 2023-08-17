@@ -181,4 +181,10 @@ export const DASHBOARD = {
       description: 'Modifica los datos de una maquinaria existente',
     },
   },
+  reports: {
+    sales: {
+      title: 'Reportes de ventas',
+      description: 'Genera reportes de las ventas en formato PDF o CSV',
+    },
+  },
 };

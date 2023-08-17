@@ -1,5 +1,5 @@
-import { Backdrop, DashboardContainer, HeaderBussinessInfo } from '@/components';
-import { BUSSINESS_INFO, DASHBOARD } from '@/constants';
+import { Backdrop, DashboardContainer, HeaderBusinessInfo } from '@/components';
+import { DASHBOARD } from '@/constants';
 import { getSaleById } from '@/services';
 import { getBOBCurrency } from '@/utils';
 import {
@@ -53,35 +53,8 @@ const SaleDetail = () => {
           minWidth: '720px',
         }}
       >
-        <HeaderBussinessInfo sx={{ display: 'none', displayPrint: 'block', mb: 2 }}>
-          <Grid container wrap="wrap" justifyContent="space-between">
-            <Grid item>
-              <Typography variant="subtitle1" align="center">
-                {BUSSINESS_INFO.name}
-              </Typography>
-              <Typography variant="subtitle1" align="center">
-                Casa Matriz
-              </Typography>
-              <Typography variant="body2" align="center">
-                {BUSSINESS_INFO.direction}
-              </Typography>
-              <Typography variant="body2" align="center">
-                {`Teléfono: ${BUSSINESS_INFO.phone}`}
-              </Typography>
-              <Typography variant="body2" align="center" paragraph>
-                {BUSSINESS_INFO.location}
-              </Typography>
-            </Grid>
-            <Grid item container width={250}>
-              <Grid item xs={6}>
-                <Typography variant="subtitle2">Actividad</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography variant="body2">{BUSSINESS_INFO.economicActivity}</Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-        </HeaderBussinessInfo>
+        <HeaderBusinessInfo sx={{ display: 'none', displayPrint: 'block', mb: 2 }} />
+
         <Grid>
           <Typography variant="h3" align="center" paragraph>
             Nota de venta

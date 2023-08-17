@@ -3,6 +3,7 @@ export * from './useLastSubscription';
 export * from './usePlanExpandible';
 export * from './usePrint.';
 export * from './useRepeatEvents';
+export * from './useReport';
 export { default as useResponsive } from './useResponsive';
 export * from './useSchedule';
 export { default as useTable } from './useTable';

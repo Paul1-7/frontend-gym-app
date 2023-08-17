@@ -38,10 +38,13 @@ const Equipments = lazy(() => import('@/pages/equipments/Equipments'));
 const AddEquipment = lazy(() => import('@/pages/equipments/AddEquipment'));
 const ModifyEquipment = lazy(() => import('@/pages/equipments/ModifyEquipment'));
 
+// reports
+const SalesReport = lazy(() => import('@/pages/reports/SalesReport'));
+
 const Sales = lazy(() => import('@/pages/sales/Sales'));
 const AddSale = lazy(() => import('@/pages/sales/AddSale'));
 const SaleDetail = lazy(() => import('@/pages/sales/SaleDetail'));
-const ReporteSuscripciones = lazy(() => import('@/pages/reportes/ReportesSuscripciones'));
+
 const Login = lazy(() => import('@/pages/Login'));
 const Register = lazy(() => import('@/pages/Register'));
 const LogoOnlyLayout = lazy(() => import('@/layouts/LogoOnlyLayout'));
@@ -158,8 +161,7 @@ export default function Router() {
         <Route path={`${ROUTES.sales.detail}/:id`} element={<SaleDetail />} />
 
         {/* Reportes */}
-        {/* <Route path={ROUTES.reports.default} element={<Reportes />} />
-      <Route path={ROUTES.reports.sales} element={<ReportesVentas />} /> */}
+        <Route path={ROUTES.reports.sales} element={<SalesReport />} />
         {/* <Route path={ROUTES.reports.subscriptions} element={<ReportesSuscripciones />} /> */}
         {/* <Route path={ROUTES.reports.employees} element={<ReportesEmpleados />} /> */}
       </Route>

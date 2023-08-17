@@ -1,5 +1,6 @@
 import { getBOBCurrency } from '@/utils/dataHandler';
-import { ROLES_ITEMS } from './inputs';
+import { DEFAULT_VALUE_ITEM, ROLES_ITEMS } from './inputs';
+import { add } from 'date-fns';
 
 export const initialFormPartner = {
   ci: '',
@@ -92,4 +93,13 @@ export const initialFormEquipment = {
   capacidad: '',
   precio: '',
   estado: 'operativa',
+};
+
+export const initialFormSaleReport = {
+  options: {
+    criterio: DEFAULT_VALUE_ITEM,
+    orderBy: DEFAULT_VALUE_ITEM,
+  },
+  dateStart: new Date(),
+  dateEnd: add(new Date(), { days: 1 }),
 };

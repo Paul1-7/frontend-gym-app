@@ -42,6 +42,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-csv": "^2.2.2",
+    "react-csv-downloader": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^1.3.0",
     "react-hook-form": "^7.44.3",

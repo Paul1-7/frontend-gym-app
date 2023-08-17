@@ -35,6 +35,10 @@ export function generateColorFromString(str) {
   return '#' + color;
 }
 
+export const getDateLocale = (date) => {
+  return new Date(date).toLocaleDateString();
+};
+
 export function getTimeDifferenceWithFormat(date1, date2) {
   const minutesDifference = differenceInMinutes(date2, date1);
 
@@ -43,5 +47,14 @@ export function getTimeDifferenceWithFormat(date1, date2) {
 
   return format(new Date().setHours(hours, minutes), 'HH:mm');
 }
+
+export const getDateTimeFormat = (value) => {
+  const format = new Intl.DateTimeFormat('es-BO', {
+    dateStyle: 'medium',
+    timeStyle: 'medium',
+  });
+  const date = new Date(value);
+  return format.format(date);
+};
 
 export { objectByString, getBOBCurrency };

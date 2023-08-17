@@ -1,33 +1,35 @@
-import { gymLogo } from '@/assets';
-import { Box, Divider, Stack, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import { Box, Divider, Stack, Typography } from '@mui/material';
+import { gymLogo } from '@/assets';
+import { BUSINESS_INFO } from '@/constants';
 
-function HeaderBussinessInfo({ sx }) {
+const HeaderBusinessInfo = ({ sx }) => {
+  const { name, phone, city, address } = BUSINESS_INFO;
   return (
     <Box sx={{ width: '100%', ...sx }}>
       <Stack flexDirection="row" justifyContent="space-between">
-        <img src={gymLogo} style={{ width: '10rem', height: '100%' }} alt="logo" />
+        <img src={gymLogo} style={{ width: '6rem', height: '100%' }} alt="logo" />
         <Box>
           <Typography variant="h4" align="center">
-            nombre
+            {name}
           </Typography>
           <Typography align="center" variant="caption" sx={{ display: 'flex', mb: 1 }}>
-            direccion
+            {address}
             <br />
-            Telefono:tel
+            Telefono:{phone}
             <br />
-            Tarija
+            Ciudad:
+            {city}
           </Typography>
         </Box>
       </Stack>
       <Divider sx={{ borderColor: '#000' }} />
     </Box>
   );
-}
+};
 
-HeaderBussinessInfo.propTypes = {
-  data: PropTypes.object,
+HeaderBusinessInfo.propTypes = {
   sx: PropTypes.object,
 };
 
-export default HeaderBussinessInfo;
+export default HeaderBusinessInfo;
