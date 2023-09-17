@@ -27,6 +27,11 @@ export const ROUTES = {
     add: ADMIN_PATH + '/salas/agregar',
     modify: ADMIN_PATH + '/salas/modificar',
   },
+  categories: {
+    default: ADMIN_PATH + '/categorias',
+    add: ADMIN_PATH + '/categorias/agregar',
+    modify: ADMIN_PATH + '/categorias/modificar',
+  },
   plans: {
     default: ADMIN_PATH + '/planes',
     add: ADMIN_PATH + '/planes/agregar',

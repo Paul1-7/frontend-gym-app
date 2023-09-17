@@ -1,6 +1,5 @@
 import { PropTypes } from 'prop-types';
-import { ButtonLink, DatePicker, Input, RadioGroup, Select } from '@/components';
-import { ITEMS_RADIO_GROUP } from '@/constants';
+import { ButtonLink, DatePicker, Input, Select } from '@/components';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid, Typography } from '@mui/material';
@@ -31,9 +30,6 @@ const PartnerForm = ({ plans = [], isLoading, isExpandable, withSubscription = f
           </Grid>
           <Grid item xs={12} md={6}>
             <Input label="Edad" name="edad" type="number" />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
           </Grid>
         </Grid>
         {withSubscription && (

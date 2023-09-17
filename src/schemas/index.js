@@ -10,6 +10,7 @@ import ventas from './ventas';
 import reporteSuscripciones from './reporteSuscripciones';
 import equipments from './equipments';
 import salesReport from './salesReport';
+import categories from './categories';
 
 const schema = {
   socios,
@@ -24,6 +25,7 @@ const schema = {
   reporteSuscripciones,
   equipments,
   salesReport,
+  categories,
 };
 
 export default schema;

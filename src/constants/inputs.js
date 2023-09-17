@@ -54,6 +54,11 @@ const ROLES_ITEMS = [
   },
 ];
 
+export const TYPES_CATEGORIES_ITEMS = [
+  { id: 'Disciplina', name: 'Disciplina' },
+  { id: 'Producto', name: 'Producto' },
+];
+
 const ITEMS_SUSCRIPCIONES_REPORTE = [
   { id: '1', nombre: 'Lista de suscripciones' },
   { id: '2', nombre: 'Socios con mas renovacion de suscripciones' },

@@ -15,8 +15,6 @@ const reporteSuscripciones = yup.object().shape({
     .min(yup.ref('fechaInicio'), 'no puede empezar antes la fecha final')
     .when('fechaInicio', (fechaInicio, schema) => {
       if (fechaInicio != null) {
-        console.log('TCL: fechaInicio', fechaInicio);
-
         return schema.min(fechaInicio, 'la fecha final tiene que ser mayor  que la de inicio');
       }
       return schema.min(new Date());

@@ -103,3 +103,8 @@ export const initialFormSaleReport = {
   dateStart: new Date(),
   dateEnd: add(new Date(), { days: 1 }),
 };
+
+export const initialFormCategory = {
+  nombre: '',
+  tipo: '0',
+};

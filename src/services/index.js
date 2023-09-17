@@ -1,3 +1,4 @@
+export * from './categoriesService';
 export * from './disciplinesService';
 export * from './employees';
 export * from './equipmentsService';

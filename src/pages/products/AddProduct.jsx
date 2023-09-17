@@ -18,7 +18,6 @@ const AddProduct = () => {
   });
 
   const hasExpiration = methods.watch('tieneVencimiento') === 'true';
-  console.log('TCL: AddProduct -> hasExpiration', hasExpiration);
 
   const product = useMutation({
     mutationFn: (data) => {

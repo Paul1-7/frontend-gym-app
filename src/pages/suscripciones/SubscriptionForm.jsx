@@ -5,7 +5,7 @@ import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const SubscriptionForm = ({ plans = [], partners = [], isLoading, isExpandable }) => {
+const SubscriptionForm = ({ plans = [], partners = [], isLoading, isExpandable, disabledSubmit }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -41,6 +41,7 @@ const SubscriptionForm = ({ plans = [], partners = [], isLoading, isExpandable }
           startIcon={<Save />}
           color="secondary"
           variant="outlined"
+          disabled={disabledSubmit}
         >
           Guardar
         </LoadingButton>
@@ -55,6 +56,7 @@ SubscriptionForm.propTypes = {
   isLoading: PropTypes.bool,
   isExpandable: PropTypes.bool,
   withSubscription: PropTypes.bool,
+  disabledSubmit: PropTypes.bool,
 };
 
 export default SubscriptionForm;

@@ -18,6 +18,11 @@ const navConfig = [
     icon: getIcon('eva:people-fill'),
   },
   {
+    title: 'categorias',
+    path: ROUTES.categories.default,
+    icon: getIcon('ic:twotone-category'),
+  },
+  {
     title: 'disciplinas',
     path: ROUTES.disciplines.default,
     icon: getIcon('eva:clipboard-fill'),

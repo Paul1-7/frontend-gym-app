@@ -26,6 +26,10 @@ const ModifyProduct = lazy(() => import('@/pages/products/ModifyProduct'));
 const Plans = lazy(() => import('@/pages/plans/Plans'));
 const AddPlan = lazy(() => import('@/pages/plans/AddPlan'));
 const ModifyPlan = lazy(() => import('@/pages/plans/ModifyPlan'));
+// Categories
+const Categories = lazy(() => import('@/pages/categories/Categories'));
+const AddCategory = lazy(() => import('@/pages/categories/AddCategory'));
+const ModifyCategory = lazy(() => import('@/pages/categories/ModifyCategory'));
 
 const Schedules = lazy(() => import('@/pages/schedules/Schedules'));
 
@@ -89,6 +93,17 @@ export default function Router() {
         />
         <Route path={ROUTES.disciplines.add} element={<AddDiscipline />} />
         <Route path={`${ROUTES.disciplines.modify}/:id`} element={<ModifyDiscipline />} />
+        {/* Categories */}
+        <Route
+          path={ROUTES.categories.default}
+          element={
+            <DataTableProvider>
+              <Categories />
+            </DataTableProvider>
+          }
+        />
+        <Route path={ROUTES.categories.add} element={<AddCategory />} />
+        <Route path={`${ROUTES.categories.modify}/:id`} element={<ModifyCategory />} />
         {/* Salas */}
         <Route
           path={ROUTES.halls.default}

@@ -35,16 +35,18 @@ const AddSubscription = () => {
     queryFn: partnersListFullName,
   });
 
-  const lastSubscription = useQuery({
+  const activeSuscriptions = useQuery({
     queryKey: ['lastSubscription'],
     queryFn: () => getLastSubscriptionsByIdSocio(partnerWatch.id),
   });
 
   const { data } = useLastSubscription({
-    lastSubscription: lastSubscription.data,
+    lastSubscription: activeSuscriptions.data,
     socio: partnerWatch.id,
-    refetch: lastSubscription.refetch,
+    refetch: activeSuscriptions.refetch,
   });
+
+  const canSuscribe = Boolean(data?.activeSuscriptions?.length > 1);
 
   const handleSubmit = (data) => {
     const dataParsed = { ...data, idSocio: data.idSocio.id };
@@ -54,7 +56,7 @@ const AddSubscription = () => {
   const { isExpandable } = usePlanExpandible({
     methods,
     plans: plans.data,
-    daysRemaining: lastSubscription.data?.daysRemaining ?? 0,
+    daysRemaining: activeSuscriptions.data?.daysRemaining ?? 0,
   });
 
   return (
@@ -66,12 +68,21 @@ const AddSubscription = () => {
           partners={partners.data}
           isExpandable={isExpandable}
           withSubscription
+          disabledSubmit={canSuscribe}
         />
       </Form>
-      <Grid sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+      <Grid
+        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 4, flexDirection: 'column', gap: 2 }}
+      >
         {data?.daysRemaining > 0 && (
           <Alert severity="info">
             El usuario tiene una suscripcion activa, con {data.daysRemaining} dias restantes
+          </Alert>
+        )}
+        {canSuscribe && (
+          <Alert severity="warning">
+            El usuario no puede suscribirse porque ya tiene una suscripcion activa y varios dias de la anterior
+            suscripción
           </Alert>
         )}
       </Grid>

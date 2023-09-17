@@ -1,6 +1,7 @@
 import { ROUTES } from '@/routes/routes';
 import { Inventory } from '@mui/icons-material';
 import { Assignment } from '@mui/icons-material';
+import { Category } from '@mui/icons-material';
 import { PointOfSale } from '@mui/icons-material';
 import { CardMembership } from '@mui/icons-material';
 import { MeetingRoom } from '@mui/icons-material';
@@ -82,6 +83,25 @@ export const DASHBOARD = {
     modify: {
       title: 'Modificar salón',
       description: 'Modifica un salón existente',
+    },
+  },
+  categories: {
+    default: {
+      title: 'Categorias',
+      description: 'Lista de categorias para disciplinas y productos',
+      button: {
+        icon: Category,
+        url: ROUTES.categories.add,
+        name: 'Nueva categoria',
+      },
+    },
+    add: {
+      title: 'Agregar categoria',
+      description: 'Agrega una categoria en el sistema',
+    },
+    modify: {
+      title: 'Modificar categoria',
+      description: 'Modifica una categoria existente',
     },
   },
   products: {

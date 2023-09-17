@@ -21,6 +21,10 @@ const COLUMNS_TABLE = {
     { field: 'capacidad', header: 'capacidad', type: '' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
+  categories: [
+    { field: 'nombre', header: 'nombre', type: '' },
+    { field: 'tipo', header: 'capacidad', type: '' },
+  ],
   productos: [
     { field: 'nombre', header: 'nombre', type: '' },
     { field: 'precioVenta', header: 'precio', type: 'currency' },
