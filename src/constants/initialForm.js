@@ -37,6 +37,7 @@ export const initialFormDiscipline = {
   nombre: '',
   descripcion: '',
   estado: 1,
+  idCategoria: '0',
 };
 
 export const initialFormSchedule = {
@@ -59,6 +60,7 @@ export const initialFormProduct = {
   fechaVencimiento: new Date(),
   estado: 1,
   tieneVencimiento: 'false',
+  idCategoria: '0',
 };
 
 export const initialFormPlan = {

@@ -3,6 +3,13 @@ import * as yup from 'yup';
 
 const productos = yup.object().shape({
   nombre: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
+  idCategoria: yup
+    .string()
+    .matches(regex.alphaNumeric, msg.alphaNumeric)
+    .required()
+    .test('categoria-test', 'Debe seleccionar otra opción', (value) => {
+      return value !== '0';
+    }),
   stock: yup.number().required().typeError('tiene que ser un número').min(1, 'el minimo es 1'),
   precioCompra: yup.number().typeError('El precio de compra debe ser un número').required(),
   precioVenta: yup

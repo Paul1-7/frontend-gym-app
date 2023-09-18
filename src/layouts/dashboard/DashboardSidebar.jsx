@@ -66,9 +66,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <AccountStyle>
-          <Avatar src={'account.photoURL'} alt="photoURL">
-            MC
-          </Avatar>
+          <Avatar alt="photoURL">MC</Avatar>
           <Box sx={{ ml: 2 }}>
             <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
               {'Mario Caceres'}

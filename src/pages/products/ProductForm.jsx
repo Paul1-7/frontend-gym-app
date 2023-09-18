@@ -1,12 +1,12 @@
 import { PropTypes } from 'prop-types';
-import { ButtonLink, DatePicker, Input, RadioGroup } from '@/components';
+import { ButtonLink, DatePicker, Input, RadioGroup, Select } from '@/components';
 import { ITEMS_RADIO_GROUP, ITEMS_RESPONSE_OPTIONS } from '@/constants';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const ProductForm = ({ isLoading, hasExpiration }) => {
+const ProductForm = ({ isLoading, hasExpiration, categories = [] }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -31,6 +31,9 @@ const ProductForm = ({ isLoading, hasExpiration }) => {
               <DatePicker label="fecha de vencimiento" name="fechaVencimiento" />
             </Grid>
           )}
+          <Grid item xs={12} sm={6}>
+            <Select name="idCategoria" label="Categoria" items={categories} />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
           </Grid>
@@ -58,6 +61,7 @@ const ProductForm = ({ isLoading, hasExpiration }) => {
 ProductForm.propTypes = {
   isLoading: PropTypes.bool,
   hasExpiration: PropTypes.bool,
+  categories: PropTypes.array,
 };
 
 export default ProductForm;

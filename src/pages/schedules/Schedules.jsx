@@ -144,7 +144,6 @@ const Schedules = () => {
         aspectRatio={2}
         selectable
         selectMirror
-        selectOverlap={false}
         select={handleDateSelect}
         eventClick={handleClickEvent}
         eventMouseEnter={(info) => {

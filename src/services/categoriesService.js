@@ -4,8 +4,8 @@ export const URL_CATEGORY = {
   default: '/api/v1/categorias',
 };
 
-export const categoriesList = async () => {
-  const response = await Axios.get(URL_CATEGORY.default);
+export const categoriesList = async (query = '') => {
+  const response = await Axios.get(URL_CATEGORY.default + query);
   return response.data;
 };
 
