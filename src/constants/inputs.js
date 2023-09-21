@@ -82,7 +82,36 @@ const ITEMS_RADIO_REPORTES_SUSC = [
   },
 ];
 
-const DEFAULT_VALUE_ITEM = '0';
+export const DAYS_ITEMS = [
+  {
+    id: '1',
+    title: 'Lunes',
+  },
+  {
+    id: '2',
+    title: 'Martes',
+  },
+  {
+    id: '3',
+    title: 'Miércoles',
+  },
+  {
+    id: '4',
+    title: 'Jueves',
+  },
+  {
+    id: '5',
+    title: 'Viernes',
+  },
+  {
+    id: '6',
+    title: 'Sábado',
+  },
+  {
+    id: '0',
+    title: 'Domingo',
+  },
+];
 
 const TEXT_MODAL = {
   delete: '¿Estas seguro de querer eliminar el registro seleccionado ? Esta accion no se puede deshacer',
@@ -95,5 +124,4 @@ export {
   ITEMS_SUSCRIPCIONES_REPORTE,
   ITEMS_RADIO_REPORTES_SUSC,
   TEXT_MODAL,
-  DEFAULT_VALUE_ITEM,
 };

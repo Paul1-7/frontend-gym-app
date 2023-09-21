@@ -28,6 +28,11 @@ const navConfig = [
     icon: getIcon('eva:clipboard-fill'),
   },
   {
+    title: 'Programacion de clases',
+    path: ROUTES.planning.default,
+    icon: getIcon('ion:calendar'),
+  },
+  {
     title: 'horarios',
     path: ROUTES.schedules.default,
     icon: getIcon('bxs:time'),

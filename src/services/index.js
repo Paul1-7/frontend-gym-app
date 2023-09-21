@@ -4,6 +4,7 @@ export * from './employees';
 export * from './equipmentsService';
 export * from './hallsService';
 export * from './partners';
+export * from './planningService';
 export * from './plansService';
 export * from './productsService';
 export * from './salesService';

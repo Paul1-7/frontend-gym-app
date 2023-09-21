@@ -11,7 +11,7 @@ const Categories = () => {
   const { openDialog, setOpenDialog, handleCloseDialog, dataDialog } = table;
   const { data, error, isLoading, refetch } = useQuery({
     queryKey: ['categoriesList'],
-    queryFn: categoriesList,
+    queryFn: () => categoriesList(),
   });
 
   const resDeleteCategory = useMutation({

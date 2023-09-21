@@ -1,6 +1,7 @@
 export { default as useAxios } from './useAxios';
 export * from './useLastSubscription';
 export * from './usePlanExpandible';
+export * from './usePlanning';
 export * from './usePrint.';
 export * from './useRepeatEvents';
 export * from './useReport';

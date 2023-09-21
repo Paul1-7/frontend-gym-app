@@ -2,6 +2,7 @@ import { ROUTES } from '@/routes/routes';
 import { Inventory } from '@mui/icons-material';
 import { Assignment } from '@mui/icons-material';
 import { Category } from '@mui/icons-material';
+import { CalendarMonth } from '@mui/icons-material';
 import { PointOfSale } from '@mui/icons-material';
 import { CardMembership } from '@mui/icons-material';
 import { MeetingRoom } from '@mui/icons-material';
@@ -102,6 +103,25 @@ export const DASHBOARD = {
     modify: {
       title: 'Modificar categoria',
       description: 'Modifica una categoria existente',
+    },
+  },
+  planning: {
+    default: {
+      title: 'Programaciones',
+      description: 'Lista de programacion de clases de alguna disciplina',
+      button: {
+        icon: CalendarMonth,
+        url: ROUTES.planning.add,
+        name: 'Nueva programacion',
+      },
+    },
+    add: {
+      title: 'Agregar programacion',
+      description: 'Agrega una programacion en el sistema',
+    },
+    modify: {
+      title: 'Modificar programacion',
+      description: 'Modifica una programacion existente de una clase',
     },
   },
   products: {

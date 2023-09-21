@@ -1,3 +1,4 @@
+import { ITEM_DEFAULT } from '@/constants';
 import { msg, regex } from '@/constants/validaciones';
 import * as yup from 'yup';
 
@@ -8,7 +9,7 @@ const productos = yup.object().shape({
     .matches(regex.alphaNumeric, msg.alphaNumeric)
     .required()
     .test('categoria-test', 'Debe seleccionar otra opción', (value) => {
-      return value !== '0';
+      return value !== ITEM_DEFAULT;
     }),
   stock: yup.number().required().typeError('tiene que ser un número').min(1, 'el minimo es 1'),
   precioCompra: yup.number().typeError('El precio de compra debe ser un número').required(),

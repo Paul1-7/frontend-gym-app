@@ -1,8 +1,9 @@
+import { ITEM_DEFAULT } from '@/constants';
 import { useEffect } from 'react';
 
 export const useLastSubscription = ({ socio, refetch, lastSubscription }) => {
   useEffect(() => {
-    if (socio.id === '0') return;
+    if (socio.id === ITEM_DEFAULT) return;
     refetch();
   }, [socio, lastSubscription]);
 

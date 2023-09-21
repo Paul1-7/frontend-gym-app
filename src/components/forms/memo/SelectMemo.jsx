@@ -5,7 +5,7 @@ import { Controller } from 'react-hook-form';
 
 import { objectByString } from '@/utils/dataHandler';
 import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
-import { DEFAULT_VALUE_ITEM } from '@/constants';
+import { ITEM_DEFAULT } from '@/constants';
 import compare from 'just-compare';
 
 const SelectMemo = memo(
@@ -28,7 +28,7 @@ const SelectMemo = memo(
               value={field.value}
               {...others}
             >
-              <MenuItem value={DEFAULT_VALUE_ITEM}>Ninguno</MenuItem>
+              <MenuItem value={ITEM_DEFAULT}>Ninguno</MenuItem>
               {items.map((item, index) => {
                 const value = Object.values(item);
                 return (

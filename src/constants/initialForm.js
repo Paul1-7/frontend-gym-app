@@ -1,6 +1,8 @@
 import { getBOBCurrency } from '@/utils/dataHandler';
-import { DEFAULT_VALUE_ITEM, ROLES_ITEMS } from './inputs';
+import { ROLES_ITEMS } from './inputs';
 import { add } from 'date-fns';
+
+export const ITEM_DEFAULT = 'default';
 
 export const initialFormPartner = {
   ci: '',
@@ -11,7 +13,7 @@ export const initialFormPartner = {
   celular: '',
   direccion: '',
   estado: '1',
-  idPlan: '0',
+  idPlan: ITEM_DEFAULT,
   cantidad: '1',
   precio: getBOBCurrency(0),
   fechaInicio: new Date(),
@@ -37,13 +39,13 @@ export const initialFormDiscipline = {
   nombre: '',
   descripcion: '',
   estado: 1,
-  idCategoria: '0',
+  idCategoria: ITEM_DEFAULT,
 };
 
 export const initialFormSchedule = {
-  idDisciplina: '0',
-  idEntrenador: '0',
-  idSalon: '0',
+  idDisciplina: ITEM_DEFAULT,
+  idEntrenador: ITEM_DEFAULT,
+  idSalon: ITEM_DEFAULT,
 };
 
 export const initialFormHall = {
@@ -60,7 +62,7 @@ export const initialFormProduct = {
   fechaVencimiento: new Date(),
   estado: 1,
   tieneVencimiento: 'false',
-  idCategoria: '0',
+  idCategoria: ITEM_DEFAULT,
 };
 
 export const initialFormPlan = {
@@ -72,8 +74,8 @@ export const initialFormPlan = {
 };
 
 export const initialFormSubscription = {
-  idPlan: '0',
-  idSocio: { nombre: 'Ninguno', id: '0' },
+  idPlan: ITEM_DEFAULT,
+  idSocio: { nombre: 'Ninguno', id: ITEM_DEFAULT },
   precio: '',
   cantidad: '1',
   fechaInicio: new Date(),
@@ -82,7 +84,7 @@ export const initialFormSubscription = {
 
 export const initialFormSale = {
   fecha: new Date().toLocaleDateString(),
-  idSocio: { nombre: 'Ninguno', id: '0' },
+  idSocio: { nombre: 'Ninguno', id: ITEM_DEFAULT },
   idVendedor: 'd9e42cd8-9399-4e0f-9eed-cb68f2f23549',
   productos: [],
 };
@@ -99,8 +101,8 @@ export const initialFormEquipment = {
 
 export const initialFormSaleReport = {
   options: {
-    criterio: DEFAULT_VALUE_ITEM,
-    orderBy: DEFAULT_VALUE_ITEM,
+    criterio: ITEM_DEFAULT,
+    orderBy: ITEM_DEFAULT,
   },
   dateStart: new Date(),
   dateEnd: add(new Date(), { days: 1 }),
@@ -108,5 +110,16 @@ export const initialFormSaleReport = {
 
 export const initialFormCategory = {
   nombre: '',
-  tipo: '0',
+  tipo: ITEM_DEFAULT,
+};
+
+export const initialFormPlanning = {
+  capacidad: '',
+  idEntrenador: { nombre: 'Ninguno', id: ITEM_DEFAULT },
+  cupoDisponible: '',
+  idHorario: ITEM_DEFAULT,
+  idDisciplina: ITEM_DEFAULT,
+  hora: '',
+  dia: ITEM_DEFAULT,
+  idSocio: [{ nombre: 'Ninguno', id: ITEM_DEFAULT }],
 };

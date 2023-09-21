@@ -10,6 +10,11 @@ export const schedulesList = async () => {
   return response.data;
 };
 
+export const schedulesListItems = async (query = '') => {
+  const response = await Axios.get(URL_SCHEDULE.default + query);
+  return response.data;
+};
+
 export const schedulesListDetail = async () => {
   const response = await Axios.get(URL_SCHEDULE.default);
   return schedulesListToDetail(response.data);

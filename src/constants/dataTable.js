@@ -21,6 +21,14 @@ const COLUMNS_TABLE = {
     { field: 'capacidad', header: 'capacidad', type: '' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
+  planning: [
+    { field: 'codProgramacion', header: 'código de programación', type: '' },
+    { field: 'entrenador', header: 'entrenador', type: '' },
+    { field: 'capacidad', header: 'capacidad', type: '' },
+    { field: 'cupoDisponible', header: 'cupo disponible', type: '' },
+    { field: 'disciplina', header: 'disciplina', type: '' },
+    { field: 'fecha', header: 'fecha', type: '' },
+  ],
   categories: [
     { field: 'nombre', header: 'nombre', type: '' },
     { field: 'tipo', header: 'capacidad', type: '' },

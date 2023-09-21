@@ -1,3 +1,4 @@
+import { ITEM_DEFAULT } from '@/constants';
 import { getBOBCurrency } from '@/utils/dataHandler';
 import { add } from 'date-fns';
 import { useRef } from 'react';
@@ -12,7 +13,7 @@ export const usePlanExpandible = ({ methods, plans = [], daysRemaining = 0 }) =>
   const cantidad = methods.watch('cantidad');
 
   useEffect(() => {
-    if (idPlan === '0' || idSocio?.id === '0') {
+    if (idPlan === ITEM_DEFAULT || idSocio?.id === ITEM_DEFAULT) {
       setIsExpandable(true);
       return;
     }

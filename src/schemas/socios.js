@@ -1,3 +1,4 @@
+import { ITEM_DEFAULT } from '@/constants';
 import { msg, regex } from '@/constants/validaciones';
 import * as yup from 'yup';
 
@@ -13,11 +14,11 @@ const socios = yup.object().shape({
   idPlan: yup
     .string()
     .matches(regex.alphaNumeric, msg.alphaNumeric)
-    .test('idPlan-test', 'Debe seleccionar otra opción', (value) => value?.id !== '0'),
+    .test('idPlan-test', 'Debe seleccionar otra opción', (value) => value?.id !== ITEM_DEFAULT),
   cantidad: yup
     .number()
     .when('idPlan', {
-      is: (val) => val !== '0' && val !== undefined,
+      is: (val) => val !== ITEM_DEFAULT && val !== undefined,
       then: () => yup.number().required('La cantidad es requerida').typeError('debe ser un numero'),
       otherwise: () => yup.number().typeError('debe ser un numero'),
     })

@@ -45,7 +45,7 @@ const Schedules = () => {
 
   const trainers = useQuery({
     queryKey: ['trainersList'],
-    queryFn: trainersList,
+    queryFn: () => trainersList(),
   });
 
   const disciplines = useQuery({

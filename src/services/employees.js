@@ -11,8 +11,8 @@ export const employeesList = async () => {
   return employeeListWithNameRols(response.data);
 };
 
-export const trainersList = async () => {
-  const response = await Axios.get(URL_EMPLOYEE.trainers);
+export const trainersList = async (query = '') => {
+  const response = await Axios.get(URL_EMPLOYEE.trainers + query);
   return getEmployeesListWithFullName(response.data);
 };
 

@@ -1,3 +1,4 @@
+import { ITEM_DEFAULT } from '@/constants';
 import { msg, regex } from '@/constants/validaciones';
 import * as yup from 'yup';
 
@@ -6,7 +7,7 @@ const reporteSuscripciones = yup.object().shape({
     .string()
     .matches(regex.number, msg.number)
     .required()
-    .test('tipo', 'Tiene que seleccionar una opción', (value) => value !== '0'),
+    .test('tipo', 'Tiene que seleccionar una opción', (value) => value !== ITEM_DEFAULT),
   esRango: yup.string().matches(regex.number, msg.number).required(),
   fechaInicio: yup.date().required().typeError('La fecha es incorrecta'),
   fechaFin: yup

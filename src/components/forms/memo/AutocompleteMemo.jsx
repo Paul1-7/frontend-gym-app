@@ -5,11 +5,12 @@ import { Controller } from 'react-hook-form';
 
 import { objectByString } from '@/utils/dataHandler';
 import { Autocomplete, CircularProgress, FormHelperText, TextField } from '@mui/material';
+import { ITEM_DEFAULT } from '@/constants';
 
 const AutocompleteMemo = memo(
   ({ name, label, isArray, loading, methods, items, HelperTextProps, ...others }) => {
     const [inputValue, setInputValue] = useState('');
-    const defaultValue = { nombre: 'Ninguno', id: '0' };
+    const defaultValue = { nombre: 'Ninguno', id: ITEM_DEFAULT };
     items = [...items, ...[defaultValue]];
 
     const error = methods.formState.errors;
