@@ -9,10 +9,13 @@ import { DAYS_ITEMS } from '@/constants';
 const PlanningForm = ({
   disciplines = [],
   trainers = [],
+  partners = [],
   schedules = [],
   isLoading,
   disabledSubmit,
   enabledTrainer,
+  enabledSchedules,
+  enabledPartners,
 }) => {
   return (
     <>
@@ -27,10 +30,17 @@ const PlanningForm = ({
           <Autocomplete name="idEntrenador" label="Entrenadores" items={trainers} disabled={enabledTrainer} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Select name="idHorario" label="Horario" items={schedules} />
+          <Select name="idHorario" label="Horario" items={schedules} disabled={enabledSchedules} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Autocomplete name="idSocio" label="Socio" items={trainers} loading={isLoading} multiple />
+          <Autocomplete
+            name="idSocio"
+            label="Socio"
+            items={partners}
+            loading={isLoading}
+            multiple
+            disabled={enabledPartners}
+          />
         </Grid>
       </Grid>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem', gap: '1rem' }}>
@@ -56,11 +66,14 @@ const PlanningForm = ({
 PlanningForm.propTypes = {
   disciplines: PropTypes.array,
   trainers: PropTypes.array,
+  partners: PropTypes.array,
   schedules: PropTypes.array,
   isLoading: PropTypes.bool,
   isExpandable: PropTypes.bool,
   disabledSubmit: PropTypes.bool,
   enabledTrainer: PropTypes.bool,
+  enabledSchedules: PropTypes.bool,
+  enabledPartners: PropTypes.bool,
 };
 
 export default PlanningForm;

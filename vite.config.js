@@ -11,4 +11,7 @@ export default defineConfig({
       '@': resolve(process.cwd(), './src'),
     },
   },
+  server: {
+    open: true,
+  },
 });

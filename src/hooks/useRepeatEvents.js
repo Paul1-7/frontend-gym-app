@@ -1,7 +1,7 @@
 import { daysToRepeat } from '@/constants';
-import { getTimeDifferenceWithFormat } from '@/utils';
+import { getNearestDateForDayOfWeek, getTimeDifferenceWithFormat } from '@/utils';
 import { useTheme } from '@mui/material';
-import { add, sub } from 'date-fns';
+import { add, getDay, sub } from 'date-fns';
 import { format } from 'date-fns';
 import { useState, useEffect, useMemo } from 'react';
 
@@ -14,15 +14,17 @@ export const useRepeatEvents = ({ events = [] }) => {
     return events.map((item) => {
       const dateStart = new Date(item.horarioEntrada);
       const dateFinish = new Date(item.horarioSalida);
-      const dateNow = new Date();
-      const day = format(dateStart, 'EEEE');
 
+      const dateNowStart = getNearestDateForDayOfWeek(dateStart);
+      const dateNowFinish = getNearestDateForDayOfWeek(dateFinish);
+
+      const day = format(dateStart, 'EEEE');
       return {
         rrule: {
           freq: 'weekly',
           byweekday: [daysToRepeat?.[day]],
-          dtstart: sub(dateNow.setTime(dateStart.getTime()), { months: 2 }).toISOString(),
-          until: add(dateNow.setTime(dateFinish.getTime()), { months: 2 }).toISOString(),
+          dtstart: sub(dateNowStart, { months: 2 }).toISOString(),
+          until: add(dateNowFinish, { months: 2 }).toISOString(),
         },
         duration: getTimeDifferenceWithFormat(dateStart, dateFinish),
         backgroundColor: PRIMARY_COLOR,

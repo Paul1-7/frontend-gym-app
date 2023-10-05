@@ -120,6 +120,7 @@ export const initialFormPlanning = {
   idHorario: ITEM_DEFAULT,
   idDisciplina: ITEM_DEFAULT,
   hora: '',
+  fecha: new Date(),
   dia: ITEM_DEFAULT,
   idSocio: [{ nombre: 'Ninguno', id: ITEM_DEFAULT }],
 };

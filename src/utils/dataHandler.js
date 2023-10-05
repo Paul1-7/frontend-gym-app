@@ -1,3 +1,5 @@
+import { addDays, getDay, setHours, setMinutes } from 'date-fns';
+import { isBefore } from 'date-fns';
 import { format } from 'date-fns';
 import { differenceInMinutes } from 'date-fns';
 
@@ -56,5 +58,29 @@ export const getDateTimeFormat = (value) => {
   const date = new Date(value);
   return format.format(date);
 };
+
+export function getNearestDateForDayOfWeek(inputDate) {
+  const today = new Date();
+  const dayOfWeek = inputDate.getDay();
+  const desiredHours = inputDate.getHours();
+  const desiredMinutes = inputDate.getMinutes();
+
+  let daysUntilNextDay = dayOfWeek - today.getDay();
+  if (daysUntilNextDay <= 0) {
+    daysUntilNextDay += 7; // Asegurarse de que sea un número positivo y no igual a 0 para obtener la fecha actual si es el mismo día
+  }
+
+  const nextDayDate = addDays(today, daysUntilNextDay);
+
+  const nearestDate = setMinutes(setHours(nextDayDate, desiredHours), desiredMinutes);
+
+  // Comprobar si la fecha más cercana es antes de la fecha actual
+  if (isBefore(nearestDate, today)) {
+    // Si es antes, agregar 7 días para obtener la próxima fecha con el mismo horario
+    return addDays(nearestDate, 7);
+  }
+
+  return nearestDate;
+}
 
 export { objectByString, getBOBCurrency };

@@ -11,8 +11,8 @@ export const partnersList = async () => {
   return response.data;
 };
 
-export const partnersListFullName = async () => {
-  const response = await Axios.get(URL_PARTNERS.default);
+export const partnersListFullName = async (query = '') => {
+  const response = await Axios.get(URL_PARTNERS.default + query);
   return getPartnerListWithFullName(response.data);
 };
 
