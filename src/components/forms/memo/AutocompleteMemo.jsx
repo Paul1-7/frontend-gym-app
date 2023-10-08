@@ -6,6 +6,7 @@ import { Controller } from 'react-hook-form';
 import { objectByString } from '@/utils/dataHandler';
 import { Autocomplete, CircularProgress, FormHelperText, TextField } from '@mui/material';
 import { ITEM_DEFAULT } from '@/constants';
+import compare from 'just-compare';
 
 const AutocompleteMemo = memo(
   ({ name, label, isArray, loading, methods, items, HelperTextProps, ...others }) => {
@@ -21,7 +22,7 @@ const AutocompleteMemo = memo(
         name={name}
         control={methods.control}
         render={({ field }) => (
-          <>
+          <div style={{ width: '100%' }}>
             <Autocomplete
               value={field.value}
               size="small"
@@ -61,15 +62,13 @@ const AutocompleteMemo = memo(
             <FormHelperText error={!!errorValue} color="error" {...HelperTextProps}>
               {errorValue?.message ?? ' '}
             </FormHelperText>
-          </>
+          </div>
         )}
       />
     );
   },
   (prevProps, nextProps) =>
-    prevProps.methods.formState.isDirty === nextProps.methods.formState.isDirty &&
-    prevProps.methods.formState.errors !== nextProps.methods.formState.errors &&
-    prevProps.methods.formState.submitCount === nextProps.methods.formState.submitCount
+    prevProps?.disabled === nextProps?.disabled && !compare(prevProps.methods, nextProps.methods)
 );
 AutocompleteMemo.displayName = 'AutocompleteMemo';
 export default AutocompleteMemo;

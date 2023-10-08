@@ -40,7 +40,7 @@ export const usePlanning = ({ formMethods }) => {
   });
   const disciplines = useQuery({
     queryKey: ['disciplinesList'],
-    queryFn: disciplinesList,
+    queryFn: () => disciplinesList,
   });
 
   const partners = useQuery({
@@ -99,7 +99,6 @@ export const usePlanning = ({ formMethods }) => {
   }, [enabledFields]);
 
   useEffect(() => {
-    console.log('entra');
     formMethods.setValue('cupoDisponible', idSocio.length);
   }, [idSocio?.length]);
 

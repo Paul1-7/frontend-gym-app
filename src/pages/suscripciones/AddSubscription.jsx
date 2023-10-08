@@ -28,11 +28,11 @@ const AddSubscription = () => {
 
   const plans = useQuery({
     queryKey: ['plans'],
-    queryFn: plansList,
+    queryFn: () => plansList(),
   });
   const partners = useQuery({
     queryKey: ['partners'],
-    queryFn: partnersListFullName,
+    queryFn: () => partnersListFullName(),
   });
 
   const activeSuscriptions = useQuery({

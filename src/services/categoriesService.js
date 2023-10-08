@@ -1,3 +1,4 @@
+import { getCategoriesItemsList as getCategoriesItemsListAdapter, getCategoryToModify } from '@/adapters';
 import Axios from '@/apis';
 
 export const URL_CATEGORY = {
@@ -9,9 +10,14 @@ export const categoriesList = async (query = '') => {
   return response.data;
 };
 
+export const getCategoriesItemsList = async (query = '') => {
+  const response = await Axios.get(URL_CATEGORY.default + query);
+  return getCategoriesItemsListAdapter(response.data);
+};
+
 export const getCategoryById = async (id) => {
   const response = await Axios.get(`${URL_CATEGORY.default}/${id}`);
-  return response.data;
+  return getCategoryToModify(response.data);
 };
 
 export const addCategory = async ({ data }) => Axios.post(URL_CATEGORY.default, data);

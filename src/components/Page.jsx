@@ -1,15 +1,15 @@
+import { Box } from '@mui/material';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet-async';
 import { forwardRef } from 'react';
 // @mui
-import { Box } from '@mui/material';
+import { Helmet } from 'react-helmet-async';
 
 // ----------------------------------------------------------------------
 
 const Page = forwardRef(({ children, title = '', meta, ...other }, ref) => (
   <>
     <Helmet>
-      <title>{`${title} | Minimal-UI`}</title>
+      <title>{`${title} | ALSYSGYM`}</title>
       {meta}
     </Helmet>
 

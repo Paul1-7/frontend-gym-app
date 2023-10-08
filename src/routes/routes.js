@@ -69,6 +69,5 @@ export const ROUTES = {
   },
   auth: {
     login: 'ingreso',
-    register: 'registro',
   },
 };

@@ -6,7 +6,7 @@ import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const DisciplineForm = ({ isLoading, categories }) => {
+const DisciplineForm = ({ isLoading, categories = [] }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>

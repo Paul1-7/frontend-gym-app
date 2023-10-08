@@ -8,7 +8,9 @@ import { CardMembership } from '@mui/icons-material';
 import { MeetingRoom } from '@mui/icons-material';
 import { FitnessCenter } from '@mui/icons-material';
 import { Person } from '@mui/icons-material';
+import ROLES from './roles';
 
+const { ADMINISTRADOR, RECEPCIONISTA } = ROLES;
 export const DASHBOARD = {
   employees: {
     default: {
@@ -56,6 +58,7 @@ export const DASHBOARD = {
         icon: FitnessCenter,
         url: ROUTES.disciplines.add,
         name: 'Nueva disciplina',
+        allowedRols: [ADMINISTRADOR, RECEPCIONISTA],
       },
     },
     add: {

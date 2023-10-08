@@ -15,13 +15,9 @@ const SaleForm = ({ partners = [], products = [] }) => {
           <Grid item xs={12} md={6}>
             <Input name="fecha" label="Fecha" disabled />
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Input name="idVendedor" label="Vendedor" disabled />
-          </Grid>
-          <Grid item xs={12} md={6}>
+
+          <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'start', gap: 1 }}>
             <Autocomplete name="idSocio" label="Socio" items={partners} />
-          </Grid>
-          <Grid item xs={12} md={6}>
             <Button variant="outlined" component={Link} to={ROUTES.partners.add} startIcon={<Person />}>
               Nuevo socio
             </Button>

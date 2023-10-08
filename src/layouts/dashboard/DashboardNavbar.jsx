@@ -4,6 +4,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { Box, AppBar, Toolbar, IconButton, Button } from '@mui/material';
 // components
 import Iconify from '../../components/Iconify';
+import { useAuth } from '@/hooks';
 
 const DRAWER_WIDTH = 280;
 const APPBAR_MOBILE = 64;
@@ -34,6 +35,7 @@ DashboardNavbar.propTypes = {
 };
 
 export default function DashboardNavbar({ onOpenSidebar }) {
+  const { logout } = useAuth();
   return (
     <RootStyle>
       <ToolbarStyle>
@@ -42,7 +44,9 @@ export default function DashboardNavbar({ onOpenSidebar }) {
         </IconButton>
 
         <Box sx={{ flexGrow: 1 }} />
-        <Button variant="outlined">Cerrar sesion</Button>
+        <Button variant="outlined" onClick={logout}>
+          Cerrar sesion
+        </Button>
       </ToolbarStyle>
     </RootStyle>
   );

@@ -55,8 +55,9 @@ const ROLES_ITEMS = [
 ];
 
 export const TYPES_CATEGORIES_ITEMS = [
-  { id: 'Disciplina', name: 'Disciplina' },
-  { id: 'Producto', name: 'Producto' },
+  { id: '0', name: 'Disciplina' },
+  { id: '1', name: 'Equipamientos' },
+  { id: '2', name: 'Producto' },
 ];
 
 const ITEMS_SUSCRIPCIONES_REPORTE = [

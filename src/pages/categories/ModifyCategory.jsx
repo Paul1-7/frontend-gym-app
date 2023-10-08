@@ -10,6 +10,7 @@ import { getCategoryById, modifyCategory } from '@/services';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import CategoryForm from './CategoryForm';
+import { useCategory } from '@/hooks';
 
 const ModifyCategory = () => {
   const { id } = useParams();
@@ -29,6 +30,7 @@ const ModifyCategory = () => {
   const category = useQuery({
     queryKey: ['category'],
     queryFn: () => getCategoryById(id),
+    cacheTime: 0,
   });
 
   useEffect(() => {
@@ -36,10 +38,17 @@ const ModifyCategory = () => {
     methods.reset(category.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true });
   }, [category.data]);
 
+  const { typeList } = useCategory({ formMethods: methods });
+
+  const handleSubmit = (data) => {
+    const idsTipo = data.tipoLista.map(({ id }) => id);
+    modifyCategoryData.mutate({ ...data, idsTipo });
+  };
+
   return (
     <DashboardContainer data={DASHBOARD.categories.modify}>
-      <Form methods={methods} onSubmit={modifyCategoryData.mutate}>
-        <CategoryForm isLoading={modifyCategoryData.isLoading} />
+      <Form methods={methods} onSubmit={handleSubmit}>
+        <CategoryForm isLoading={modifyCategoryData.isLoading} typeList={typeList.data} disabledType />
       </Form>
       {!modifyCategoryData.isLoading && !modifyCategoryData.isError && modifyCategoryData.isSuccess && (
         <Navigate to={ROUTES.categories.default} />

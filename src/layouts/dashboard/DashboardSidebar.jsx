@@ -3,13 +3,14 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
-import { Box, Drawer, Typography, Avatar } from '@mui/material';
+import { Box, Drawer, Typography, Avatar, Chip, Stack } from '@mui/material';
 // mock
 // hooks
 
 import navConfig from './NavConfig';
 import { Logo, NavSection, Scrollbar } from '@/components';
-import { useResponsive } from '@/hooks';
+import { useAuth, useResponsive } from '@/hooks';
+import { stringAvatar } from '@/utils';
 
 // ----------------------------------------------------------------------
 
@@ -39,6 +40,8 @@ DashboardSidebar.propTypes = {
 
 export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { pathname } = useLocation();
+  const { authenticated } = useAuth();
+  const { nombre, apellidoP, apellidoM, roles = [] } = authenticated ?? {};
 
   const isDesktop = useResponsive('up', 'lg');
 
@@ -66,15 +69,17 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <AccountStyle>
-          <Avatar alt="photoURL">MC</Avatar>
-          <Box sx={{ ml: 2 }}>
-            <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-              {'Mario Caceres'}
+          <Avatar alt="photoURL" {...stringAvatar(`${nombre} ${apellidoP} ${apellidoM}`)} />
+          <Stack sx={{ ml: 2 }} alignItems={'center'} gap={1}>
+            <Typography variant="subtitle2" sx={{ color: 'text.primary' }} align="center">
+              {`${nombre} ${apellidoP} ${apellidoM}`}
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              {'Administrador'}
-            </Typography>
-          </Box>
+            {roles
+              .filter(({ nombre }) => nombre !== 'Socio')
+              .map(({ nombre }) => (
+                <Chip key={nombre} variant="outlined" label={nombre} />
+              ))}
+          </Stack>
         </AccountStyle>
       </Box>
 

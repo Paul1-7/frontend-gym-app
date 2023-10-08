@@ -7,6 +7,7 @@ import Currency from './Currency';
 import Default from './Default';
 import Stock from './Stock';
 import Extendable from './Extendable';
+import CategoryTypes from './CategoryTypes';
 
 const DataTableCell = {
   States,
@@ -18,6 +19,7 @@ const DataTableCell = {
   Stock,
   Extendable,
   Default,
+  CategoryTypes,
 };
 
 export default DataTableCell;

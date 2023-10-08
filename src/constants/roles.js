@@ -1,8 +1,8 @@
-const roles = {
-  RECEPCIONISTA: 'Recepcionista',
-  ENTRENADOR: 'Entrenador',
-  ADMINiSTRADOR: 'Administrador',
-  LIMPIEZA: 'Limpieza',
-  SOCIO: 'Socio',
+const ROLES = {
+  RECEPCIONISTA: '576fae95-3e51-45b8-9b46-9a93c35e8c20',
+  ENTRENADOR: '12322c7b-dc62-400f-83e2-3b308d7bace8',
+  ADMINISTRADOR: '35b63ba1-8019-4836-83a4-c51a42b2f3ec',
+  LIMPIEZA: 'd036ff13-a438-4469-8a65-f8f62f559319',
+  SOCIO: '28e921f8-043e-4911-a111-9ad9f31317f6',
 };
-export default roles;
+export default ROLES;

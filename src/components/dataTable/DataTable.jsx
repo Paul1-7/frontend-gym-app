@@ -202,6 +202,12 @@ const DataTable = ({
                       if (type === 'stock') {
                         return <DataTableCell.Stock key={index} align={align} value={value} minStock={minStock} />;
                       }
+                      if (type === 'categoryTypes') {
+                        return (
+                          <DataTableCell.CategoryTypes key={index} align={align} value={value} minStock={minStock} />
+                        );
+                      }
+
                       return <DataTableCell.Default key={index} align={align} value={value} />;
                     })}
 

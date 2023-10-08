@@ -12,6 +12,7 @@ import equipments from './equipments';
 import salesReport from './salesReport';
 import categories from './categories';
 import planning from './planning';
+import login from './login';
 
 const schema = {
   socios,
@@ -28,6 +29,7 @@ const schema = {
   salesReport,
   categories,
   planning,
+  login,
 };
 
 export default schema;

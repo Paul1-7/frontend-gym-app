@@ -10,8 +10,10 @@ import { addSale, partnersListFullName, productsList } from '@/services';
 import { ROUTES } from '@/routes';
 import { LoadingButton } from '@mui/lab';
 import { Save } from '@mui/icons-material';
+import { useAuth } from '@/hooks';
 
 const AddSale = () => {
+  const { authenticated } = useAuth();
   const methods = useForm({
     resolver: yupResolver(schema.ventas),
     defaultValues: initialFormSale,
@@ -27,18 +29,19 @@ const AddSale = () => {
 
   const partners = useQuery({
     queryKey: ['partners'],
-    queryFn: partnersListFullName,
+    queryFn: () => partnersListFullName(),
   });
 
   const products = useQuery({
     queryKey: ['products'],
-    queryFn: productsList,
+    queryFn: () => productsList(),
   });
 
   const handleSubmit = (data) => {
     const newData = {
       ...data,
       idSocio: data.idSocio.id,
+      idVendedor: authenticated.id,
     };
 
     sale.mutate(newData);

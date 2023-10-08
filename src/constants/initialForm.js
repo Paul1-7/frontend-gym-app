@@ -85,7 +85,7 @@ export const initialFormSubscription = {
 export const initialFormSale = {
   fecha: new Date().toLocaleDateString(),
   idSocio: { nombre: 'Ninguno', id: ITEM_DEFAULT },
-  idVendedor: 'd9e42cd8-9399-4e0f-9eed-cb68f2f23549',
+  idVendedor: '',
   productos: [],
 };
 
@@ -111,6 +111,7 @@ export const initialFormSaleReport = {
 export const initialFormCategory = {
   nombre: '',
   tipo: ITEM_DEFAULT,
+  tipoLista: [{ nombre: 'Ninguno', id: ITEM_DEFAULT }],
 };
 
 export const initialFormPlanning = {
@@ -123,4 +124,9 @@ export const initialFormPlanning = {
   fecha: new Date(),
   dia: ITEM_DEFAULT,
   idSocio: [{ nombre: 'Ninguno', id: ITEM_DEFAULT }],
+};
+
+export const initialFormLogin = {
+  usuario: '',
+  password: '',
 };

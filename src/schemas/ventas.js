@@ -9,7 +9,7 @@ const products = yup.object().shape({
 const sells = yup.object().shape({
   fecha: yup.string().required(),
   idSocio: yup.object().required(),
-  idVendedor: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric),
+  idVendedor: yup.string(),
   productos: yup.array().of(products).required().min(1),
 });
 

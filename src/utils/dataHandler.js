@@ -37,6 +37,15 @@ export function generateColorFromString(str) {
   return '#' + color;
 }
 
+export function stringAvatar(name) {
+  return {
+    sx: {
+      bgcolor: generateColorFromString(name),
+    },
+    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+  };
+}
+
 export const getDateLocale = (date) => {
   return new Date(date).toLocaleDateString();
 };

@@ -8,6 +8,7 @@ import { DashboardContainer, Form } from '@/components';
 import { addCategory } from '@/services';
 import { ROUTES } from '@/routes';
 import CategoryForm from './CategoryForm';
+import { useCategory } from '@/hooks';
 
 const AddCategory = () => {
   const methods = useForm({
@@ -23,10 +24,17 @@ const AddCategory = () => {
     },
   });
 
+  const { typeList } = useCategory({ formMethods: methods });
+
+  const handleSubmit = (data) => {
+    const idsTipo = data.tipoLista.map(({ id }) => id);
+    category.mutate({ ...data, idsTipo });
+  };
+
   return (
     <DashboardContainer data={DASHBOARD.categories.add}>
-      <Form methods={methods} onSubmit={category.mutate}>
-        <CategoryForm isLoading={category.isLoading} />
+      <Form methods={methods} onSubmit={handleSubmit}>
+        <CategoryForm isLoading={category.isLoading} typeList={typeList.data} />
       </Form>
       {!category.isLoading && !category.isError && category.isSuccess && <Navigate to={ROUTES.categories.default} />}
     </DashboardContainer>

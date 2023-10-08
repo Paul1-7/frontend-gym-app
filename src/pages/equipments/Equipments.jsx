@@ -42,7 +42,6 @@ const Equipments = () => {
         rows={data}
         error={error}
         loading={isLoading}
-        numeration
         btnActions={buttonsActions}
         orderByDefault="nombre"
       />

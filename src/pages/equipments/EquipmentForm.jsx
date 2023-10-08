@@ -54,10 +54,6 @@ const EquipmentForm = ({ isLoading }) => {
 };
 
 EquipmentForm.propTypes = {
-  plans: PropTypes.array,
   isLoading: PropTypes.bool,
-  isExpandable: PropTypes.bool,
-  withSubscription: PropTypes.bool,
 };
-
 export default EquipmentForm;

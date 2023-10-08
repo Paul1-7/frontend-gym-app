@@ -17,7 +17,6 @@ const AddPlanning = () => {
     mode: 'all',
     criteriaMode: 'all',
   });
-  console.log(formMethods.formState.errors);
   const { fecha, idSocio } = formMethods.watch();
   const errorsSchema = formMethods.formState.errors;
 

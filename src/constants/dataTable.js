@@ -31,7 +31,7 @@ const COLUMNS_TABLE = {
   ],
   categories: [
     { field: 'nombre', header: 'nombre', type: '' },
-    { field: 'tipo', header: 'capacidad', type: '' },
+    { field: 'tipo', header: 'tipo', type: 'categoryTypes' },
   ],
   productos: [
     { field: 'nombre', header: 'nombre', type: '' },
@@ -85,6 +85,7 @@ const COLUMNS_TABLE = {
     { field: 'precioVenta', header: 'precio uni.', type: 'currency' },
   ],
   equipments: [
+    { field: 'codMaquinaria', header: 'código', type: '' },
     { field: 'nombre', header: 'nombre', type: '' },
     { field: 'marca', header: 'cantidad', type: '' },
     { field: 'modelo', header: 'modelo', type: '' },
@@ -112,6 +113,11 @@ const TABLE_STATES = {
     { name: 'En efectivo', variant: 'info' },
     { name: 'Paypal', variant: 'info' },
     { name: 'Stripe', variant: 'info' },
+  ],
+  categoryTypes: [
+    { name: 'Disciplinas', variant: 'info' },
+    { name: 'Equipamientos', variant: 'info' },
+    { name: 'Productos', variant: 'info' },
   ],
 };
 

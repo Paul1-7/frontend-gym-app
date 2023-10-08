@@ -1,3 +1,4 @@
+export * from './categoryAdapter';
 export * from './default';
 export * from './employeesAdapter';
 export * from './equipmentAdapter';
