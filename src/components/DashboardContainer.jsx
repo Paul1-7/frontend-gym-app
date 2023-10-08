@@ -8,7 +8,7 @@ function DashboardContainer({ data, children }) {
   const { icon: Icon, url, name } = button ?? {};
   return (
     <Page title={title} sx={{ px: 4 }}>
-      <Typography variant="h2" gutterBottom component={'h1'}>
+      <Typography variant="h3" gutterBottom component={'h1'}>
         {title}
       </Typography>
       <Typography component="p" sx={{ mb: 4 }}>

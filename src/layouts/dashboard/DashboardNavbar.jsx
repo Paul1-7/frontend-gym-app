@@ -18,6 +18,7 @@ const RootStyle = styled(AppBar)(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     width: `calc(100% - ${DRAWER_WIDTH + 1}px)`,
   },
+  borderBottom: '1px solid rgba(0,0,0,0.1)',
 }));
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({

@@ -92,7 +92,7 @@ export const DASHBOARD = {
   categories: {
     default: {
       title: 'Categorias',
-      description: 'Lista de categorias para disciplinas y productos',
+      description: 'Lista de categorias para disciplinas, productos y maquinarias',
       button: {
         icon: Category,
         url: ROUTES.categories.add,
