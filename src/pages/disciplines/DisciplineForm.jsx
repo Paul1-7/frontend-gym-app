@@ -1,12 +1,12 @@
 import { PropTypes } from 'prop-types';
-import { ButtonLink, Input, RadioGroup, Select } from '@/components';
+import { ButtonLink, Input, RadioGroup } from '@/components';
 import { ITEMS_RADIO_GROUP } from '@/constants';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const DisciplineForm = ({ isLoading, categories = [] }) => {
+const DisciplineForm = ({ isLoading }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -16,9 +16,6 @@ const DisciplineForm = ({ isLoading, categories = [] }) => {
           </Grid>
           <Grid item xs={12} md={6}>
             <Input label="Descripción" name="descripcion" />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Select name="idCategoria" label="Categoria" items={categories} />
           </Grid>
           <Grid item xs={12} md={6}>
             <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
@@ -45,11 +42,7 @@ const DisciplineForm = ({ isLoading, categories = [] }) => {
 };
 
 DisciplineForm.propTypes = {
-  plans: PropTypes.array,
   isLoading: PropTypes.bool,
-  isExpandable: PropTypes.bool,
-  withSubscription: PropTypes.bool,
-  categories: PropTypes.array,
 };
 
 export default DisciplineForm;

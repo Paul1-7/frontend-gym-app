@@ -6,7 +6,7 @@ import schema from '@/schemas';
 import { Navigate } from 'react-router-dom';
 import { DashboardContainer, Form } from '@/components';
 import { ROUTES } from '@/routes/routes';
-import { categoriesList, getDisciplineById, modifyDiscipline } from '@/services';
+import { getDisciplineById, modifyDiscipline } from '@/services';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import DisciplineForm from './DisciplineForm';
@@ -26,11 +26,6 @@ const ModifyEmployee = () => {
     },
   });
 
-  const categories = useQuery({
-    queryKey: ['categoriesList'],
-    queryFn: () => categoriesList('?tipo=Disciplina'),
-  });
-
   const discipline = useQuery({
     queryKey: ['discipline'],
     queryFn: () => getDisciplineById(id),
@@ -44,7 +39,7 @@ const ModifyEmployee = () => {
   return (
     <DashboardContainer data={DASHBOARD.disciplines.modify}>
       <Form methods={methods} onSubmit={modifyDisciplineData.mutate}>
-        <DisciplineForm isLoading={modifyDisciplineData.isLoading} categories={categories.data} />
+        <DisciplineForm isLoading={modifyDisciplineData.isLoading} />
       </Form>
       {!modifyDisciplineData.isLoading && !modifyDisciplineData.isError && modifyDisciplineData.isSuccess && (
         <Navigate to={ROUTES.disciplines.default} />
