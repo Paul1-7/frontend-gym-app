@@ -50,6 +50,7 @@ export const initialFormSchedule = {
 export const initialFormHall = {
   nombre: '',
   capacidad: '',
+  planta: ITEM_DEFAULT,
   estado: 1,
 };
 

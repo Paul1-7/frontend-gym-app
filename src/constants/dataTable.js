@@ -17,8 +17,10 @@ const COLUMNS_TABLE = {
     { field: 'roles', header: 'Roles', type: 'array' },
   ],
   salones: [
+    { field: 'codSalon', header: 'Código', type: '' },
     { field: 'nombre', header: 'nombre', type: '' },
     { field: 'capacidad', header: 'capacidad', type: '' },
+    { field: 'planta', header: 'planta', type: '' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
   planning: [

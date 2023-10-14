@@ -20,6 +20,29 @@ export const ITEMS_RESPONSE_OPTIONS = [
   },
 ];
 
+export const ITEMS_FlOORS_OPTIONS = [
+  {
+    id: '1',
+    title: '1',
+  },
+  {
+    id: '2',
+    title: '2',
+  },
+  {
+    id: '3',
+    title: '3',
+  },
+  {
+    id: '4',
+    title: '4',
+  },
+  {
+    id: '5',
+    title: '5',
+  },
+];
+
 const EXPANSIBLE_ITEMS_RADIO_GROUP = [
   {
     id: '1',

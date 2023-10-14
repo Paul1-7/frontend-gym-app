@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
-import { ButtonLink, Input, RadioGroup } from '@/components';
-import { ITEMS_RADIO_GROUP } from '@/constants';
+import { ButtonLink, Input, RadioGroup, Select } from '@/components';
+import { ITEMS_FlOORS_OPTIONS, ITEMS_RADIO_GROUP } from '@/constants';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
@@ -16,6 +16,9 @@ const HallForm = ({ isLoading }) => {
           </Grid>
           <Grid item xs={12} md={6}>
             <Input label="Capacidad" name="capacidad" type="number" />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Select label="Número de planta" name="planta" items={ITEMS_FlOORS_OPTIONS} />
           </Grid>
           <Grid item xs={12} md={6}>
             <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />

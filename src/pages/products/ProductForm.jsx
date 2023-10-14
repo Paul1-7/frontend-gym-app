@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import { ButtonLink, DatePicker, Input, RadioGroup } from '@/components';
-import { ITEMS_RADIO_GROUP, ITEMS_RESPONSE_OPTIONS } from '@/constants';
+import { ITEMS_RADIO_GROUP, ITEMS_FlOORS_OPTIONS } from '@/constants';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
@@ -24,7 +24,7 @@ const ProductForm = ({ isLoading, hasExpiration }) => {
             <Input label="Precio de venta" name="precioVenta" />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <RadioGroup items={ITEMS_RESPONSE_OPTIONS} label="¿Tiene vencimiento?" name={'tieneVencimiento'} />
+            <RadioGroup items={ITEMS_FlOORS_OPTIONS} label="¿Tiene vencimiento?" name={'tieneVencimiento'} />
           </Grid>
           {hasExpiration && (
             <Grid item xs={12} sm={6}>
