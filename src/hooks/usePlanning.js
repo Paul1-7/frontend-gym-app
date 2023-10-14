@@ -40,7 +40,7 @@ export const usePlanning = ({ formMethods }) => {
   });
   const disciplines = useQuery({
     queryKey: ['disciplinesList'],
-    queryFn: () => disciplinesList,
+    queryFn: () => disciplinesList(),
   });
 
   const partners = useQuery({
