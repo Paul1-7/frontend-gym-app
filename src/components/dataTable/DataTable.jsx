@@ -172,14 +172,16 @@ const DataTable = ({
                       </TableCell>
                     )}
                     {numeration && <TableCell align={align}>{page * rowsPerPage + index + 1}</TableCell>}
-                    {columns.map(({ field, type }, index) => {
+                    {columns.map(({ field, type, otherValue }, index) => {
                       const value = row[field];
 
                       if (type === 'states') {
                         return <DataTableCell.States key={index} align={align} value={value} />;
                       }
                       if (type === 'date') {
-                        return <DataTableCell.Date key={index} align={align} value={value} />;
+                        return (
+                          <DataTableCell.Date key={index} align={align} value={value} isApplicable={!row[otherValue]} />
+                        );
                       }
                       if (type === 'paymentsMethods') {
                         return <DataTableCell.PaymentsMethods key={index} align={align} value={value} />;

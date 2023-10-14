@@ -1,3 +1,4 @@
+import { getPlanToModify, getPlansAdapter } from '@/adapters';
 import Axios from '@/apis';
 
 export const URL_PLAN = {
@@ -6,12 +7,12 @@ export const URL_PLAN = {
 
 export const plansList = async () => {
   const response = await Axios.get(URL_PLAN.default);
-  return response.data;
+  return getPlansAdapter(response.data);
 };
 
 export const getPlanById = async (id) => {
   const response = await Axios.get(`${URL_PLAN.default}/${id}`);
-  return response.data;
+  return getPlanToModify(response.data);
 };
 
 export const addPlan = async ({ data }) => Axios.post(URL_PLAN.default, data);

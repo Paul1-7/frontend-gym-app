@@ -60,8 +60,9 @@ const COLUMNS_TABLE = {
   planes: [
     { field: 'nombre', header: 'nombre', type: '' },
     { field: 'precio', header: 'precio', type: '' },
-    { field: 'duracion', header: 'duración', type: '' },
-    { field: 'esExpandible', header: 'es expandible', type: 'extendable' },
+    { field: 'duracion', header: 'duración (días)', type: '' },
+    { field: 'esRecurrente', header: 'es recurrente', type: 'extendable' },
+    { field: 'fechaVencimiento', header: 'fecha de vencimiento', type: 'date', otherValue: 'esRecurrente' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
   suscripciones: [

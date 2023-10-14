@@ -1,12 +1,12 @@
 import { PropTypes } from 'prop-types';
-import { ButtonLink, Input, RadioGroup } from '@/components';
-import { EXPANSIBLE_ITEMS_RADIO_GROUP, ITEMS_RADIO_GROUP } from '@/constants';
+import { ButtonLink, DatePicker, Input, RadioGroup } from '@/components';
+import { ITEMS_RADIO_GROUP, RECURRENT_ITEMS_RADIO_GROUP } from '@/constants';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const PlanForm = ({ isLoading, withState }) => {
+const PlanForm = ({ isLoading, withState, hasExpiration }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -20,16 +20,23 @@ const PlanForm = ({ isLoading, withState }) => {
           <Grid item xs={12} md={6}>
             <Input label="Precio" name="precio" />
           </Grid>
-        </Grid>
-        <Grid item xs={12} wrap="wrap" container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <RadioGroup name="esExpandible" label="Es expandible" items={EXPANSIBLE_ITEMS_RADIO_GROUP} />
-          </Grid>
           {withState && (
             <Grid item xs={12} md={6}>
               <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
             </Grid>
           )}
+        </Grid>
+        <Grid item xs={12} wrap="wrap" container spacing={2}>
+          <Grid item container xs={12} md={6}>
+            <Grid item xs={4}>
+              <RadioGroup name="esRecurrente" label="Es recurrente" items={RECURRENT_ITEMS_RADIO_GROUP} />
+            </Grid>
+            {hasExpiration && (
+              <Grid item xs={8}>
+                <DatePicker label="Fecha de vencimiento" name="fechaVencimiento" disablePast />
+              </Grid>
+            )}
+          </Grid>
         </Grid>
       </Grid>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem', gap: '1rem' }}>
@@ -54,6 +61,7 @@ const PlanForm = ({ isLoading, withState }) => {
 PlanForm.propTypes = {
   isLoading: PropTypes.bool,
   withState: PropTypes.bool,
+  hasExpiration: PropTypes.bool,
 };
 
 export default PlanForm;

@@ -67,8 +67,11 @@ export const initialFormProduct = {
 export const initialFormPlan = {
   nombre: '',
   precio: '',
-  duracion: '',
-  esExpandible: 0,
+  duracion: '30',
+  esRecurrente: 0,
+  fechaVencimiento: add(new Date(), {
+    days: 5,
+  }),
   estado: 1,
 };
 

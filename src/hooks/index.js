@@ -2,6 +2,7 @@ export { default as useAuth } from './useAuth';
 export { default as useAxios } from './useAxios';
 export * from './useCategory';
 export * from './useLastSubscription';
+export * from './usePlan';
 export * from './usePlanExpandible';
 export * from './usePlanning';
 export * from './usePrint.';

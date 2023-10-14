@@ -10,6 +10,7 @@ import { getPlanById, modifyPlan } from '@/services';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import PlanForm from './PlanForm';
+import { usePlan } from '@/hooks';
 
 const ModifyPlan = () => {
   const { id } = useParams();
@@ -29,6 +30,7 @@ const ModifyPlan = () => {
   const plan = useQuery({
     queryKey: ['plan'],
     queryFn: () => getPlanById(id),
+    cacheTime: 0,
   });
 
   useEffect(() => {
@@ -36,10 +38,12 @@ const ModifyPlan = () => {
     methods.reset(plan.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true, keepTouched: true });
   }, [plan.data]);
 
+  const { hasExpiration } = usePlan({ formMethods: methods });
+
   return (
     <DashboardContainer data={DASHBOARD.plans.modify}>
       <Form methods={methods} onSubmit={modifyPlanData.mutate}>
-        <PlanForm isLoading={modifyPlanData.isLoading} withState />
+        <PlanForm isLoading={modifyPlanData.isLoading} withState hasExpiration={hasExpiration} />
       </Form>
       {!modifyPlanData.isLoading && !modifyPlanData.isError && modifyPlanData.isSuccess && (
         <Navigate to={ROUTES.plans.default} />
