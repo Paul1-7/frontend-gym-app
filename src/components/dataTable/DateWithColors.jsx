@@ -8,18 +8,18 @@ const DateCell = ({ value, align, isApplicable = true }) => {
   const dateGiven = new Date(value);
   const daysRemaining = differenceInDays(dateGiven, dateNow);
 
-  let color = 'text.primary';
+  let color = 'success.dark';
 
   if (daysRemaining <= 10) {
     color = 'warning.dark';
   }
   if (daysRemaining <= 0) {
-    color = 'error.main';
+    color = 'error.dark';
   }
 
   return (
     <TableCell align={align}>
-      {!isApplicable ? (
+      {isApplicable ? (
         <Typography component={'span'} color={color} variant="body2">
           {dateGiven.toLocaleDateString()}
         </Typography>

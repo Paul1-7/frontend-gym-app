@@ -183,13 +183,13 @@ const DataTable = ({
                           <DataTableCell.Date key={index} align={align} value={value} isApplicable={!row[otherValue]} />
                         );
                       }
-                      if (type === 'dateProducts') {
+                      if (type === 'dateWithColors') {
                         return (
-                          <DataTableCell.DateProducts
+                          <DataTableCell.DateWithColors
                             key={index}
                             align={align}
                             value={value}
-                            isApplicable={!row[otherValue]}
+                            isApplicable={row[otherValue]}
                           />
                         );
                       }
@@ -281,6 +281,7 @@ const DataTable = ({
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+        labelRowsPerPage="Filas por página"
       />
     </Box>
   );

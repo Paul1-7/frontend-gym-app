@@ -38,7 +38,12 @@ const COLUMNS_TABLE = {
   productos: [
     { field: 'nombre', header: 'nombre', type: '' },
     { field: 'precioVenta', header: 'precio', type: 'currency' },
-    { field: 'fechaVencimiento', header: 'fecha de vencimiento', type: 'dateProducts', otherValue: 'tieneVencimiento' },
+    {
+      field: 'fechaVencimiento',
+      header: 'fecha de vencimiento',
+      type: 'dateWithColors',
+      otherValue: 'tieneVencimiento',
+    },
     { field: 'stock', header: 'stock', type: 'stock' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
@@ -69,7 +74,7 @@ const COLUMNS_TABLE = {
     { field: 'socio', header: 'socio', type: '' },
     { field: 'ci', header: 'ci', type: '' },
     { field: 'fechaInicio', header: 'fecha de inicio', type: 'date' },
-    { field: 'fechaFin', header: 'fecha fin', type: 'date' },
+    { field: 'fechaFin', header: 'fecha de vencimiento', type: 'dateWithColors' },
     { field: 'plan', header: 'plan', type: '' },
     { field: 'diasExtras', header: 'dias extras', type: '' },
     { field: 'cantidad', header: 'cantidad', type: '' },

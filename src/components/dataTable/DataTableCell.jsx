@@ -8,7 +8,7 @@ import Default from './Default';
 import Stock from './Stock';
 import Extendable from './Extendable';
 import CategoryTypes from './CategoryTypes';
-import DateProducts from './DateProducts';
+import DateWithColors from './DateWithColors';
 
 const DataTableCell = {
   States,
@@ -21,7 +21,7 @@ const DataTableCell = {
   Extendable,
   Default,
   CategoryTypes,
-  DateProducts,
+  DateWithColors,
 };
 
 export default DataTableCell;
