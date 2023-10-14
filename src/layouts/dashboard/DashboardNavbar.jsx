@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 // material
 import { alpha, styled } from '@mui/material/styles';
-import { Box, AppBar, Toolbar, IconButton, Button } from '@mui/material';
+import { Box, AppBar, Toolbar, IconButton } from '@mui/material';
 // components
 import Iconify from '../../components/Iconify';
-import { useAuth } from '@/hooks';
+import AccountPopover from './AccountPopover';
 
 const DRAWER_WIDTH = 280;
 const APPBAR_MOBILE = 64;
@@ -36,7 +36,6 @@ DashboardNavbar.propTypes = {
 };
 
 export default function DashboardNavbar({ onOpenSidebar }) {
-  const { logout } = useAuth();
   return (
     <RootStyle>
       <ToolbarStyle>
@@ -45,9 +44,7 @@ export default function DashboardNavbar({ onOpenSidebar }) {
         </IconButton>
 
         <Box sx={{ flexGrow: 1 }} />
-        <Button variant="outlined" onClick={logout}>
-          Cerrar sesion
-        </Button>
+        <AccountPopover />
       </ToolbarStyle>
     </RootStyle>
   );

@@ -1,35 +1,17 @@
 import { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 // @mui
-import { Box, Divider, Typography, Stack, MenuItem, Badge } from '@mui/material';
+import { Divider, Typography, Stack, MenuItem, Avatar, Chip, ListItemIcon } from '@mui/material';
 // components
 import MenuPopover from '@/components/MenuPopover';
 import { useAuth } from '@/hooks';
-
-const MENU_OPTIONS = [
-  {
-    label: 'Home',
-    icon: 'eva:home-fill',
-    linkTo: '/',
-  },
-  {
-    label: 'Profile',
-    icon: 'eva:person-fill',
-    linkTo: '#',
-  },
-  {
-    label: 'Settings',
-    icon: 'eva:settings-2-fill',
-    linkTo: '#',
-  },
-];
-
-// ----------------------------------------------------------------------
+import { stringAvatar } from '@/utils';
+import { ExitToAppOutlined } from '@mui/icons-material';
 
 export default function AccountPopover() {
-  const [open, setOpen] = useState(null);
-  const { authenticated } = useAuth();
+  const { authenticated, logout } = useAuth();
   const { nombre, apellidoP, apellidoM, roles = [] } = authenticated ?? {};
+
+  const [open, setOpen] = useState(null);
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -41,6 +23,7 @@ export default function AccountPopover() {
 
   return (
     <>
+      <Avatar alt="photoURL" {...stringAvatar(`${nombre} ${apellidoP} ${apellidoM}`)} onClick={handleOpen} />
       <MenuPopover
         open={Boolean(open)}
         anchorEl={open}
@@ -55,29 +38,24 @@ export default function AccountPopover() {
           },
         }}
       >
-        <Box sx={{ my: 1.5, px: 2.5 }}>
-          <Typography variant="subtitle2" noWrap>
+        <Stack sx={{ ml: 2, py: 2 }} alignItems={'center'} gap={1}>
+          <Typography variant="subtitle2" sx={{ color: 'text.primary' }} align="center">
             {`${nombre} ${apellidoP} ${apellidoM}`}
           </Typography>
-          {roles.map(({ nombre }) => (
-            <Badge key={nombre}>{nombre}</Badge>
-          ))}
-        </Box>
-
-        <Divider sx={{ borderStyle: 'dashed' }} />
-
-        <Stack sx={{ p: 1 }}>
-          {MENU_OPTIONS.map((option) => (
-            <MenuItem key={option.label} to={option.linkTo} component={RouterLink} onClick={handleClose}>
-              {option.label}
-            </MenuItem>
-          ))}
+          {roles
+            .filter(({ nombre }) => nombre !== 'Socio')
+            .map(({ nombre }) => (
+              <Chip key={nombre} variant="outlined" label={nombre} />
+            ))}
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <MenuItem onClick={handleClose} sx={{ m: 1 }}>
-          Logout
+        <MenuItem onClick={logout} sx={{ m: 1, fontWeight: '700' }}>
+          <ListItemIcon>
+            <ExitToAppOutlined />
+          </ListItemIcon>
+          Cerrar Sesión
         </MenuItem>
       </MenuPopover>
     </>
