@@ -10,6 +10,15 @@ export const plansList = async () => {
   return getPlansAdapter(response.data);
 };
 
+export const plansListActive = async () => {
+  const response = await Axios.get(URL_PLAN.default, {
+    params: {
+      fechaVencimiento: new Date().toISOString(),
+    },
+  });
+  return getPlansAdapter(response.data);
+};
+
 export const getPlanById = async (id) => {
   const response = await Axios.get(`${URL_PLAN.default}/${id}`);
   return getPlanToModify(response.data);

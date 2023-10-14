@@ -7,7 +7,7 @@ import SubscriptionForm from './SubscriptionForm';
 import { Navigate } from 'react-router-dom';
 import { useLastSubscription, usePlanExpandible } from '@/hooks';
 import { DashboardContainer, Form } from '@/components';
-import { addSubscriptions, getLastSubscriptionsByIdSocio, partnersListFullName, plansList } from '@/services';
+import { addSubscriptions, getLastSubscriptionsByIdSocio, partnersListFullName, plansListActive } from '@/services';
 import { ROUTES } from '@/routes';
 import { Alert, Grid } from '@mui/material';
 
@@ -28,7 +28,7 @@ const AddSubscription = () => {
 
   const plans = useQuery({
     queryKey: ['plans'],
-    queryFn: () => plansList(),
+    queryFn: () => plansListActive(),
   });
   const partners = useQuery({
     queryKey: ['partners'],

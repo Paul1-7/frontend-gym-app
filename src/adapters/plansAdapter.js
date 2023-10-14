@@ -1,9 +1,12 @@
 import { toISOStringWithoutTZ } from '@/utils';
 
 export const getPlanToModify = (data) => {
+  const { fechaVencimiento } = data;
+  const parsedDate = !fechaVencimiento ? new Date().toISOString() : fechaVencimiento;
+
   return {
     ...data,
-    fechaVencimiento: new Date(toISOStringWithoutTZ(data.fechaVencimiento)),
+    fechaVencimiento: new Date(toISOStringWithoutTZ(parsedDate)),
   };
 };
 
