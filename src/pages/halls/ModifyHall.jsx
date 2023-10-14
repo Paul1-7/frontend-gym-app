@@ -39,7 +39,7 @@ const ModifyEmployee = () => {
   return (
     <DashboardContainer data={DASHBOARD.halls.modify}>
       <Form methods={methods} onSubmit={modifyHallData.mutate}>
-        <HallForm isLoading={modifyHallData.isLoading} />
+        <HallForm isLoading={modifyHallData.isLoading} withState />
       </Form>
       {!modifyHallData.isLoading && !modifyHallData.isError && modifyHallData.isSuccess && (
         <Navigate to={ROUTES.halls.default} />

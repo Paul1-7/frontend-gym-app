@@ -6,7 +6,7 @@ import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const DisciplineForm = ({ isLoading }) => {
+const DisciplineForm = ({ isLoading, withState }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -17,9 +17,11 @@ const DisciplineForm = ({ isLoading }) => {
           <Grid item xs={12} md={6}>
             <Input label="Descripción" name="descripcion" />
           </Grid>
-          <Grid item xs={12} md={6}>
-            <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
-          </Grid>
+          {withState && (
+            <Grid item xs={12} md={6}>
+              <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
+            </Grid>
+          )}
         </Grid>
       </Grid>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem', gap: '1rem' }}>
@@ -43,6 +45,7 @@ const DisciplineForm = ({ isLoading }) => {
 
 DisciplineForm.propTypes = {
   isLoading: PropTypes.bool,
+  withState: PropTypes.bool,
 };
 
 export default DisciplineForm;

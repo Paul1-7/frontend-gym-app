@@ -39,7 +39,7 @@ const ModifyEmployee = () => {
   return (
     <DashboardContainer data={DASHBOARD.disciplines.modify}>
       <Form methods={methods} onSubmit={modifyDisciplineData.mutate}>
-        <DisciplineForm isLoading={modifyDisciplineData.isLoading} />
+        <DisciplineForm isLoading={modifyDisciplineData.isLoading} withState />
       </Form>
       {!modifyDisciplineData.isLoading && !modifyDisciplineData.isError && modifyDisciplineData.isSuccess && (
         <Navigate to={ROUTES.disciplines.default} />

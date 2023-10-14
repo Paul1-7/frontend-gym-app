@@ -41,7 +41,7 @@ const ModifyProduct = () => {
   return (
     <DashboardContainer data={DASHBOARD.products.modify}>
       <Form methods={methods} onSubmit={modifyProductData.mutate}>
-        <ProductForm isLoading={modifyProductData.isLoading} hasExpiration={!hasExpiration} />
+        <ProductForm isLoading={modifyProductData.isLoading} hasExpiration={!hasExpiration} withState />
       </Form>
       {!modifyProductData.isLoading && !modifyProductData.isError && modifyProductData.isSuccess && (
         <Navigate to={ROUTES.products.default} />

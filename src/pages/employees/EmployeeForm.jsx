@@ -6,7 +6,7 @@ import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const EmployeeForm = ({ isLoading }) => {
+const EmployeeForm = ({ isLoading, withState = false }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -37,9 +37,11 @@ const EmployeeForm = ({ isLoading }) => {
               <Grid item xs={12} md={6}>
                 <SelectChip name="roles" label="Roles" items={ROLES_ITEMS} />
               </Grid>
-              <Grid item xs={12} md={6}>
-                <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
-              </Grid>
+              {withState && (
+                <Grid item xs={12} md={6}>
+                  <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
+                </Grid>
+              )}
             </Grid>
           </Fieldset>
           <Fieldset title="Datos del usuario">
@@ -77,10 +79,8 @@ const EmployeeForm = ({ isLoading }) => {
 };
 
 EmployeeForm.propTypes = {
-  plans: PropTypes.array,
   isLoading: PropTypes.bool,
-  isExpandable: PropTypes.bool,
-  withSubscription: PropTypes.bool,
+  withState: PropTypes.bool,
 };
 
 export default EmployeeForm;

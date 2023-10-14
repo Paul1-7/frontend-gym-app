@@ -39,7 +39,7 @@ const ModifyPlan = () => {
   return (
     <DashboardContainer data={DASHBOARD.plans.modify}>
       <Form methods={methods} onSubmit={modifyPlanData.mutate}>
-        <PlanForm isLoading={modifyPlanData.isLoading} />
+        <PlanForm isLoading={modifyPlanData.isLoading} withState />
       </Form>
       {!modifyPlanData.isLoading && !modifyPlanData.isError && modifyPlanData.isSuccess && (
         <Navigate to={ROUTES.plans.default} />

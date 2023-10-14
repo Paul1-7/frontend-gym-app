@@ -6,7 +6,7 @@ import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const HallForm = ({ isLoading }) => {
+const HallForm = ({ isLoading, withState }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -20,9 +20,11 @@ const HallForm = ({ isLoading }) => {
           <Grid item xs={12} md={6}>
             <Select label="Número de planta" name="planta" items={ITEMS_FlOORS_OPTIONS} />
           </Grid>
-          <Grid item xs={12} md={6}>
-            <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
-          </Grid>
+          {withState && (
+            <Grid item xs={12} md={6}>
+              <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
+            </Grid>
+          )}
         </Grid>
       </Grid>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem', gap: '1rem' }}>
@@ -45,10 +47,8 @@ const HallForm = ({ isLoading }) => {
 };
 
 HallForm.propTypes = {
-  plans: PropTypes.array,
   isLoading: PropTypes.bool,
-  isExpandable: PropTypes.bool,
-  withSubscription: PropTypes.bool,
+  withState: PropTypes.bool,
 };
 
 export default HallForm;
