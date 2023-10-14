@@ -28,7 +28,7 @@ const AddProduct = () => {
   return (
     <DashboardContainer data={DASHBOARD.products.add}>
       <Form methods={methods} onSubmit={product.mutate}>
-        <ProductForm isLoading={product.isLoading} hasExpiration={!hasExpiration} />
+        <ProductForm isLoading={product.isLoading} hasExpiration={hasExpiration} />
       </Form>
       {!product.isLoading && !product.isError && product.isSuccess && <Navigate to={ROUTES.products.default} />}
     </DashboardContainer>

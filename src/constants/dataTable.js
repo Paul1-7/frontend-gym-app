@@ -38,7 +38,7 @@ const COLUMNS_TABLE = {
   productos: [
     { field: 'nombre', header: 'nombre', type: '' },
     { field: 'precioVenta', header: 'precio', type: 'currency' },
-    { field: 'fechaVencimiento', header: 'fecha de vencimiento', type: 'date' },
+    { field: 'fechaVencimiento', header: 'fecha de vencimiento', type: 'dateProducts', otherValue: 'tieneVencimiento' },
     { field: 'stock', header: 'stock', type: 'stock' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],

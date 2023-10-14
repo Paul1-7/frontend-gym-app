@@ -59,7 +59,7 @@ export const initialFormProduct = {
   stock: '',
   precioCompra: '',
   precioVenta: '',
-  fechaVencimiento: new Date(),
+  fechaVencimiento: add(new Date(), { days: 5 }),
   estado: 1,
   tieneVencimiento: 'false',
 };

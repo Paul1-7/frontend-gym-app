@@ -183,6 +183,16 @@ const DataTable = ({
                           <DataTableCell.Date key={index} align={align} value={value} isApplicable={!row[otherValue]} />
                         );
                       }
+                      if (type === 'dateProducts') {
+                        return (
+                          <DataTableCell.DateProducts
+                            key={index}
+                            align={align}
+                            value={value}
+                            isApplicable={!row[otherValue]}
+                          />
+                        );
+                      }
                       if (type === 'paymentsMethods') {
                         return <DataTableCell.PaymentsMethods key={index} align={align} value={value} />;
                       }

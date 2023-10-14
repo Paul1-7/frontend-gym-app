@@ -11,11 +11,11 @@ const ITEMS_RADIO_GROUP = [
 
 export const ITEMS_RESPONSE_OPTIONS = [
   {
-    id: 'false',
+    id: 'true',
     title: 'Si',
   },
   {
-    id: 'true',
+    id: 'false',
     title: 'No',
   },
 ];
