@@ -172,7 +172,7 @@ const DataTable = ({
                       </TableCell>
                     )}
                     {numeration && <TableCell align={align}>{page * rowsPerPage + index + 1}</TableCell>}
-                    {columns.map(({ field, type, otherValue }, index) => {
+                    {columns.map(({ field, type, otherValue, otherField }, index) => {
                       const value = row[field];
 
                       if (type === 'states') {
@@ -190,6 +190,17 @@ const DataTable = ({
                             align={align}
                             value={value}
                             isApplicable={row[otherValue]}
+                          />
+                        );
+                      }
+                      if (type === 'dateSubscription') {
+                        return (
+                          <DataTableCell.DateSubscription
+                            key={index}
+                            align={align}
+                            value={value}
+                            isApplicable={row[otherValue]}
+                            initialDate={row[otherField]}
                           />
                         );
                       }

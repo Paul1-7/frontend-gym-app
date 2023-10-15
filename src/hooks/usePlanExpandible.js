@@ -1,4 +1,5 @@
 import { ITEM_DEFAULT } from '@/constants';
+import { daysElapsedFromNow } from '@/utils';
 import { getBOBCurrency } from '@/utils/dataHandler';
 import { add } from 'date-fns';
 import { useRef } from 'react';
@@ -8,11 +9,11 @@ import { useEffect } from 'react';
 export const usePlanExpandible = ({ methods, plans = [], daysRemaining = 0 }) => {
   const [isExpandable, setIsExpandable] = useState(true);
   const planRef = useRef(null);
-  const idPlan = methods.watch('idPlan');
-  const idSocio = methods.watch('idSocio');
-  const cantidad = methods.watch('cantidad');
+  const { idPlan, idSocio, cantidad, fechaInicio } = methods.watch();
 
   useEffect(() => {
+    const daysElapsed = daysElapsedFromNow(fechaInicio);
+
     if (idPlan === ITEM_DEFAULT || idSocio?.id === ITEM_DEFAULT) {
       setIsExpandable(true);
       return;
@@ -26,9 +27,9 @@ export const usePlanExpandible = ({ methods, plans = [], daysRemaining = 0 }) =>
     setIsExpandable(!esExpandible);
 
     if (!esExpandible) setValue('cantidad', 1);
-    setValue('fechaFin', add(new Date(), { days: planRef.current.duracion * cantidad + daysRemaining }));
+    setValue('fechaFin', add(new Date(), { days: planRef.current.duracion * cantidad + daysRemaining + daysElapsed }));
     setValue('precio', getBOBCurrency(planRef.current.precio * cantidad));
-  }, [idPlan, cantidad, daysRemaining]);
+  }, [idPlan, cantidad, daysRemaining, fechaInicio]);
 
   return { isExpandable };
 };

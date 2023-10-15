@@ -74,7 +74,7 @@ const COLUMNS_TABLE = {
     { field: 'socio', header: 'socio', type: '' },
     { field: 'ci', header: 'ci', type: '' },
     { field: 'fechaInicio', header: 'fecha de inicio', type: 'date' },
-    { field: 'fechaFin', header: 'fecha de vencimiento', type: 'dateWithColors' },
+    { field: 'fechaFin', header: 'fecha de vencimiento', type: 'dateSubscription', otherField: 'fechaInicio' },
     { field: 'plan', header: 'plan', type: '' },
     { field: 'diasExtras', header: 'dias extras', type: '' },
     { field: 'cantidad', header: 'cantidad', type: '' },

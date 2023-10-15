@@ -23,7 +23,7 @@ const SubscriptionForm = ({ plans = [], partners = [], isLoading, isExpandable, 
             <Input label="Precio" name="precio" disabled />
           </Grid>
           <Grid item xs={12} md={6}>
-            <DatePicker label="Fecha de inicio" name={'fechaInicio'} disabled />
+            <DatePicker label="Fecha de inicio" name={'fechaInicio'} />
           </Grid>
           <Grid item xs={12} md={6}>
             <DatePicker label="Fecha fin" name={'fechaFin'} disabled />

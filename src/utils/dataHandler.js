@@ -1,4 +1,4 @@
-import { addDays, getDay, setHours, setMinutes } from 'date-fns';
+import { addDays, setHours, setMinutes } from 'date-fns';
 import { isBefore } from 'date-fns';
 import { format } from 'date-fns';
 import { differenceInMinutes } from 'date-fns';
