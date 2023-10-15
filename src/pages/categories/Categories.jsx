@@ -4,7 +4,7 @@ import { DASHBOARD, COLUMNS_TABLE, TEXT_MODAL } from '@/constants';
 import { DashboardContainer, DataTable, DialogConfirmation } from '@/components';
 import { deleteCategory, categoriesList } from '@/services';
 
-const buttonsActions = { edit: true, remove: true, detail: false };
+const buttonsActions = { edit: true, remove: true, detail: true };
 
 const Categories = () => {
   const { table } = useTable();

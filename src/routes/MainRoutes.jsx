@@ -35,6 +35,7 @@ const ModifyPlanning = lazy(() => import('@/pages/planning/ModifyPlan'));
 const Categories = lazy(() => import('@/pages/categories/Categories'));
 const AddCategory = lazy(() => import('@/pages/categories/AddCategory'));
 const ModifyCategory = lazy(() => import('@/pages/categories/ModifyCategory'));
+const CategoryDetail = lazy(() => import('@/pages/categories/CategoryDetail'));
 
 const Schedules = lazy(() => import('@/pages/schedules/Schedules'));
 
@@ -110,6 +111,7 @@ export default function Router() {
           />
           <Route path={ROUTES.categories.add} element={<AddCategory />} />
           <Route path={`${ROUTES.categories.modify}/:id`} element={<ModifyCategory />} />
+          <Route path={`${ROUTES.categories.detail}/:id`} element={<CategoryDetail />} />
           {/* Planning */}
           <Route
             path={ROUTES.planning.default}

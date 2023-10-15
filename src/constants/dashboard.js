@@ -100,12 +100,16 @@ export const DASHBOARD = {
       },
     },
     add: {
-      title: 'Agregar categoria',
-      description: 'Agrega una categoria en el sistema',
+      title: 'Agregar categoría',
+      description: 'Agrega una categoría en el sistema',
     },
     modify: {
-      title: 'Modificar categoria',
-      description: 'Modifica una categoria existente',
+      title: 'Modificar categoría',
+      description: 'Modifica una categoría existente',
+    },
+    detail: {
+      title: 'Detalle de la categoría',
+      description: 'Muestra la información de la categoría',
     },
   },
   planning: {
