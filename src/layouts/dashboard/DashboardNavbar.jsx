@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 // material
 import { alpha, styled } from '@mui/material/styles';
-import { Box, AppBar, Toolbar, IconButton } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Typography, Stack } from '@mui/material';
 // components
 import Iconify from '../../components/Iconify';
 import AccountPopover from './AccountPopover';
@@ -42,9 +42,13 @@ export default function DashboardNavbar({ onOpenSidebar }) {
         <IconButton onClick={onOpenSidebar} sx={{ mr: 1, color: 'text.primary', display: { lg: 'none' } }}>
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
-
-        <Box sx={{ flexGrow: 1 }} />
-        <AccountPopover />
+        <Stack justifyContent={'space-between'} flexDirection={'row'} sx={{ width: '100%' }} alignItems={'center'}>
+          <div></div>
+          <Typography color={'text.primary'} variant="h6" sx={{ textShadow: 'rgba(0,0,0,0.3) 4px 3px 4px' }}>
+            GIMNACIO ACTIVE LIFE DE TARIJA
+          </Typography>
+          <AccountPopover />
+        </Stack>
       </ToolbarStyle>
     </RootStyle>
   );

@@ -3,9 +3,13 @@ import { msg, regex } from '@/constants/validaciones';
 import * as yup from 'yup';
 
 const socios = yup.object().shape({
-  ci: yup.string().matches(regex.number, msg.number).required(),
+  ci: yup
+    .string()
+    .matches(regex.alphaNumeric, msg.alphaNumeric)
+    .max(10, 'no se permite mas de 10 caracteres')
+    .required(),
   nombre: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
-  apellidoM: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
+  apellidoM: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric),
   apellidoP: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
   edad: yup.string().matches(regex.number, msg.number).required(),
   celular: yup.string().matches(regex.number, msg.number).required(),
