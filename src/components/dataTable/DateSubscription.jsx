@@ -14,7 +14,7 @@ const DateSubscriptionCell = ({ value, align, isApplicable = true, initialDate }
   if (daysRemaining <= 10) {
     color = 'warning.dark';
   }
-  if (daysRemaining <= 0 || daysElapsedFromNow(initialDate)) {
+  if (daysRemaining <= 0 || daysElapsedFromNow(initialDate) > 0) {
     color = 'error.dark';
   }
 

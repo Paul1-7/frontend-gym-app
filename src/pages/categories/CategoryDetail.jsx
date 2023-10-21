@@ -16,15 +16,21 @@ const CategoryDetail = () => {
   });
 
   const { disciplinas, maquinarias, productos } = data ?? {};
-  let listType = [];
+  const selectedType = {
+    data: [],
+    field: [],
+  };
   if (disciplinas?.length > 0) {
-    listType = disciplinas;
+    selectedType.data = disciplinas;
+    selectedType.field = 'disciplina';
   }
   if (maquinarias?.length > 0) {
-    listType = maquinarias;
+    selectedType.data = maquinarias;
+    selectedType.field = 'maquinaria';
   }
   if (productos?.length > 0) {
-    listType = productos;
+    selectedType.data = productos;
+    selectedType.field = 'producto';
   }
 
   return (
@@ -60,9 +66,10 @@ const CategoryDetail = () => {
         <Typography variant="h6" component={'h2'} sx={{ mt: 2, mb: 1 }}>
           Elementos que conforman la categoría:
         </Typography>
-        {listType.map(({ disciplina }, idx) => (
-          <Typography key={disciplina.id}>{`${idx + 1}. ${disciplina.nombre}`}</Typography>
-        ))}
+        {selectedType.data.map((item, idx) => {
+          const selectedValue = item[selectedType.field];
+          return <Typography key={selectedValue.id}>{`${idx + 1}. ${selectedValue.nombre}`}</Typography>;
+        })}
       </Box>
     </DashboardContainer>
   );
