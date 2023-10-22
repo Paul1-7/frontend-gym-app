@@ -6,6 +6,7 @@ export * from './usePlan';
 export * from './usePlanExpandible';
 export * from './usePlanning';
 export * from './usePrint.';
+export * from './useProducts';
 export * from './useRepeatEvents';
 export * from './useReport';
 export { default as useResponsive } from './useResponsive';

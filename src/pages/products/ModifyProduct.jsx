@@ -10,6 +10,7 @@ import { getProductById, modifyProduct } from '@/services';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import ProductForm from './ProductForm';
+import { useProducts } from '@/hooks';
 
 const ModifyProduct = () => {
   const { id } = useParams();
@@ -20,8 +21,9 @@ const ModifyProduct = () => {
     criteriaMode: 'all',
   });
 
-  const hasExpiration = methods.watch('tieneVencimiento')?.toString() == 'true';
-
+  const { hasExpiration } = useProducts({
+    formMethods: methods,
+  });
   const modifyProductData = useMutation({
     mutationFn: (data) => {
       return modifyProduct({ data, id });
@@ -41,7 +43,7 @@ const ModifyProduct = () => {
   return (
     <DashboardContainer data={DASHBOARD.products.modify}>
       <Form methods={methods} onSubmit={modifyProductData.mutate}>
-        <ProductForm isLoading={modifyProductData.isLoading} hasExpiration={!hasExpiration} withState />
+        <ProductForm isLoading={modifyProductData.isLoading} hasExpiration={hasExpiration} withState />
       </Form>
       {!modifyProductData.isLoading && !modifyProductData.isError && modifyProductData.isSuccess && (
         <Navigate to={ROUTES.products.default} />

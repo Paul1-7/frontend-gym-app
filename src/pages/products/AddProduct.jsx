@@ -8,6 +8,7 @@ import { DashboardContainer, Form } from '@/components';
 import { addProduct } from '@/services';
 import { ROUTES } from '@/routes';
 import ProductForm from './ProductForm';
+import { useProducts } from '@/hooks';
 
 const AddProduct = () => {
   const methods = useForm({
@@ -17,7 +18,9 @@ const AddProduct = () => {
     criteriaMode: 'all',
   });
 
-  const hasExpiration = methods.watch('tieneVencimiento') === 'true';
+  const { hasExpiration } = useProducts({
+    formMethods: methods,
+  });
 
   const product = useMutation({
     mutationFn: (data) => {
