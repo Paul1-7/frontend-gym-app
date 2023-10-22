@@ -6,7 +6,7 @@ import { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-export const usePlanExpandible = ({ methods, plans = [], daysRemaining = 0 }) => {
+export const usePlanExpandible = ({ methods, plans = [] }) => {
   const [isExpandable, setIsExpandable] = useState(true);
   const planRef = useRef(null);
   const { idPlan, idSocio, cantidad, fechaInicio } = methods.watch();
@@ -27,9 +27,9 @@ export const usePlanExpandible = ({ methods, plans = [], daysRemaining = 0 }) =>
     setIsExpandable(!esExpandible);
 
     if (!esExpandible) setValue('cantidad', 1);
-    setValue('fechaFin', add(new Date(), { days: planRef.current.duracion * cantidad + daysRemaining + daysElapsed }));
+    setValue('fechaFin', add(new Date(), { days: planRef.current.duracion * cantidad + daysElapsed }));
     setValue('precio', getBOBCurrency(planRef.current.precio * cantidad));
-  }, [idPlan, cantidad, daysRemaining, fechaInicio]);
+  }, [idPlan, cantidad, fechaInicio]);
 
   return { isExpandable };
 };

@@ -82,6 +82,7 @@ export const initialFormSubscription = {
   cantidad: '1',
   fechaInicio: new Date(),
   fechaFin: new Date(),
+  daysRemaining: 0,
 };
 
 export const initialFormSale = {

@@ -10,6 +10,8 @@ import { DashboardContainer, Form } from '@/components';
 import { addSubscriptions, getLastSubscriptionsByIdSocio, partnersListFullName, plansListActive } from '@/services';
 import { ROUTES } from '@/routes';
 import { Alert, Grid } from '@mui/material';
+import { useEffect } from 'react';
+import { add } from 'date-fns';
 
 const AddSubscription = () => {
   const methods = useForm({
@@ -58,6 +60,15 @@ const AddSubscription = () => {
     plans: plans.data,
     daysRemaining: activeSuscriptions.data?.daysRemaining ?? 0,
   });
+
+  useEffect(() => {
+    if (!activeSuscriptions.data) return;
+
+    const daysRemaining = activeSuscriptions.data?.daysRemaining ?? 0;
+
+    methods.setValue('fechaInicio', add(new Date(), { days: daysRemaining }));
+    methods.setValue('daysRemaining', daysRemaining);
+  }, [activeSuscriptions.data]);
 
   return (
     <DashboardContainer data={DASHBOARD.subscriptions.add}>
