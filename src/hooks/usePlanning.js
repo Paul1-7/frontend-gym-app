@@ -25,7 +25,7 @@ const DEFAULT_OBJECT = { nombre: 'Ninguno', id: ITEM_DEFAULT };
 
 export const usePlanning = ({ formMethods }) => {
   const dataWatched = formMethods.watch();
-  const { idDisciplina, dia, idEntrenador, idHorario, hora, fecha, idSocio } = dataWatched;
+  const { id, idDisciplina, dia, idEntrenador, idHorario, hora, fecha, idSocio, capacidad } = dataWatched;
   const [enabledFields, setEnabledFields] = useState(initialEnabledFields);
   const queryTrainers = useRef('');
   const querySchedules = useRef('');
@@ -41,11 +41,13 @@ export const usePlanning = ({ formMethods }) => {
   const disciplines = useQuery({
     queryKey: ['disciplinesList'],
     queryFn: () => disciplinesList(),
+    cacheTime: 0,
   });
 
   const partners = useQuery({
     queryKey: ['partners'],
     queryFn: () => partnersListFullName(queryPartners.current),
+    cacheTime: 0,
   });
 
   const trainers = useQuery({
@@ -65,8 +67,21 @@ export const usePlanning = ({ formMethods }) => {
     queryFn: () => planningList(queryPlanning.current),
     enabled: false,
   });
+  const isSameId = planning.data?.every(({ id: idPlanning }) => idPlanning === id);
 
   useEffect(() => {
+    formMethods.setValue('cupoDisponible', capacidad - idSocio.length);
+  }, [capacidad, idSocio]);
+
+  useEffect(() => {
+    formMethods.setValue('idEntrenador', { nombre: 'Ninguno', id: ITEM_DEFAULT });
+    formMethods.setValue('idHorario', ITEM_DEFAULT);
+    formMethods.setValue('idSocio', [{ nombre: 'Ninguno', id: ITEM_DEFAULT }]);
+  }, [idDisciplina, dia]);
+
+  useEffect(() => {
+    if (!idEntrenador) return;
+
     const isDefaultValue = dia === ITEM_DEFAULT || idDisciplina === ITEM_DEFAULT;
 
     const isTrainerDefaultValue = compare(idEntrenador, DEFAULT_OBJECT) || isDefaultValue;
@@ -79,9 +94,10 @@ export const usePlanning = ({ formMethods }) => {
       schedules: isTrainerDefaultValue,
       partners: isScheduleDefaultValue,
     }));
-  }, [idDisciplina, dia, idEntrenador.id, idHorario]);
+  }, [idDisciplina, dia, idEntrenador?.id, idHorario]);
 
   useEffect(() => {
+    if (!idEntrenador) return;
     if (!enabledFields.trainers) {
       queryTrainers.current = `?$horarios.id_disciplina$=${idDisciplina}&$horarios.dia$=${dia}`;
       trainers.refetch();
@@ -96,11 +112,7 @@ export const usePlanning = ({ formMethods }) => {
       queryPartners.current = `?$programaciones.fecha$={[Op.ne]:${fecha.toISOString()}}&$programaciones.hora$={[Op.ne]:${hora}}`;
       partners.refetch();
     }
-  }, [enabledFields]);
-
-  useEffect(() => {
-    formMethods.setValue('cupoDisponible', idSocio.length);
-  }, [idSocio?.length]);
+  }, [enabledFields, idEntrenador]);
 
   useEffect(() => {
     if (!enabledFields.trainers) return;
@@ -110,8 +122,10 @@ export const usePlanning = ({ formMethods }) => {
   }, [enabledFields.trainers]);
 
   useEffect(() => {
-    if (idHorario === ITEM_DEFAULT) return;
+    if (idHorario === ITEM_DEFAULT || !schedules.data) return;
     selectedSchedule.current = schedules.data.find(({ id }) => id === idHorario);
+
+    if (!selectedSchedule.current) return;
 
     const selectedDate = new Date(selectedSchedule.current.horarioEntrada);
     const newDate = getNearestDateForDayOfWeek(selectedDate);
@@ -120,8 +134,8 @@ export const usePlanning = ({ formMethods }) => {
     planning.refetch();
     formMethods.setValue('fecha', newDate);
     formMethods.setValue('hora', format(newDate, 'HH:mm'));
-    formMethods.setValue('capacidad', selectedSchedule?.salon?.capacidad ?? 1);
-  }, [idHorario]);
+    formMethods.setValue('capacidad', selectedSchedule.current?.salon?.capacidad ?? 1);
+  }, [idHorario, schedules.data]);
 
   return {
     trainers,
@@ -131,6 +145,8 @@ export const usePlanning = ({ formMethods }) => {
     addPlanningData,
     enabledFields,
     selectedSchedule: selectedSchedule.current,
-    isPlanningUnique: !!planning.data?.length,
+    isPlanningUnique: !!planning.data?.length && !isSameId,
+    availableQuotas: capacidad - idSocio.length,
+    roomCapacity: capacidad,
   };
 };

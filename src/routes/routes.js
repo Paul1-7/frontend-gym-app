@@ -56,6 +56,7 @@ export const ROUTES = {
     default: ADMIN_PATH + '/programacion',
     add: ADMIN_PATH + '/programacion/agregar',
     modify: ADMIN_PATH + '/programacion/modificar',
+    detail: ADMIN_PATH + '/programacion/detalle',
   },
   equipment: {
     default: ADMIN_PATH + '/maquinarias',

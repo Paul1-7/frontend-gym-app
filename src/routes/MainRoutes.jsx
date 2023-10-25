@@ -30,7 +30,8 @@ const ModifyPlan = lazy(() => import('@/pages/plans/ModifyPlan'));
 // Planning
 const Planning = lazy(() => import('@/pages/planning/Plannings'));
 const AddPlanning = lazy(() => import('@/pages/planning/AddPlanning'));
-const ModifyPlanning = lazy(() => import('@/pages/planning/ModifyPlan'));
+const ModifyPlanning = lazy(() => import('@/pages/planning/ModifyPlanning'));
+const DetailPlanning = lazy(() => import('@/pages/planning/PlanningDetail'));
 // Categories
 const Categories = lazy(() => import('@/pages/categories/Categories'));
 const AddCategory = lazy(() => import('@/pages/categories/AddCategory'));
@@ -123,6 +124,7 @@ export default function Router() {
           />
           <Route path={ROUTES.planning.add} element={<AddPlanning />} />
           <Route path={`${ROUTES.planning.modify}/:id`} element={<ModifyPlanning />} />
+          <Route path={`${ROUTES.planning.detail}/:id`} element={<DetailPlanning />} />
           {/* Salas */}
           <Route
             path={ROUTES.halls.default}

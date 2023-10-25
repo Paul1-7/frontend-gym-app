@@ -1,9 +1,10 @@
 import { differenceInCalendarDays } from 'date-fns';
 import { parseISO } from 'date-fns';
 import { format, formatDistanceToNow } from 'date-fns';
+import { es } from 'date-fns/locale';
 
 export function fDate(date) {
-  return format(new Date(date), 'dd MMMM yyyy');
+  return format(new Date(date), 'dd MMMM yyyy', { locale: es });
 }
 
 export function fDateTime(date) {

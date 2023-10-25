@@ -115,7 +115,7 @@ export const DASHBOARD = {
   planning: {
     default: {
       title: 'Programaciones',
-      description: 'Lista de programacion de clases de alguna disciplina',
+      description: 'Lista de programación para clases de alguna disciplina',
       button: {
         icon: CalendarMonth,
         url: ROUTES.planning.add,
@@ -129,6 +129,10 @@ export const DASHBOARD = {
     modify: {
       title: 'Modificar programacion',
       description: 'Modifica una programacion existente de una clase',
+    },
+    detail: {
+      title: 'Detalle de la clase',
+      description: 'Muestra la información de la clase programada',
     },
   },
   products: {

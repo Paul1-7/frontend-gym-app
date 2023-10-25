@@ -118,9 +118,10 @@ export const initialFormCategory = {
 };
 
 export const initialFormPlanning = {
-  capacidad: '',
+  id: null,
+  capacidad: '0',
   idEntrenador: { nombre: 'Ninguno', id: ITEM_DEFAULT },
-  cupoDisponible: '',
+  cupoDisponible: '0',
   idHorario: ITEM_DEFAULT,
   idDisciplina: ITEM_DEFAULT,
   hora: '',

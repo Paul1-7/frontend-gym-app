@@ -16,21 +16,27 @@ const PlanningForm = ({
   enabledTrainer,
   enabledSchedules,
   enabledPartners,
+  isModify,
 }) => {
   return (
     <>
       <Grid item xs={12} wrap="wrap" container spacing={2}>
         <Grid item xs={12} md={6}>
-          <Select name="idDisciplina" label="Disciplinas" items={disciplines} />
+          <Select name="idDisciplina" label="Disciplinas" items={disciplines} disabled={isModify} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Select name="dia" label="Dia" items={DAYS_ITEMS} />
+          <Select name="dia" label="Dia" items={DAYS_ITEMS} disabled={isModify} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Autocomplete name="idEntrenador" label="Entrenadores" items={trainers} disabled={enabledTrainer} />
+          <Autocomplete
+            name="idEntrenador"
+            label="Entrenadores"
+            items={trainers}
+            disabled={enabledTrainer || isModify}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Select name="idHorario" label="Horario" items={schedules} disabled={enabledSchedules} />
+          <Select name="idHorario" label="Horario" items={schedules} disabled={enabledSchedules || isModify} />
         </Grid>
         <Grid item xs={12} md={6}>
           <Autocomplete
@@ -44,7 +50,7 @@ const PlanningForm = ({
         </Grid>
       </Grid>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem', gap: '1rem' }}>
-        <ButtonLink variant="outlined" color="error" to={ROUTES.subscriptions.default}>
+        <ButtonLink variant="outlined" color="error" to={ROUTES.planning.default}>
           Cancelar
         </ButtonLink>
         <LoadingButton
@@ -74,6 +80,7 @@ PlanningForm.propTypes = {
   enabledTrainer: PropTypes.bool,
   enabledSchedules: PropTypes.bool,
   enabledPartners: PropTypes.bool,
+  isModify: PropTypes.any,
 };
 
 export default PlanningForm;

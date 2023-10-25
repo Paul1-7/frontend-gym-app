@@ -29,7 +29,7 @@ const COLUMNS_TABLE = {
     { field: 'capacidad', header: 'capacidad', type: '' },
     { field: 'cupoDisponible', header: 'cupo disponible', type: '' },
     { field: 'disciplina', header: 'disciplina', type: '' },
-    { field: 'fecha', header: 'fecha', type: '' },
+    { field: 'fecha', header: 'fecha', type: 'date' },
   ],
   categories: [
     { field: 'nombre', header: 'nombre', type: '' },
@@ -76,7 +76,6 @@ const COLUMNS_TABLE = {
     { field: 'fechaInicio', header: 'fecha de inicio', type: 'date' },
     { field: 'fechaFin', header: 'fecha de vencimiento', type: 'dateSubscription', otherField: 'fechaInicio' },
     { field: 'plan', header: 'plan', type: '' },
-    { field: 'diasExtras', header: 'dias extras', type: '' },
     { field: 'cantidad', header: 'cantidad', type: '' },
     { field: 'montoCancelado', header: 'monto cancelado', type: 'currency' },
   ],

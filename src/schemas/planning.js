@@ -3,7 +3,12 @@ import compare from 'just-compare';
 import * as yup from 'yup';
 
 const planning = yup.object().shape({
-  idEntrenador: yup.object().test('idPlan-test', 'Debe seleccionar otra opción', (value) => value.id !== ITEM_DEFAULT),
+  id: yup.string().optional().nullable(),
+  idEntrenador: yup
+    .object()
+    .test('idPlan-test', 'Debe seleccionar otra opción', (value) => value?.id !== ITEM_DEFAULT)
+    .typeError('Tiene que seleccionar una opción')
+    .required('Tiene que seleccionar una opción'),
   capacidad: yup.number().required(),
   cupoDisponible: yup
     .number()
@@ -19,7 +24,6 @@ const planning = yup.object().shape({
   idSocio: yup
     .array()
     .of(yup.object())
-
     .when('idEntrenador', {
       is: (idEntrenador) => !compare(idEntrenador, { nombre: 'Ninguno', id: ITEM_DEFAULT }),
       then: () => {
@@ -28,13 +32,15 @@ const planning = yup.object().shape({
           .of(yup.object())
           .test('entrenador-test', 'No puede agregar al entrenador como participante', function (value) {
             const idEntrenador = this.parent.idEntrenador;
-            return value.every((item) => item.id !== idEntrenador.id);
+            return value.every((item) => item?.id !== idEntrenador?.id);
           })
           .test('idSocio-test', 'No se permite la opción ninguno', (value) => {
-            return value.every((item) => item.id !== ITEM_DEFAULT);
-          });
+            return value.every((item) => item?.id !== ITEM_DEFAULT);
+          })
+          .min(1, 'TIene que seleccionar al menos un participante');
       },
-    }),
+    })
+    .typeError('Tiene que seleccionar una opción'),
 });
 
 export default planning;
