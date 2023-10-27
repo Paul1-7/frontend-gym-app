@@ -1,9 +1,9 @@
 import { ITEM_DEFAULT, msg, regex } from '@/constants';
 import * as yup from 'yup';
 
-const salesReport = yup.object().shape({
+const equipmentsReport = yup.object().shape({
   options: yup.object().shape({
-    idDateRange: yup
+    criterio: yup
       .string()
       .matches(regex.alphaNumeric, msg.alphaNumeric)
       .test('noDefaultValue', 'Tiene que seleccionar una opción', (value) => value !== ITEM_DEFAULT),
@@ -12,10 +12,8 @@ const salesReport = yup.object().shape({
       .matches(regex.alphaNumeric, msg.alphaNumeric)
       .test('noDefaultValue', 'Tiene que seleccionar una opción', (value) => value !== ITEM_DEFAULT),
   }),
-  customDateRange: yup.object().shape({
-    dateStart: yup.date(),
-    dateEnd: yup.date(),
-  }),
+  dateStart: yup.date(),
+  dateEnd: yup.date(),
 });
 
-export default salesReport;
+export default equipmentsReport;

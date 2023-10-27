@@ -5,8 +5,8 @@ export const URL_EQUIPMENT = {
   default: '/api/v1/maquinarias',
 };
 
-export const equipmentsList = async () => {
-  const response = await Axios.get(URL_EQUIPMENT.default);
+export const equipmentsList = async ({ params } = {}) => {
+  const response = await Axios.get(URL_EQUIPMENT.default, { params });
   return response.data;
 };
 

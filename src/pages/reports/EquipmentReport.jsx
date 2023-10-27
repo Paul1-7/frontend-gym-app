@@ -3,7 +3,7 @@ import {
   SALES_REPORT_SORT_OPTIONS,
   DASHBOARD,
   REPORT_FREQUENCY_OPTIONS,
-  initialFormSaleReport,
+  initialFormEquipmentReport,
 } from '@/constants';
 import { usePrint, useReport } from '@/hooks';
 import schema from '@/schemas';
@@ -14,12 +14,11 @@ import { useForm } from 'react-hook-form';
 import { EmptyReport } from './EmptyReport';
 import { useQuery } from '@tanstack/react-query';
 import { ButtonsReport } from './ButtonsReport';
-import { listSalesByDates, salesList } from '@/services';
+import { listSalesByDates } from '@/services';
 import ReportSummary from './ReportSummary';
 import TableReport from './TableReport';
 import { HeaderBusinessInfo } from '@/components';
 import DateRangePicker from './DateRangePicker';
-import { useEffect } from 'react';
 
 const sxNoPrint = {
   '@media print': {
@@ -27,32 +26,28 @@ const sxNoPrint = {
   },
 };
 
-export default function SalesReport() {
+export default function EquipmentReport() {
   const formMethods = useForm({
-    resolver: yupResolver(schema.salesReport),
-    defaultValues: initialFormSaleReport,
+    resolver: yupResolver(schema.equipmentsReport),
+    defaultValues: initialFormEquipmentReport,
     mode: 'all',
     criteriaMode: 'all',
   });
   const watchedFormValues = formMethods.watch();
 
-  const { fileName, showAllRows, toggleShowRows, searchTerm } = useReport({
+  const { fileName, showAllRows, handleShowRows, searchTerm } = useReport({
     formMethods,
     frequencyOptions: REPORT_FREQUENCY_OPTIONS,
-    initialFormOptions: initialFormSaleReport.options,
-    filename: 'reporteVentas',
+    initialFormOptions: initialFormEquipmentReport.options,
+    filename: 'reporteMaquinarias',
   });
 
-  const { data, isSuccess, refetch } = useQuery({
-    queryKey: ['sales'],
-    queryFn: () => listSalesByDates({ params: searchTerm }),
-    enabled: false,
-  });
+  const { data, isSuccess } = useQuery([searchTerm], ({ queryKey }) => {
+    const params = queryKey?.[0];
 
-  useEffect(() => {
-    if (!Object.values(searchTerm ?? {}).length) return;
-    refetch();
-  }, [searchTerm]);
+    if (!params || !params.length) return;
+    return listSalesByDates(params);
+  });
 
   const { loadingPrint, componentToPrintRef, handlePrint } = usePrint({
     fileName,
@@ -64,12 +59,12 @@ export default function SalesReport() {
       <Form methods={formMethods}>
         <Grid container wrap="wrap" spacing={1} sx={sxNoPrint}>
           <Grid item xs={12} md={6}>
-            <Select name="options.idDateRange" label="Criterios" items={REPORT_FREQUENCY_OPTIONS} isArray />
+            <Select name="options.criterio" label="Criterios" items={REPORT_FREQUENCY_OPTIONS} isArray />
           </Grid>
           <Grid item xs={12} md={6}>
             <Select name="options.orderBy" label="Ordenar por" items={SALES_REPORT_SORT_OPTIONS} isArray />
           </Grid>
-          {Number(watchedFormValues.options.idDateRange) === 5 && <DateRangePicker />}
+          {Number(watchedFormValues.options.criterio) === 5 && <DateRangePicker />}
         </Grid>
         {!data && <EmptyReport />}
         {!!data?.length && (
@@ -98,7 +93,7 @@ export default function SalesReport() {
                   defaultChecked
                   size="small"
                   value={showAllRows}
-                  onChange={toggleShowRows}
+                  onChange={handleShowRows}
                   disabled={data?.length <= 10}
                 />
               }

@@ -9,10 +9,10 @@ const DateRangePicker = () => {
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <DatePicker label="Fecha de inicio" name="dateStart" isArray />
+          <DatePicker label="Fecha de inicio" name="customDateRange.dateStart" isArray />
         </Grid>
         <Grid item xs={12} md={6}>
-          <DatePicker label="Fecha de finalización" name="dateEnd" isArray />
+          <DatePicker label="Fecha de finalización" name="customDateRange.dateEnd" isArray />
         </Grid>
       </Grid>
     </Grid>

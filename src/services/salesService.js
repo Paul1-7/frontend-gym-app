@@ -6,19 +6,19 @@ export const URL_SALES = {
   reports: '/api/v1/ventas/reporte',
 };
 
-export const salesList = async () => {
-  const response = await Axios.get(URL_SALES.default);
+export const salesList = async ({ params } = {}) => {
+  const response = await Axios.get(URL_SALES.default, { params });
   return getSalesListWithPersonName(response.data);
 };
+
+export const listSalesByDates = ({ params } = {}) =>
+  Axios.get(`${URL_SALES.reports}`, { params }).then((res) => {
+    return getSalesToReport(res.data);
+  });
 
 export const getSaleById = async (id) => {
   const response = await Axios.get(`${URL_SALES.default}/${id}`);
   return response.data;
 };
-
-export const listSalesByDates = (params) =>
-  Axios.get(`${URL_SALES.reports}${params}`).then((res) => {
-    return getSalesToReport(res.data);
-  });
 
 export const addSale = async ({ data }) => Axios.post(URL_SALES.default, data);

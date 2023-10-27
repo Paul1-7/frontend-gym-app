@@ -1,54 +1,65 @@
-import { addHours } from 'date-fns';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useMemo, useState, useCallback } from 'react';
+import { parseISO } from 'date-fns';
+import { REPORT_FREQUENCY_OPTIONS } from '@/constants';
 
-export const useReport = ({ formMethods, frequencyOptions, initialFormOptions, filename = 'reporte' }) => {
+export const useReport = ({ formMethods, initialFormOptions }) => {
   const [showAllRows, setShowAllRows] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
-  const handleShowRows = () => setShowAllRows(!showAllRows);
-
-  const watchValues = formMethods.watch();
-
-  const nameCriteria = frequencyOptions.find(({ id }) => id === watchValues.options.criterio)?.name;
-
-  const completeFileName = `${filename}-${nameCriteria}`;
+  const selectedOptions = formMethods.watch();
+  const CUSTOM_RANGE_DATE = '5';
 
   const hasOptionsByDefault = () => {
-    const { options: selectedOptions } = watchValues;
-    const selectedValues = Object.values(selectedOptions);
+    const selectedValues = Object.values(selectedOptions.options);
     const initialFormValues = Object.values(initialFormOptions);
-
-    return selectedValues.every((selectedValue) => initialFormValues.includes(selectedValue));
+    return selectedValues.some((selectedValue) => initialFormValues.includes(selectedValue));
   };
 
-  useEffect(() => {
-    let dateStart;
-    let dateEnd = new Date();
+  const getOrderByFromOptions = () => {
+    const { orderBy } = selectedOptions.options;
+    return orderBy;
+  };
 
-    if (hasOptionsByDefault()) return;
-    const { criterio, orderBy } = watchValues.options;
+  const getRangeFromFrequencyOptions = () => {
+    const { options, customDateRange } = selectedOptions;
+    const { idDateRange } = options;
+    const selectedFrequency = REPORT_FREQUENCY_OPTIONS.find(({ id }) => id === idDateRange);
 
-    if (criterio !== '5') {
-      const selectedCriteria = frequencyOptions.find(({ id }) => id === criterio);
-      dateStart = selectedCriteria.dateStart?.toISOString();
-      dateEnd = selectedCriteria.dateEnd?.toISOString();
+    if (selectedFrequency.id === CUSTOM_RANGE_DATE) {
+      return {
+        dateStart: parseISO(customDateRange.dateStart),
+        dateEnd: parseISO(customDateRange.dateEnd),
+      };
     } else {
-      dateStart = watchValues.dateStart.toISOString();
-      dateEnd = watchValues.dateEnd.toISOString();
+      return { dateStart: selectedFrequency.dateStart, dateEnd: selectedFrequency.dateEnd };
+    }
+  };
+
+  const memoizedSearchTerm = useMemo(() => {
+    if (hasOptionsByDefault()) {
+      return null;
     }
 
-    if (!dateStart || !dateEnd) return;
+    const { options, customDateRange } = selectedOptions;
+    let params = {};
 
-    const dateEndMoreHr = addHours(new Date(dateEnd), 1).toISOString();
-    const url = `?dateStart=${dateStart}&dateEnd=${dateEndMoreHr}&orderBy=${orderBy}`;
+    if (options.idDateRange && customDateRange) {
+      params = getRangeFromFrequencyOptions();
+    }
 
-    setSearchTerm(url);
-  }, [watchValues]);
+    params.orderBy = getOrderByFromOptions();
+
+    return params;
+  }, [selectedOptions]);
+
+  const toggleShowRows = useCallback(() => {
+    setShowAllRows((prevShowAllRows) => !prevShowAllRows);
+  }, []);
+
+  const fileName = `reporte-${selectedOptions?.criterio}`;
 
   return {
-    fileName: completeFileName,
+    fileName,
     showAllRows,
-    handleShowRows,
-    searchTerm,
+    toggleShowRows,
+    searchTerm: memoizedSearchTerm,
   };
 };
