@@ -91,8 +91,8 @@ const ITEMS_SUSCRIPCIONES_REPORTE = [
 
 export const ITEMS_EQUIPMENT_STATES = [
   { id: 'operativa', nombre: 'Operativa' },
-  { id: 'reparacion', nombre: 'En reparación' },
-  { id: 'fueraServicio', nombre: 'Fuera de servicio' },
+  { id: 'en reparación', nombre: 'En reparación' },
+  { id: 'fuera de servicio', nombre: 'Fuera de servicio' },
 ];
 
 const ITEMS_RADIO_REPORTES_SUSC = [

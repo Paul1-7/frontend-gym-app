@@ -67,6 +67,7 @@ export const ROUTES = {
     default: ADMIN_PATH + '/reportes',
     sales: ADMIN_PATH + '/reportes/ventas',
     subscriptions: ADMIN_PATH + '/reportes/suscripciones',
+    equipment: ADMIN_PATH + '/reportes/maquinarias',
     employees: ADMIN_PATH + '/reportes/empleados',
   },
   auth: {

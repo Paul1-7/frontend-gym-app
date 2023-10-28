@@ -93,6 +93,11 @@ const navConfig = [
         path: ROUTES.reports.subscriptions,
         allowedRols: [ADMINISTRADOR, RECEPCIONISTA],
       },
+      {
+        title: 'Reporte de maquinarias',
+        path: ROUTES.reports.equipment,
+        allowedRols: [ADMINISTRADOR, RECEPCIONISTA],
+      },
     ],
   },
 ];

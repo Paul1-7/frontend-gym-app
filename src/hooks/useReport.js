@@ -1,11 +1,14 @@
 import { useMemo, useState, useCallback } from 'react';
-import { parseISO } from 'date-fns';
 import { REPORT_FREQUENCY_OPTIONS } from '@/constants';
+import { useRef } from 'react';
 
-export const useReport = ({ formMethods, initialFormOptions }) => {
+export const useReport = ({ formMethods, initialFormOptions, filename = '', criteriaOptions }) => {
   const [showAllRows, setShowAllRows] = useState(true);
   const selectedOptions = formMethods.watch();
   const CUSTOM_RANGE_DATE = '5';
+
+  const selectedCriterio = useRef(null);
+  const selectedFrequency = useRef(null);
 
   const hasOptionsByDefault = () => {
     const selectedValues = Object.values(selectedOptions.options);
@@ -21,15 +24,15 @@ export const useReport = ({ formMethods, initialFormOptions }) => {
   const getRangeFromFrequencyOptions = () => {
     const { options, customDateRange } = selectedOptions;
     const { idDateRange } = options;
-    const selectedFrequency = REPORT_FREQUENCY_OPTIONS.find(({ id }) => id === idDateRange);
+    selectedFrequency.current = REPORT_FREQUENCY_OPTIONS.find(({ id }) => id === idDateRange);
 
-    if (selectedFrequency.id === CUSTOM_RANGE_DATE) {
+    if (selectedFrequency.current.id === CUSTOM_RANGE_DATE) {
       return {
-        dateStart: parseISO(customDateRange.dateStart),
-        dateEnd: parseISO(customDateRange.dateEnd),
+        dateStart: customDateRange.dateStart.toISOString(),
+        dateEnd: customDateRange.dateEnd.toISOString(),
       };
     } else {
-      return { dateStart: selectedFrequency.dateStart, dateEnd: selectedFrequency.dateEnd };
+      return { dateStart: selectedFrequency.current.dateStart, dateEnd: selectedFrequency.current.dateEnd };
     }
   };
 
@@ -45,6 +48,11 @@ export const useReport = ({ formMethods, initialFormOptions }) => {
       params = getRangeFromFrequencyOptions();
     }
 
+    if (options.criterio) {
+      params.criterio = options.criterio;
+      selectedCriterio.current = criteriaOptions.find(({ id }) => id === options.criterio);
+    }
+
     params.orderBy = getOrderByFromOptions();
 
     return params;
@@ -54,10 +62,12 @@ export const useReport = ({ formMethods, initialFormOptions }) => {
     setShowAllRows((prevShowAllRows) => !prevShowAllRows);
   }, []);
 
-  const fileName = `reporte-${selectedOptions?.criterio}`;
+  const completedFileName = `${filename}-${selectedCriterio.current?.name ?? ''}-${
+    selectedFrequency.current?.name ?? ''
+  }`;
 
   return {
-    fileName,
+    fileName: completedFileName,
     showAllRows,
     toggleShowRows,
     searchTerm: memoizedSearchTerm,

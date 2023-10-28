@@ -12,8 +12,6 @@ const equipmentsReport = yup.object().shape({
       .matches(regex.alphaNumeric, msg.alphaNumeric)
       .test('noDefaultValue', 'Tiene que seleccionar una opción', (value) => value !== ITEM_DEFAULT),
   }),
-  dateStart: yup.date(),
-  dateEnd: yup.date(),
 });
 
 export default equipmentsReport;

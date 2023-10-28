@@ -1,9 +1,10 @@
 import {
-  COLUMNS_SALES_REPORT,
-  SALES_REPORT_SORT_OPTIONS,
   DASHBOARD,
   REPORT_FREQUENCY_OPTIONS,
   initialFormEquipmentReport,
+  EQUIPMENT_REPORT_CRITERIA_OPTIONS,
+  EQUIPMENT_REPORT_SORT_OPTIONS,
+  COLUMNS_EQUIPMENT_REPORT,
 } from '@/constants';
 import { usePrint, useReport } from '@/hooks';
 import schema from '@/schemas';
@@ -14,11 +15,11 @@ import { useForm } from 'react-hook-form';
 import { EmptyReport } from './EmptyReport';
 import { useQuery } from '@tanstack/react-query';
 import { ButtonsReport } from './ButtonsReport';
-import { listSalesByDates } from '@/services';
+import { equipmentsListReport } from '@/services';
 import ReportSummary from './ReportSummary';
 import TableReport from './TableReport';
 import { HeaderBusinessInfo } from '@/components';
-import DateRangePicker from './DateRangePicker';
+import { useEffect } from 'react';
 
 const sxNoPrint = {
   '@media print': {
@@ -37,40 +38,44 @@ export default function EquipmentReport() {
 
   const { fileName, showAllRows, handleShowRows, searchTerm } = useReport({
     formMethods,
-    frequencyOptions: REPORT_FREQUENCY_OPTIONS,
+    criteriaOptions: EQUIPMENT_REPORT_CRITERIA_OPTIONS,
+
     initialFormOptions: initialFormEquipmentReport.options,
     filename: 'reporteMaquinarias',
   });
 
-  const { data, isSuccess } = useQuery([searchTerm], ({ queryKey }) => {
-    const params = queryKey?.[0];
-
-    if (!params || !params.length) return;
-    return listSalesByDates(params);
+  const { data, isSuccess, refetch } = useQuery({
+    queryKey: ['sales'],
+    queryFn: () => equipmentsListReport({ params: searchTerm }),
+    enabled: false,
   });
+
+  useEffect(() => {
+    if (!Object.values(searchTerm ?? {}).length) return;
+    refetch();
+  }, [searchTerm]);
 
   const { loadingPrint, componentToPrintRef, handlePrint } = usePrint({
     fileName,
   });
 
   return (
-    <DashboardContainer data={DASHBOARD.reports.sales}>
+    <DashboardContainer data={DASHBOARD.reports.equipments}>
       <Backdrop isLoading={loadingPrint} />
       <Form methods={formMethods}>
         <Grid container wrap="wrap" spacing={1} sx={sxNoPrint}>
           <Grid item xs={12} md={6}>
-            <Select name="options.criterio" label="Criterios" items={REPORT_FREQUENCY_OPTIONS} isArray />
+            <Select name="options.criterio" label="Criterio" items={EQUIPMENT_REPORT_CRITERIA_OPTIONS} isArray />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Select name="options.orderBy" label="Ordenar por" items={SALES_REPORT_SORT_OPTIONS} isArray />
+            <Select name="options.orderBy" label="Ordenar por" items={EQUIPMENT_REPORT_SORT_OPTIONS} isArray />
           </Grid>
-          {Number(watchedFormValues.options.criterio) === 5 && <DateRangePicker />}
         </Grid>
         {!data && <EmptyReport />}
         {!!data?.length && (
           <ButtonsReport
             handlePrint={handlePrint}
-            columnsCSV={COLUMNS_SALES_REPORT}
+            columnsCSV={COLUMNS_EQUIPMENT_REPORT}
             dataCSV={data}
             fileName={fileName}
           />
@@ -102,14 +107,15 @@ export default function EquipmentReport() {
           </FormGroup>
           <HeaderBusinessInfo sx={{ display: 'none', displayPrint: 'block' }} />
           <Typography gutterBottom variant="h3" align="center" sx={{ display: 'none', displayPrint: 'inherit' }}>
-            Reporte de ventas
+            Reporte de maquinas
           </Typography>
           <ReportSummary
+            criteriaOptions={EQUIPMENT_REPORT_CRITERIA_OPTIONS}
             frequencyOptions={REPORT_FREQUENCY_OPTIONS}
-            sortOptions={SALES_REPORT_SORT_OPTIONS}
+            sortOptions={EQUIPMENT_REPORT_SORT_OPTIONS}
             watchedFormValues={watchedFormValues.options}
           />
-          <TableReport columns={COLUMNS_SALES_REPORT} rows={data} showAllRows={showAllRows} />
+          <TableReport columns={COLUMNS_EQUIPMENT_REPORT} rows={data} showAllRows={showAllRows} />
         </Grid>
       )}
     </DashboardContainer>

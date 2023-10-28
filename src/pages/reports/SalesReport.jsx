@@ -14,7 +14,7 @@ import { useForm } from 'react-hook-form';
 import { EmptyReport } from './EmptyReport';
 import { useQuery } from '@tanstack/react-query';
 import { ButtonsReport } from './ButtonsReport';
-import { listSalesByDates, salesList } from '@/services';
+import { listSalesByDates } from '@/services';
 import ReportSummary from './ReportSummary';
 import TableReport from './TableReport';
 import { HeaderBusinessInfo } from '@/components';
