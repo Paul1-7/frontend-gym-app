@@ -117,8 +117,12 @@ export const initialFormEquipmentReport = {
     criterio: ITEM_DEFAULT,
     orderBy: ITEM_DEFAULT,
   },
-  dateStart: new Date(),
-  dateEnd: add(new Date(), { days: 1 }),
+};
+export const initialFormProductReport = {
+  options: {
+    criterio: ITEM_DEFAULT,
+    orderBy: ITEM_DEFAULT,
+  },
 };
 
 export const initialFormCategory = {

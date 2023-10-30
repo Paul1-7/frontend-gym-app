@@ -42,6 +42,12 @@ export const EQUIPMENT_REPORT_CRITERIA_OPTIONS = [
   { id: '4', name: 'Solo máquinas fuera de servicio ' },
 ];
 
+export const PRODUCT_REPORT_CRITERIA_OPTIONS = [
+  { id: '1', name: 'Todos los registros' },
+  { id: '2', name: 'Solo productos con vencimiento' },
+  { id: '3', name: 'Solo productos sin vencimiento' },
+];
+
 export const SALES_REPORT_SORT_OPTIONS = [
   { id: '1', name: 'Fecha de venta' },
   { id: '2', name: 'Total' },
@@ -55,6 +61,13 @@ export const EQUIPMENT_REPORT_SORT_OPTIONS = [
   { id: '4', name: 'Fecha de adquisición' },
   { id: '5', name: 'Precio' },
   { id: '6', name: 'Estado' },
+];
+export const PRODUCT_REPORT_SORT_OPTIONS = [
+  { id: '1', name: 'Nombre' },
+  { id: '2', name: 'Precio venta' },
+  { id: '3', name: 'Precio compra' },
+  { id: '4', name: 'Fecha de vencimiento' },
+  { id: '5', name: 'Stock' },
 ];
 
 export const COLUMNS_SALES_REPORT = [
@@ -73,7 +86,16 @@ export const COLUMNS_EQUIPMENT_REPORT = [
   { displayName: 'Marca', id: 'marca' },
   { displayName: 'Modelo', id: 'modelo' },
   { displayName: 'Fecha de adquisición', id: 'fechaAdquisicion' },
-  { displayName: 'Capacidad', id: 'capacidad' },
+  { displayName: 'Capacidad (kg)', id: 'capacidad' },
   { displayName: 'Precio', id: 'precio' },
   { displayName: 'Estado', id: 'estado' },
+];
+
+export const COLUMNS_PRODUCT_REPORT = [
+  { displayName: 'N°', id: 'index' },
+  { displayName: 'Nombre', id: 'nombre' },
+  { displayName: 'Precio de compra(Bs)', id: 'precioCompra' },
+  { displayName: 'Precio de venta (Bs)', id: 'precioVenta' },
+  { displayName: 'Stock', id: 'stock' },
+  { displayName: 'Fecha de vencimiento', id: 'fechaVencimiento' },
 ];

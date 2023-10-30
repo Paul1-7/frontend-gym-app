@@ -14,6 +14,7 @@ import categories from './categories';
 import planning from './planning';
 import login from './login';
 import equipmentsReport from './equipmentsReport';
+import productReport from './productReport';
 
 const schema = {
   socios,
@@ -32,6 +33,7 @@ const schema = {
   planning,
   login,
   equipmentsReport,
+  productReport,
 };
 
 export default schema;

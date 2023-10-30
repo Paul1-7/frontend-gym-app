@@ -237,6 +237,10 @@ export const DASHBOARD = {
       title: 'Reportes de ventas',
       description: 'Genera reportes de las ventas en formato PDF o CSV',
     },
+    products: {
+      title: 'Reportes de productos',
+      description: 'Genera reportes de los productos en formato PDF o CSV',
+    },
     equipments: {
       title: 'Reportes de maquinarias',
       description: 'Genera reportes de las maquinarias que hay en el gimnacio en formato PDF o CSV',
