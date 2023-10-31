@@ -187,6 +187,10 @@ export const DASHBOARD = {
       title: 'Agregar suscripción',
       description: 'Agrega una suscripcion en el sistema',
     },
+    modify: {
+      title: 'Modificar suscripción',
+      description: 'Modifica la fecha de inicio del sistema',
+    },
   },
   schedules: {
     default: {

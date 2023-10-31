@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import PropTypes from 'prop-types';
 
 const SearchBar = ({ setSearchQuery }) => (
-  <form style={{ width: 'max-content' }}>
+  <div style={{ width: 'max-content' }}>
     <TextField
       id="search-bar"
       className="text"
@@ -15,7 +15,7 @@ const SearchBar = ({ setSearchQuery }) => (
       size="small"
       sx={{ width: '15rem' }}
     />
-  </form>
+  </div>
 );
 SearchBar.propTypes = {
   setSearchQuery: PropTypes.func.isRequired,

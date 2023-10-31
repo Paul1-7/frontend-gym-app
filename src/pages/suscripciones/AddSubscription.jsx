@@ -22,7 +22,7 @@ const AddSubscription = () => {
   });
   const partnerWatch = methods.watch('idSocio');
 
-  const partner = useMutation({
+  const subscription = useMutation({
     mutationFn: (data) => {
       return addSubscriptions({ data });
     },
@@ -52,7 +52,7 @@ const AddSubscription = () => {
 
   const handleSubmit = (data) => {
     const dataParsed = { ...data, idSocio: data.idSocio.id };
-    partner.mutate(dataParsed);
+    subscription.mutate(dataParsed);
   };
 
   const { isExpandable } = usePlanExpandible({
@@ -74,7 +74,7 @@ const AddSubscription = () => {
     <DashboardContainer data={DASHBOARD.subscriptions.add}>
       <Form methods={methods} onSubmit={handleSubmit}>
         <SubscriptionForm
-          isLoading={partner.isLoading}
+          isLoading={subscription.isLoading}
           plans={plans.data}
           partners={partners.data}
           isExpandable={isExpandable}
@@ -97,7 +97,9 @@ const AddSubscription = () => {
           </Alert>
         )}
       </Grid>
-      {!partner.isLoading && !partner.isError && partner.isSuccess && <Navigate to={ROUTES.subscriptions.default} />}
+      {!subscription.isLoading && !subscription.isError && subscription.isSuccess && (
+        <Navigate to={ROUTES.subscriptions.default} />
+      )}
     </DashboardContainer>
   );
 };

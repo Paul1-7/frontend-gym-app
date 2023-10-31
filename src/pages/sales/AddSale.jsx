@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { DASHBOARD, initialFormSale } from '@/constants';
+import { DASHBOARD, ITEM_DEFAULT, initialFormSale } from '@/constants';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import schema from '@/schemas';
 import SaleForm from './SaleForm';
@@ -38,9 +38,10 @@ const AddSale = () => {
   });
 
   const handleSubmit = (data) => {
+    const { id: idSocio } = data.socio ?? {};
     const newData = {
       ...data,
-      idSocio: data.idSocio.id,
+      idSocio: idSocio === ITEM_DEFAULT ? null : idSocio,
       idVendedor: authenticated.id,
     };
 

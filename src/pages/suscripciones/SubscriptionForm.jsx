@@ -5,19 +5,19 @@ import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const SubscriptionForm = ({ plans = [], partners = [], isLoading, isExpandable, disabledSubmit }) => {
+const SubscriptionForm = ({ plans = [], partners = [], isLoading, isExpandable, disabledSubmit, isModify }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
         <Grid item xs={12} wrap="wrap" container spacing={2}>
           <Grid item xs={12} md={6}>
-            <Autocomplete name="idSocio" label="Socio" items={partners} loading={isLoading} />
+            <Autocomplete name="idSocio" label="Socio" items={partners} loading={isLoading} disabled={isModify} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Select name="idPlan" label="Planes" items={plans} />
+            <Select name="idPlan" label="Planes" items={plans} disabled={isModify} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Input label="Cantidad" name="cantidad" type="number" disabled={isExpandable} />
+            <Input label="Cantidad" name="cantidad" type="number" disabled={isExpandable || isModify} />
           </Grid>
           <Grid item xs={12} md={6}>
             <Input label="Precio" name="precio" disabled />
@@ -57,6 +57,7 @@ SubscriptionForm.propTypes = {
   isExpandable: PropTypes.bool,
   withSubscription: PropTypes.bool,
   disabledSubmit: PropTypes.bool,
+  isModify: PropTypes.bool,
 };
 
 export default SubscriptionForm;

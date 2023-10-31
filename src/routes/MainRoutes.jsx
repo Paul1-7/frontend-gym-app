@@ -43,6 +43,7 @@ const Schedules = lazy(() => import('@/pages/schedules/Schedules'));
 //Subscriptions
 const Subscriptions = lazy(() => import('@/pages/suscripciones/Subscriptions'));
 const AddSubscription = lazy(() => import('@/pages/suscripciones/AddSubscription'));
+const ModifySubscription = lazy(() => import('@/pages/suscripciones/ModifySubscription'));
 
 // Equipments
 const Equipments = lazy(() => import('@/pages/equipments/Equipments'));
@@ -182,6 +183,7 @@ export default function Router() {
             }
           />
           <Route path={ROUTES.subscriptions.add} element={<AddSubscription />} />
+          <Route path={`${ROUTES.subscriptions.modify}/:id`} element={<ModifySubscription />} />
 
           {/* Schedules */}
           <Route path={ROUTES.schedules.default} element={<Schedules />} />

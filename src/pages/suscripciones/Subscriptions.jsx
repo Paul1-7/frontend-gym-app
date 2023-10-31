@@ -27,6 +27,7 @@ const Subscriptions = () => {
         error={error}
         loading={isLoading}
         numeration
+        btnActions={{ edit: true }}
         orderByDefault="nombre"
       />
     </DashboardContainer>

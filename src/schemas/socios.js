@@ -10,9 +10,9 @@ const socios = yup.object().shape({
     .required(),
   nombre: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
   apellidoM: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric),
-  apellidoP: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
+  apellidoP: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric),
   edad: yup.string().matches(regex.number, msg.number).required(),
-  celular: yup.string().matches(regex.number, msg.number).required(),
+  celular: yup.string().matches(regex.number, msg.number).required().max(8, 'No puede ser mas de 8 digitos'),
   direccion: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
   estado: yup.string().required().matches(regex.number, msg.number).required(),
   idPlan: yup

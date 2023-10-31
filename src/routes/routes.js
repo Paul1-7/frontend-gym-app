@@ -41,6 +41,7 @@ export const ROUTES = {
   subscriptions: {
     default: ADMIN_PATH + '/suscripciones',
     add: ADMIN_PATH + '/suscripciones/agregar',
+    modify: ADMIN_PATH + '/suscripciones/modificar',
   },
   sales: {
     default: ADMIN_PATH + '/ventas',
