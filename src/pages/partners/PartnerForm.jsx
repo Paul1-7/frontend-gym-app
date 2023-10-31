@@ -17,10 +17,10 @@ const PartnerForm = ({ plans = [], isLoading, isExpandable, withSubscription = f
             <Input label="Nombre" name="nombre" />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Input label="Apellido Paterno" name="apellidoP" />
+            <Input label="Apellido 1" name="apellidoP" />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Input label="Apellido Materno" name="apellidoM" />
+            <Input label="Apellido 2" name="apellidoM" />
           </Grid>
           <Grid item xs={12} md={6}>
             <Input label="Celular" name="celular" type="number" />
@@ -50,7 +50,7 @@ const PartnerForm = ({ plans = [], isLoading, isExpandable, withSubscription = f
                 <Input label="Precio" name="precio" disabled />
               </Grid>
               <Grid item xs={12} md={6}>
-                <DatePicker label="Fecha de inicio" name={'fechaInicio'} disabled />
+                <DatePicker label="Fecha de inicio" name={'fechaInicio'} disablePast />
               </Grid>
               <Grid item xs={12} md={6}>
                 <DatePicker label="Fecha fin" name={'fechaFin'} disabled />

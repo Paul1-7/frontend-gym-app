@@ -70,7 +70,7 @@ const SaleDetail = () => {
           <Grid item xs={6}>
             <Typography component="h3">
               <span style={{ fontWeight: 600 }}>NIT/CI/CEX: </span>
-              {data?.socio?.ci ?? ''}
+              {data?.socio?.ci ?? 'N/A'}
             </Typography>
           </Grid>
           <Grid item xs={6}>

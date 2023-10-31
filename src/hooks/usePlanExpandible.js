@@ -23,10 +23,10 @@ export const usePlanExpandible = ({ methods, plans = [] }) => {
 
     planRef.current = plans.find((plan) => plan.id === idPlan);
 
-    const { esExpandible } = planRef.current;
-    setIsExpandable(!esExpandible);
+    const { esRecurrente } = planRef.current;
+    setIsExpandable(!esRecurrente);
 
-    if (!esExpandible) setValue('cantidad', 1);
+    if (!esRecurrente) setValue('cantidad', 1);
     setValue('fechaFin', add(new Date(), { days: planRef.current.duracion * cantidad + daysElapsed }));
     setValue('precio', getBOBCurrency(planRef.current.precio * cantidad));
   }, [idPlan, cantidad, fechaInicio]);
