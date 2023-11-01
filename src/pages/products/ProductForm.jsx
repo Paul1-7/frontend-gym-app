@@ -1,12 +1,12 @@
 import { PropTypes } from 'prop-types';
-import { ButtonLink, DatePicker, Input, RadioGroup } from '@/components';
+import { ButtonLink, DatePicker, Input, RadioGroup, Select } from '@/components';
 import { ITEMS_RADIO_GROUP, ITEMS_RESPONSE_OPTIONS } from '@/constants';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const ProductForm = ({ isLoading, hasExpiration, withState }) => {
+const ProductForm = ({ isLoading, hasExpiration, withState, categories = [] }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -23,14 +23,14 @@ const ProductForm = ({ isLoading, hasExpiration, withState }) => {
           <Grid item xs={12} sm={6}>
             <Input label="Precio de venta" name="precioVenta" />
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <RadioGroup items={ITEMS_RESPONSE_OPTIONS} label="¿Tiene vencimiento?" name={'tieneVencimiento'} />
+          <Grid item xs={12} md={6}>
+            <Select label="Categoria" name="idCategoria" items={categories} />
           </Grid>
-          {hasExpiration && (
-            <Grid item xs={12} sm={6}>
-              <DatePicker label="fecha de vencimiento" name="fechaVencimiento" />
-            </Grid>
-          )}
+          <Grid item xs={12} sm={6} sx={{ display: 'flex' }}>
+            <RadioGroup items={ITEMS_RESPONSE_OPTIONS} label="¿Tiene vencimiento?" name={'tieneVencimiento'} />
+            {hasExpiration && <DatePicker label="fecha de vencimiento" name="fechaVencimiento" />}
+          </Grid>
+
           {withState && (
             <Grid item xs={12} sm={6}>
               <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
@@ -61,6 +61,7 @@ ProductForm.propTypes = {
   isLoading: PropTypes.bool,
   hasExpiration: PropTypes.bool,
   withState: PropTypes.bool,
+  categories: PropTypes.array,
 };
 
 export default ProductForm;

@@ -29,9 +29,21 @@ export const ROUTES = {
   },
   categories: {
     default: ADMIN_PATH + '/categorias',
-    add: ADMIN_PATH + '/categorias/agregar',
-    modify: ADMIN_PATH + '/categorias/modificar',
-    detail: ADMIN_PATH + '/categorias/detalle',
+    disciplines: {
+      add: ADMIN_PATH + '/categorias/disciplinas/agregar',
+      modify: ADMIN_PATH + '/categorias/disciplinas/modificar',
+      default: ADMIN_PATH + '/categorias/disciplinas',
+    },
+    equipments: {
+      default: ADMIN_PATH + '/categorias/maquinarias',
+      add: ADMIN_PATH + '/categorias/maquinarias/agregar',
+      modify: ADMIN_PATH + '/categorias/maquinarias/modificar',
+    },
+    products: {
+      default: ADMIN_PATH + '/categorias/productos',
+      add: ADMIN_PATH + '/categorias/productos/agregar',
+      modify: ADMIN_PATH + '/categorias/productos/modificar',
+    },
   },
   plans: {
     default: ADMIN_PATH + '/planes',

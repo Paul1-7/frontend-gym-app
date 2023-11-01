@@ -2,37 +2,37 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { useTable } from '@/hooks';
 import { DASHBOARD, COLUMNS_TABLE, TEXT_MODAL } from '@/constants';
 import { DashboardContainer, DataTable, DialogConfirmation } from '@/components';
-import { deleteCategory, categoriesList } from '@/services';
+import { categoriesEquipmentsList, deleteCategoryEquipment } from '@/services';
 
-const buttonsActions = { edit: true, remove: true, detail: true };
+const buttonsActions = { edit: true, remove: true, detail: false };
 
-const Categories = () => {
+const CategoriesEquipments = () => {
   const { table } = useTable();
   const { openDialog, setOpenDialog, handleCloseDialog, dataDialog } = table;
   const { data, error, isLoading, refetch } = useQuery({
-    queryKey: ['categoriesList'],
-    queryFn: () => categoriesList(),
+    queryKey: ['categoriesEquipmentsList'],
+    queryFn: categoriesEquipmentsList,
   });
 
-  const resDeleteCategory = useMutation({
-    mutationFn: (id) => deleteCategory({ id }),
+  const resDeleteCategoriesEquipments = useMutation({
+    mutationFn: (id) => deleteCategoryEquipment({ id }),
     onSuccess: () => {
       refetch();
     },
   });
 
   const handleDelete = (id) => {
-    resDeleteCategory.mutate(id);
+    resDeleteCategoriesEquipments.mutate(id);
   };
 
   return (
-    <DashboardContainer data={DASHBOARD.categories.default}>
+    <DashboardContainer data={DASHBOARD.categories.equipment.default}>
       <DialogConfirmation
         open={openDialog}
         setOpen={setOpenDialog}
         handleClickClose={handleCloseDialog}
         handleDelete={handleDelete}
-        loading={resDeleteCategory.isLoading}
+        loading={resDeleteCategoriesEquipments.isLoading}
         textContent={TEXT_MODAL.delete}
         id={dataDialog}
       />
@@ -41,7 +41,6 @@ const Categories = () => {
         rows={data}
         error={error}
         loading={isLoading}
-        numeration
         btnActions={buttonsActions}
         orderByDefault="nombre"
       />
@@ -49,4 +48,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default CategoriesEquipments;

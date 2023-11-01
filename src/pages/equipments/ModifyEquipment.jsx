@@ -6,7 +6,7 @@ import schema from '@/schemas';
 import { Navigate } from 'react-router-dom';
 import { DashboardContainer, Form } from '@/components';
 import { ROUTES } from '@/routes/routes';
-import { getEquipmentById, modifyEquipment } from '@/services';
+import { getCategoriesEquipmentsItemsList, getEquipmentById, modifyEquipment } from '@/services';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import EquipmentForm from './EquipmentForm';
@@ -31,15 +31,20 @@ const ModifyEquipment = () => {
     queryFn: () => getEquipmentById(id),
   });
 
+  const categories = useQuery({
+    queryKey: ['categoriesEquipments'],
+    queryFn: () => getCategoriesEquipmentsItemsList(),
+  });
+
   useEffect(() => {
-    if (!equipment.isSuccess) return;
+    if (!equipment.isSuccess || !categories.isSuccess) return;
     methods.reset(equipment.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true });
-  }, [equipment.data]);
+  }, [equipment.data, categories.data]);
 
   return (
     <DashboardContainer data={DASHBOARD.equipments.modify}>
       <Form methods={methods} onSubmit={modifyEquipmentData.mutate}>
-        <EquipmentForm isLoading={modifyEquipmentData.isLoading} />
+        <EquipmentForm isLoading={modifyEquipmentData.isLoading} categories={categories.data} />
       </Form>
       {!modifyEquipmentData.isLoading && !modifyEquipmentData.isError && modifyEquipmentData.isSuccess && (
         <Navigate to={ROUTES.equipment.default} />

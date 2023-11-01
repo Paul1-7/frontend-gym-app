@@ -6,7 +6,7 @@ import schema from '@/schemas';
 import { Navigate } from 'react-router-dom';
 import { DashboardContainer, Form } from '@/components';
 import { ROUTES } from '@/routes/routes';
-import { getProductById, modifyProduct } from '@/services';
+import { getCategoriesProductsItemsList, getProductById, modifyProduct } from '@/services';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import ProductForm from './ProductForm';
@@ -35,15 +35,25 @@ const ModifyProduct = () => {
     queryFn: () => getProductById(id),
   });
 
+  const categories = useQuery({
+    queryKey: ['categoriesProducts'],
+    queryFn: () => getCategoriesProductsItemsList(),
+  });
+
   useEffect(() => {
-    if (!product.isSuccess) return;
+    if (!product.isSuccess || !categories.isSuccess) return;
     methods.reset(product.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true, keepTouched: true });
-  }, [product.data]);
+  }, [product.data, categories.data]);
 
   return (
     <DashboardContainer data={DASHBOARD.products.modify}>
       <Form methods={methods} onSubmit={modifyProductData.mutate}>
-        <ProductForm isLoading={modifyProductData.isLoading} hasExpiration={hasExpiration} withState />
+        <ProductForm
+          isLoading={modifyProductData.isLoading}
+          hasExpiration={hasExpiration}
+          withState
+          categories={categories.data}
+        />
       </Form>
       {!modifyProductData.isLoading && !modifyProductData.isError && modifyProductData.isSuccess && (
         <Navigate to={ROUTES.products.default} />

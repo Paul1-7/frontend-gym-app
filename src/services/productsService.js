@@ -1,4 +1,4 @@
-import { getProductsToReport, productWithDateParse } from '@/adapters';
+import { getProductsAdapter, getProductsToReport, productWithDateParse } from '@/adapters';
 import Axios from '@/apis';
 
 export const URL_PRODUCTS = {
@@ -7,7 +7,7 @@ export const URL_PRODUCTS = {
 
 export const productsList = async () => {
   const response = await Axios.get(URL_PRODUCTS.default);
-  return response.data;
+  return getProductsAdapter(response.data);
 };
 
 export const productsListReport = async ({ params }) => {

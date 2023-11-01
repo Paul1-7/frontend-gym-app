@@ -26,6 +26,23 @@ const navConfig = [
     path: ROUTES.categories.default,
     icon: getIcon('ic:twotone-category'),
     allowedRols: [ADMINISTRADOR, RECEPCIONISTA],
+    children: [
+      {
+        title: 'Categorias de productos',
+        path: ROUTES.categories.products.default,
+        allowedRols: [ADMINISTRADOR, RECEPCIONISTA],
+      },
+      {
+        title: 'Categorias de disciplinas',
+        path: ROUTES.categories.disciplines.default,
+        allowedRols: [ADMINISTRADOR, RECEPCIONISTA],
+      },
+      {
+        title: 'Categorias de maquinarias',
+        path: ROUTES.categories.equipments.default,
+        allowedRols: [ADMINISTRADOR, RECEPCIONISTA],
+      },
+    ],
   },
   {
     title: 'disciplinas',

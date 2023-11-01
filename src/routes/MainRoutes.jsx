@@ -32,11 +32,18 @@ const Planning = lazy(() => import('@/pages/planning/Plannings'));
 const AddPlanning = lazy(() => import('@/pages/planning/AddPlanning'));
 const ModifyPlanning = lazy(() => import('@/pages/planning/ModifyPlanning'));
 const DetailPlanning = lazy(() => import('@/pages/planning/PlanningDetail'));
-// Categories
-const Categories = lazy(() => import('@/pages/categories/Categories'));
-const AddCategory = lazy(() => import('@/pages/categories/AddCategory'));
-const ModifyCategory = lazy(() => import('@/pages/categories/ModifyCategory'));
-const CategoryDetail = lazy(() => import('@/pages/categories/CategoryDetail'));
+// CategoriesProducts
+const CategoriesProducts = lazy(() => import('@/pages/categories/products/CategoriesProducts'));
+const AddCategoryProduct = lazy(() => import('@/pages/categories/products/AddCategoryProduct'));
+const ModifyCategoryProduct = lazy(() => import('@/pages/categories/products/ModifyCategoryProduct'));
+// CategoriesDisciplines
+const CategoriesDisciplines = lazy(() => import('@/pages/categories/disciplines/CategoriesDisciplines'));
+const AddCategoryDiscipline = lazy(() => import('@/pages/categories/disciplines/AddCategoryDiscipline'));
+const ModifyCategoryDiscipline = lazy(() => import('@/pages/categories/disciplines/ModifyCategoryDiscipline'));
+// CategoriesEquipments
+const CategoriesEquipments = lazy(() => import('@/pages/categories/equipments/CategoriesEquipments'));
+const AddCategoryEquipment = lazy(() => import('@/pages/categories/equipments/AddCategoryEquipment'));
+const ModifyCategoryEquipment = lazy(() => import('@/pages/categories/equipments/ModifyCategoryEquipment'));
 
 const Schedules = lazy(() => import('@/pages/schedules/Schedules'));
 
@@ -104,18 +111,39 @@ export default function Router() {
           />
           <Route path={ROUTES.disciplines.add} element={<AddDiscipline />} />
           <Route path={`${ROUTES.disciplines.modify}/:id`} element={<ModifyDiscipline />} />
-          {/* Categories */}
+          {/* CategoriesProducts */}
           <Route
-            path={ROUTES.categories.default}
+            path={ROUTES.categories.products.default}
             element={
               <DataTableProvider>
-                <Categories />
+                <CategoriesProducts />
               </DataTableProvider>
             }
           />
-          <Route path={ROUTES.categories.add} element={<AddCategory />} />
-          <Route path={`${ROUTES.categories.modify}/:id`} element={<ModifyCategory />} />
-          <Route path={`${ROUTES.categories.detail}/:id`} element={<CategoryDetail />} />
+          <Route path={ROUTES.categories.products.add} element={<AddCategoryProduct />} />
+          <Route path={`${ROUTES.categories.products.modify}/:id`} element={<ModifyCategoryProduct />} />
+          {/* CategoriesDisciplines */}
+          <Route
+            path={ROUTES.categories.disciplines.default}
+            element={
+              <DataTableProvider>
+                <CategoriesDisciplines />
+              </DataTableProvider>
+            }
+          />
+          <Route path={ROUTES.categories.disciplines.add} element={<AddCategoryDiscipline />} />
+          <Route path={`${ROUTES.categories.disciplines.modify}/:id`} element={<ModifyCategoryDiscipline />} />
+          {/* CategoriesEquipments */}
+          <Route
+            path={ROUTES.categories.equipments.default}
+            element={
+              <DataTableProvider>
+                <CategoriesEquipments />
+              </DataTableProvider>
+            }
+          />
+          <Route path={ROUTES.categories.equipments.add} element={<AddCategoryEquipment />} />
+          <Route path={`${ROUTES.categories.equipments.modify}/:id`} element={<ModifyCategoryEquipment />} />
           {/* Planning */}
           <Route
             path={ROUTES.planning.default}

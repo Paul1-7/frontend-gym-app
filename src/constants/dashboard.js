@@ -90,26 +90,62 @@ export const DASHBOARD = {
     },
   },
   categories: {
-    default: {
-      title: 'Categorias',
-      description: 'Lista de categorias para disciplinas, productos y maquinarias',
-      button: {
-        icon: Category,
-        url: ROUTES.categories.add,
-        name: 'Nueva categoria',
+    disciplines: {
+      default: {
+        title: 'Categorias de disciplinas',
+        description: 'Lista de categorias para disciplinas',
+        button: {
+          icon: Category,
+          url: ROUTES.categories.disciplines.add,
+          name: 'Nueva categoria',
+        },
+      },
+      add: {
+        title: 'Agregar categoría para disciplina',
+        description: 'Agrega una categoría para las disciplinas en el sistema',
+      },
+      modify: {
+        title: 'Modificar categoría de disciplinas',
+        description: 'Modifica una categoría de disciplinas existente',
       },
     },
-    add: {
-      title: 'Agregar categoría',
-      description: 'Agrega una categoría en el sistema',
+    equipment: {
+      default: {
+        title: 'Categorias de maquinarias',
+        description: 'Lista de categorias para maquinarias',
+        button: {
+          icon: Category,
+          url: ROUTES.categories.equipments.add,
+          name: 'Nueva categoria',
+        },
+      },
+      add: {
+        title: 'Agregar categoría para maquinarias',
+        description: 'Agrega una categoría para las maquinariassen el sistema',
+      },
+      modify: {
+        title: 'Modificar categoría de maquinarias',
+        description: 'Modifica una categoría de maquinarias existente',
+      },
     },
-    modify: {
-      title: 'Modificar categoría',
-      description: 'Modifica una categoría existente',
-    },
-    detail: {
-      title: 'Detalle de la categoría',
-      description: 'Muestra la información de la categoría',
+    products: {
+      default: {
+        title: 'Categorias de productos',
+        description: 'Lista de categorias para productos',
+        button: {
+          icon: Category,
+          url: ROUTES.categories.products.add,
+          name: 'Nueva categoria',
+        },
+      },
+      add: {
+        title: 'Agregar categoría para productos',
+        description: 'Agrega una categoría para los productos en el sistema',
+      },
+      modify: {
+        title: 'Modificar categoría de productos',
+        description: 'Modifica una categoría de productos existente',
+      },
     },
   },
   planning: {

@@ -31,10 +31,7 @@ const COLUMNS_TABLE = {
     { field: 'disciplina', header: 'disciplina', type: '' },
     { field: 'fecha', header: 'fecha', type: 'date' },
   ],
-  categories: [
-    { field: 'nombre', header: 'nombre', type: '' },
-    { field: 'tipo', header: 'tipo', type: 'categoryTypes' },
-  ],
+  categories: [{ field: 'nombre', header: 'nombre', type: '' }],
   productos: [
     { field: 'nombre', header: 'nombre', type: '' },
     { field: 'precioVenta', header: 'precio', type: 'currency' },
@@ -45,10 +42,12 @@ const COLUMNS_TABLE = {
       otherValue: 'tieneVencimiento',
     },
     { field: 'stock', header: 'stock', type: 'stock' },
+    { field: 'categoria', header: 'categoria', type: '' },
     { field: 'estado', header: 'estado', type: 'states' },
   ],
   disciplinas: [
     { field: 'nombre', header: 'Nombre', type: '' },
+    { field: 'categoria', header: 'categoria', type: '' },
     { field: 'descripcion', header: 'Descripción', type: '' },
     { field: 'estado', header: 'Estado', type: 'states' },
   ],
@@ -99,6 +98,7 @@ const COLUMNS_TABLE = {
     { field: 'capacidad', header: 'capacidad', type: '' },
     { field: 'precio', header: 'precio', type: 'currency' },
     { field: 'fechaAdquisicion', header: 'fecha de adquisición.', type: 'date' },
+    { field: 'categorias', header: 'categorias', type: 'array' },
     { field: 'estado', header: 'estado', type: '' },
   ],
 };

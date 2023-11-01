@@ -1,12 +1,12 @@
 import { PropTypes } from 'prop-types';
-import { ButtonLink, DatePicker, Input, Select } from '@/components';
+import { ButtonLink, DatePicker, Input, Select, SelectChip } from '@/components';
 import { ITEMS_EQUIPMENT_STATES } from '@/constants';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const EquipmentForm = ({ isLoading }) => {
+const EquipmentForm = ({ isLoading, categories = [] }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -28,6 +28,9 @@ const EquipmentForm = ({ isLoading }) => {
           </Grid>
           <Grid item xs={12} md={6}>
             <Input label="Precio" name="precio" type="number" />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <SelectChip label="Categoria" name="idCategoria" items={categories} />
           </Grid>
           <Grid item xs={12} md={6}>
             <Select name="estado" label="Estado" items={ITEMS_EQUIPMENT_STATES} />
@@ -55,5 +58,6 @@ const EquipmentForm = ({ isLoading }) => {
 
 EquipmentForm.propTypes = {
   isLoading: PropTypes.bool,
+  categories: PropTypes.array,
 };
 export default EquipmentForm;

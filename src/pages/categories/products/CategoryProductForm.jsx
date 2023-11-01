@@ -1,12 +1,11 @@
 import { PropTypes } from 'prop-types';
-import { ButtonLink, Input, RadioGroup, Select } from '@/components';
-import { ITEMS_RADIO_GROUP } from '@/constants';
+import { ButtonLink, Input } from '@/components';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const DisciplineForm = ({ isLoading, withState, categories = [] }) => {
+const CategoryProductForm = ({ isLoading }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -14,21 +13,10 @@ const DisciplineForm = ({ isLoading, withState, categories = [] }) => {
           <Grid item xs={12} md={6}>
             <Input label="Nombre" name="nombre" />
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Input label="Descripción" name="descripcion" />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Select label="Categoria" name="idCategoria" items={categories} />
-          </Grid>
-          {withState && (
-            <Grid item xs={12} md={6}>
-              <RadioGroup name="estado" label="Estado" items={ITEMS_RADIO_GROUP} />
-            </Grid>
-          )}
         </Grid>
       </Grid>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem', gap: '1rem' }}>
-        <ButtonLink variant="outlined" color="error" to={ROUTES.disciplines.default}>
+        <ButtonLink variant="outlined" color="error" to={ROUTES.categories.products.default}>
           Cancelar
         </ButtonLink>
         <LoadingButton
@@ -46,10 +34,8 @@ const DisciplineForm = ({ isLoading, withState, categories = [] }) => {
   );
 };
 
-DisciplineForm.propTypes = {
+CategoryProductForm.propTypes = {
   isLoading: PropTypes.bool,
-  withState: PropTypes.bool,
-  categories: PropTypes.array,
 };
 
-export default DisciplineForm;
+export default CategoryProductForm;

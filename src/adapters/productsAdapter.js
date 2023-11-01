@@ -8,6 +8,13 @@ export const productWithDateParse = (data) => {
   };
 };
 
+export const getProductsAdapter = (items) => {
+  return items.map((item) => ({
+    ...item,
+    categoria: item.categoria.nombre,
+  }));
+};
+
 export const getProductsToReport = (products) => {
   return products.map((product, index) => {
     const { fechaVencimiento, nombre, precioCompra, precioVenta, stock } = product;

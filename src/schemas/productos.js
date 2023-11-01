@@ -1,3 +1,4 @@
+import { ITEM_DEFAULT } from '@/constants';
 import { msg, regex } from '@/constants/validaciones';
 import * as yup from 'yup';
 
@@ -20,6 +21,10 @@ const productos = yup.object().shape({
     .typeError('la fecha introducida es incorrecta')
     .min(new Date(), 'La fecha de vencimiento debe ser mayor que la fecha actual')
     .required(),
+  idCategoria: yup
+    .string()
+    .matches(regex.alphaNumeric, msg.alphaNumeric)
+    .test('noDefaultValue', 'Tiene que seleccionar una opción', (value) => value !== ITEM_DEFAULT),
 });
 
 export default productos;

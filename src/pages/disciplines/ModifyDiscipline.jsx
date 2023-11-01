@@ -6,7 +6,7 @@ import schema from '@/schemas';
 import { Navigate } from 'react-router-dom';
 import { DashboardContainer, Form } from '@/components';
 import { ROUTES } from '@/routes/routes';
-import { getDisciplineById, modifyDiscipline } from '@/services';
+import { getCategoriesDisciplinesItemsList, getDisciplineById, modifyDiscipline } from '@/services';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import DisciplineForm from './DisciplineForm';
@@ -31,15 +31,20 @@ const ModifyEmployee = () => {
     queryFn: () => getDisciplineById(id),
   });
 
+  const categories = useQuery({
+    queryKey: ['categoriesDiscipline'],
+    queryFn: () => getCategoriesDisciplinesItemsList(),
+  });
+
   useEffect(() => {
-    if (!discipline.isSuccess) return;
+    if (!discipline.isSuccess || !categories.isSuccess) return;
     methods.reset(discipline.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true });
-  }, [discipline.data]);
+  }, [discipline.data, categories.data]);
 
   return (
     <DashboardContainer data={DASHBOARD.disciplines.modify}>
       <Form methods={methods} onSubmit={modifyDisciplineData.mutate}>
-        <DisciplineForm isLoading={modifyDisciplineData.isLoading} withState />
+        <DisciplineForm isLoading={modifyDisciplineData.isLoading} withState categories={categories.data} />
       </Form>
       {!modifyDisciplineData.isLoading && !modifyDisciplineData.isError && modifyDisciplineData.isSuccess && (
         <Navigate to={ROUTES.disciplines.default} />

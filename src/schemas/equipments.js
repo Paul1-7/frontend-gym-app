@@ -1,3 +1,4 @@
+import { ITEM_DEFAULT } from '@/constants';
 import * as yup from 'yup';
 
 const equipments = yup.object().shape({
@@ -22,6 +23,22 @@ const equipments = yup.object().shape({
     .string()
     .required('El estado es obligatorio')
     .oneOf(['operativa', 'reparacion', 'fueraServicio'], 'Estado no válido'),
+  idCategoria: yup
+    .array()
+    .of(yup.string())
+    .when('idEntrenador', {
+      is: (idEntrenador) => idEntrenador !== ITEM_DEFAULT,
+      then: () => {
+        return yup
+          .array()
+          .of(yup.string())
+          .test('idSocio-test', 'No se permite la opción ninguno', (value) => {
+            return value.every((item) => item !== ITEM_DEFAULT);
+          })
+          .min(1, 'TIene que seleccionar al menos una categoria');
+      },
+    })
+    .typeError('Tiene que seleccionar una opción'),
 });
 
 export default equipments;

@@ -33,7 +33,9 @@ const SelectChipMemo = memo(
         control={methods.control}
         render={({ field }) => (
           <FormControl sx={{ width: '100%' }} size="small">
-            <InputLabel id={name}>{label}</InputLabel>
+            <InputLabel id={name} error={!!errorValue}>
+              {label}
+            </InputLabel>
             <Select
               multiple
               labelId={name}
@@ -41,6 +43,7 @@ const SelectChipMemo = memo(
               id={`multiple-chip-${name}`}
               input={<OutlinedInput id={`multiple-chip-${name}`} label={name} />}
               onChange={(event) => handleChange(event, field)}
+              error={!!errorValue}
               value={field.value ?? []}
               {...others}
               renderValue={(selected) => (

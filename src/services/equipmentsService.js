@@ -1,4 +1,4 @@
-import { equipmentWithDateParse, getEquipmentsToReport } from '@/adapters';
+import { equipmentWithDateParse, getEquipmentsAdapter, getEquipmentsToReport } from '@/adapters';
 import Axios from '@/apis';
 
 export const URL_EQUIPMENT = {
@@ -7,7 +7,7 @@ export const URL_EQUIPMENT = {
 
 export const equipmentsList = async ({ params } = {}) => {
   const response = await Axios.get(URL_EQUIPMENT.default, { params });
-  return response.data;
+  return getEquipmentsAdapter(response.data);
 };
 export const equipmentsListReport = async ({ params } = {}) => {
   const response = await Axios.get(URL_EQUIPMENT.default, { params });

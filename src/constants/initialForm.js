@@ -38,6 +38,7 @@ export const initialFormEmployee = {
 export const initialFormDiscipline = {
   nombre: '',
   descripcion: '',
+  idCategoria: ITEM_DEFAULT,
   estado: 1,
 };
 
@@ -62,6 +63,7 @@ export const initialFormProduct = {
   fechaVencimiento: add(new Date(), { days: 5 }),
   estado: 1,
   tieneVencimiento: 'false',
+  idCategoria: ITEM_DEFAULT,
 };
 
 export const initialFormPlan = {
@@ -100,6 +102,7 @@ export const initialFormEquipment = {
   capacidad: '',
   precio: '',
   estado: 'operativa',
+  idCategoria: [],
 };
 
 export const initialFormSaleReport = {
@@ -140,8 +143,6 @@ export const initialFormProductReport = {
 
 export const initialFormCategory = {
   nombre: '',
-  tipo: ITEM_DEFAULT,
-  tipoLista: [{ nombre: 'Ninguno', id: ITEM_DEFAULT }],
 };
 
 export const initialFormPlanning = {
