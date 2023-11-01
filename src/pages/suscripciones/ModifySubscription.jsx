@@ -49,7 +49,7 @@ const ModifySubscription = () => {
   });
 
   useEffect(() => {
-    if (!subscription.isSuccess || plans.data || partners.data) return;
+    if (!subscription.isSuccess || !plans.data || !partners.data) return;
 
     methods.reset(subscription.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true });
   }, [subscription.data, plans.data, partners.data]);
@@ -81,7 +81,7 @@ const ModifySubscription = () => {
         />
       </Form>
       {!modifySubscriptionData.isLoading && !modifySubscriptionData.isError && modifySubscriptionData.isSuccess && (
-        <Navigate to={ROUTES.partners.default} />
+        <Navigate to={ROUTES.subscriptions.default} />
       )}
     </DashboardContainer>
   );
