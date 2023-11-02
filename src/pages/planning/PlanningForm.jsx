@@ -1,52 +1,19 @@
 import { PropTypes } from 'prop-types';
-import { Autocomplete, ButtonLink, Select } from '@/components';
+import { Autocomplete, ButtonLink } from '@/components';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
-import { DAYS_ITEMS } from '@/constants';
 
-const PlanningForm = ({
-  disciplines = [],
-  trainers = [],
-  partners = [],
-  schedules = [],
-  isLoading,
-  disabledSubmit,
-  enabledTrainer,
-  enabledSchedules,
-  enabledPartners,
-  isModify,
-}) => {
+const PlanningForm = ({ partners = [], schedules = [], isLoading, disabledSubmit, isModify }) => {
   return (
     <>
       <Grid item xs={12} wrap="wrap" container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <Select name="idDisciplina" label="Disciplinas" items={disciplines} disabled={isModify} />
+        <Grid item xs={12}>
+          <Autocomplete name="idHorario" label="Horarios" items={schedules} disabled={isModify} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Select name="dia" label="Dia" items={DAYS_ITEMS} disabled={isModify} />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Autocomplete
-            name="idEntrenador"
-            label="Entrenadores"
-            items={trainers}
-            disabled={enabledTrainer || isModify}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Select name="idHorario" label="Horario" items={schedules} disabled={enabledSchedules || isModify} />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Autocomplete
-            name="idSocio"
-            label="Socio"
-            items={partners}
-            loading={isLoading}
-            multiple
-            disabled={enabledPartners}
-          />
+          <Autocomplete name="idSocio" label="Socio" items={partners} loading={isLoading} multiple />
         </Grid>
       </Grid>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem', gap: '1rem' }}>

@@ -3,6 +3,7 @@ import Axios from '@/apis';
 
 export const URL_SCHEDULE = {
   default: '/api/v1/horarios',
+  trainers: '/api/v1/horarios/entrenadores',
 };
 
 export const schedulesList = async () => {
@@ -10,8 +11,8 @@ export const schedulesList = async () => {
   return response.data;
 };
 
-export const schedulesListItems = async (query = '') => {
-  const response = await Axios.get(URL_SCHEDULE.default + query);
+export const schedulesListItems = async () => {
+  const response = await Axios.get(URL_SCHEDULE.trainers);
   return schedulesListItemsAdapter(response.data);
 };
 

@@ -38,31 +38,21 @@ const ModifyPlanning = () => {
     cacheTime: 0,
   });
 
-  const {
-    addPlanningData,
-    disciplines,
-    partners,
-    trainers,
-    enabledFields,
-    schedules,
-    selectedSchedule,
-    isPlanningUnique,
-    availableQuotas,
-    roomCapacity,
-  } = usePlanning({
-    formMethods: methods,
-  });
+  const { addPlanningData, partners, schedules, selectedSchedule, isPlanningUnique, availableQuotas, roomCapacity } =
+    usePlanning({
+      formMethods: methods,
+    });
 
   useEffect(() => {
     if (!planning.isSuccess) return;
 
     methods.reset(planning.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true });
-  }, [planning.data, trainers.data, partners.data, disciplines.data, schedules.data]);
+  }, [planning.data, partners.data, schedules.data]);
 
   const handleSubmit = (data) => {
-    const { idSocio, ...rest } = data;
+    const { idSocio, idHorario, ...rest } = data;
     const detalle = idSocio.map(({ id }) => ({ idSocio: id }));
-    const dataParsed = { programacion: { ...rest, idEntrenador: rest.idEntrenador.id }, detalle };
+    const dataParsed = { programacion: { ...rest, idHorario: idHorario.id }, detalle };
     modifyPlanningData.mutate(dataParsed);
   };
 
@@ -95,13 +85,8 @@ const ModifyPlanning = () => {
       <Form methods={methods} onSubmit={handleSubmit}>
         <PlanningForm
           isLoading={addPlanningData.isLoading}
-          disciplines={disciplines.data}
           partners={partners.data}
-          trainers={trainers.data}
           schedules={schedules.data}
-          enabledTrainer={enabledFields.trainers}
-          enabledSchedules={enabledFields.schedules}
-          enabledPartners={enabledFields.partners}
           disabledSubmit={isPlanningUnique}
           isModify
         />

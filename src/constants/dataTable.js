@@ -26,6 +26,7 @@ const COLUMNS_TABLE = {
   planning: [
     { field: 'codProgramacion', header: 'código de programación', type: '' },
     { field: 'entrenador', header: 'entrenador', type: '' },
+    { field: 'salon', header: 'salón', type: '' },
     { field: 'capacidad', header: 'capacidad', type: '' },
     { field: 'cupoDisponible', header: 'cupo disponible', type: '' },
     { field: 'disciplina', header: 'disciplina', type: '' },

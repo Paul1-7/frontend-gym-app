@@ -9,7 +9,7 @@ const DateCell = ({ value, align, isApplicable = true }) => (
 export default DateCell;
 
 DateCell.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.any,
   align: PropTypes.string,
   isApplicable: PropTypes.bool,
 };

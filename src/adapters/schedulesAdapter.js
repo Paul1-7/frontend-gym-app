@@ -1,3 +1,4 @@
+import { DAYS_ITEMS } from '@/constants';
 import { format } from 'date-fns';
 
 export const schedulesListToDetail = (data) =>
@@ -12,12 +13,18 @@ export const schedulesListToDetail = (data) =>
   });
 
 export const schedulesListItems = (data) =>
-  data.map(({ horarioEntrada, horarioSalida, id, ...others }) => {
+  data.map(({ horarioEntrada, horarioSalida, dia, salon, entrenador, disciplina, id }) => {
+    const { nombre, apellidoP } = entrenador;
+    const { nombre: disciplineName } = disciplina;
+    const fullName = `${nombre} ${apellidoP}`;
+    const startTime = format(new Date(horarioEntrada), 'HH:mm');
+    const finishTime = format(new Date(horarioSalida), 'HH:mm');
+    const dayName = DAYS_ITEMS[dia];
+
     return {
       id,
-      nombre: `${format(new Date(horarioEntrada), 'HH:mm')} - ${format(new Date(horarioSalida), 'HH:mm')}`,
+      nombre: `${fullName}  -  ${disciplineName}  -  ${dayName} de ${startTime} a ${finishTime}`,
       horarioEntrada,
-      horarioSalida,
-      ...others,
+      salon,
     };
   });

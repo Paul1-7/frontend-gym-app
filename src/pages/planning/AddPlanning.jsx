@@ -20,25 +20,15 @@ const AddPlanning = () => {
   const { fecha } = formMethods.watch();
   const errorsSchema = formMethods.formState.errors;
 
-  const {
-    addPlanningData,
-    disciplines,
-    partners,
-    trainers,
-    enabledFields,
-    schedules,
-    selectedSchedule,
-    isPlanningUnique,
-    availableQuotas,
-    roomCapacity,
-  } = usePlanning({
-    formMethods,
-  });
+  const { addPlanningData, partners, schedules, selectedSchedule, isPlanningUnique, availableQuotas, roomCapacity } =
+    usePlanning({
+      formMethods,
+    });
 
   const handleSubmit = (data) => {
-    const { idSocio, ...rest } = data;
+    const { idSocio, idHorario, ...rest } = data;
     const detalle = idSocio.map(({ id }) => ({ idSocio: id }));
-    const dataParsed = { programacion: { ...rest, id: undefined, idEntrenador: rest.idEntrenador.id }, detalle };
+    const dataParsed = { programacion: { ...rest, idHorario: idHorario.id, id: undefined }, detalle };
     addPlanningData.mutate(dataParsed);
   };
 
@@ -47,7 +37,7 @@ const AddPlanning = () => {
       <Grid item xs={12} wrap="wrap" container spacing={2} sx={{ mb: 4 }}>
         <Grid item xs={12} md={6}>
           <Typography>
-            <span style={{ fontWeight: 'bold' }}>Fecha de la clase:</span>
+            <span style={{ fontWeight: 'bold' }}>Fecha de la clase: </span>
             {fDateTime(fecha)}
           </Typography>
         </Grid>
@@ -71,13 +61,8 @@ const AddPlanning = () => {
       <Form methods={formMethods} onSubmit={handleSubmit}>
         <PlanningForm
           isLoading={addPlanningData.isLoading}
-          disciplines={disciplines.data}
           partners={partners.data}
-          trainers={trainers.data}
           schedules={schedules.data}
-          enabledTrainer={enabledFields.trainers}
-          enabledSchedules={enabledFields.schedules}
-          enabledPartners={enabledFields.partners}
           disabledSubmit={isPlanningUnique}
         />
       </Form>
@@ -85,6 +70,10 @@ const AddPlanning = () => {
         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 4, flexDirection: 'column', gap: 2 }}
       >
         {errorsSchema.cupoDisponible?.message && <Alert severity="error">{errorsSchema.cupoDisponible?.message}</Alert>}
+
+        {isPlanningUnique && (
+          <Alert severity="error">No esta disponible para esa fecha una clase con el entrenador o salón </Alert>
+        )}
       </Grid>
       {!addPlanningData.isLoading && !addPlanningData.isError && addPlanningData.isSuccess && (
         <Navigate to={ROUTES.planning.default} />

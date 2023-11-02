@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { usePrint } from '@/hooks';
 import { getPlanningById } from '@/services';
-import { getDateLocale } from '@/utils';
+import { fDate } from '@/utils';
 
 const PlanningDetail = () => {
   const { componentToPrintRef, handlePrint, loadingPrint } = usePrint();
@@ -41,13 +41,13 @@ const PlanningDetail = () => {
           <Grid item xs={6}>
             <Typography component="h3" gutterBottom>
               <span style={{ fontWeight: 600 }}>Fecha: </span>
-              {`${getDateLocale(data?.fecha)} ${data?.hora} `}
+              {data?.fecha && `${fDate(data.fecha)} ${data?.hora} `}
             </Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography component="h3" gutterBottom>
               <span style={{ fontWeight: 600 }}>Disciplina: </span>
-              {data?.disciplina?.nombre}
+              {data?.horario?.disciplina?.nombre}
             </Typography>
           </Grid>
           <Grid item xs={6}>
@@ -71,7 +71,7 @@ const PlanningDetail = () => {
           <Grid item xs={6}>
             <Typography component="h3" gutterBottom>
               <span style={{ fontWeight: 600 }}>Entrenador: </span>
-              {`${data?.entrenador?.nombre} ${data?.entrenador?.apellidoP}`}
+              {`${data?.horario?.entrenador?.nombre} ${data?.horario?.entrenador?.apellidoP}`}
             </Typography>
           </Grid>
         </Grid>
@@ -79,7 +79,7 @@ const PlanningDetail = () => {
           Participantes de la clase:
         </Typography>
         {data?.detalle?.map(({ socio }, idx) => {
-          return <Typography key={id}>{`${idx + 1}. ${socio.nombre} ${socio.apellidoP}`}</Typography>;
+          return <Typography key={socio.id}>{`${idx + 1}. ${socio.nombre} ${socio.apellidoP}`}</Typography>;
         })}
       </Box>
     </DashboardContainer>

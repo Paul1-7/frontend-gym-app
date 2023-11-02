@@ -148,13 +148,16 @@ export const initialFormCategory = {
 export const initialFormPlanning = {
   id: null,
   capacidad: '0',
-  idEntrenador: { nombre: 'Ninguno', id: ITEM_DEFAULT },
   cupoDisponible: '0',
-  idHorario: ITEM_DEFAULT,
-  idDisciplina: ITEM_DEFAULT,
+  idHorario: {
+    nombre: 'Ninguno',
+    id: ITEM_DEFAULT,
+    horarioEntrada: new Date(),
+    salon: { id: '', nombre: '', capacidad: '' },
+  },
   hora: '',
   fecha: new Date(),
-  dia: ITEM_DEFAULT,
+  dia: 1,
   idSocio: [{ nombre: 'Ninguno', id: ITEM_DEFAULT }],
 };
 
