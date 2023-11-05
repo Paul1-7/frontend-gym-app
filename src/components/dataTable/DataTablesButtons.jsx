@@ -24,7 +24,6 @@ const DataTablesButtons = ({ data, buttons }) => {
           <Edit color="warning" />
         </Button>
       )}
-      {/* () => setIsOpen(true) */}
       {remove && (
         <Button
           aria-label="eliminar"

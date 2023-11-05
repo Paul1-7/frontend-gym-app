@@ -1,14 +1,14 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { useTable } from '@/hooks';
-import { DASHBOARD, COLUMNS_TABLE, TEXT_MODAL } from '@/constants';
+import { useAuth, useTable } from '@/hooks';
+import { DASHBOARD, COLUMNS_TABLE, TEXT_MODAL, BUTTONS_DATATABLE } from '@/constants';
 import { DashboardContainer, DataTable, DialogConfirmation } from '@/components';
 import { deleteEmployee, employeesList } from '@/services';
 
 const filterCheck = (data) => data.filter(({ roles }) => roles.length > 1);
 
-const buttonsActions = { edit: true, remove: true, detail: false };
-
 const Employees = () => {
+  const { getAllowedButtonsDatatable } = useAuth();
+
   const { table } = useTable();
   const { openDialog, setOpenDialog, handleCloseDialog, dataDialog } = table;
   const { data, error, isLoading, refetch } = useQuery({
@@ -44,7 +44,7 @@ const Employees = () => {
         error={error}
         loading={isLoading}
         numeration
-        btnActions={buttonsActions}
+        btnActions={getAllowedButtonsDatatable(BUTTONS_DATATABLE.employees)}
         orderByDefault="nombre"
         filterLabel={'Filtrar solo empleados'}
         filterFn={filterCheck}

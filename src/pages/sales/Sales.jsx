@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import { DASHBOARD, COLUMNS_TABLE } from '@/constants';
+import { DASHBOARD, COLUMNS_TABLE, BUTTONS_DATATABLE } from '@/constants';
 import { DashboardContainer, DataTable } from '@/components';
 import { salesList } from '@/services';
+import { useAuth } from '@/hooks';
 
-const buttonsActions = { edit: false, remove: false, detail: true };
 const Sales = () => {
+  const { getAllowedButtonsDatatable } = useAuth();
+
   const { data, error, isLoading } = useQuery({
     queryKey: ['salesList'],
     queryFn: salesList,
@@ -18,7 +20,7 @@ const Sales = () => {
         error={error}
         loading={isLoading}
         numeration
-        btnActions={buttonsActions}
+        btnActions={getAllowedButtonsDatatable(BUTTONS_DATATABLE.sales)}
         orderByDefault="fecha"
       />
     </DashboardContainer>

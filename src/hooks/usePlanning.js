@@ -56,7 +56,7 @@ export const usePlanning = ({ formMethods }) => {
     const newDate = getNearestDateForDayOfWeek(selectedDate);
     selectedSchedule.current = idHorario;
 
-    queryPlanning.current = `?hora=${format(newDate, 'HH:mm')}&fecha=${newDate.toISOString()}`;
+    queryPlanning.current = `?idHorario=${id}&fecha=${newDate.toISOString()}`;
     planning.refetch();
     formMethods.setValue('fecha', newDate);
     formMethods.setValue('hora', format(newDate, 'HH:mm'));

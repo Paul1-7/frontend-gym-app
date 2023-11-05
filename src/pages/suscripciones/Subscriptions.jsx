@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import { useTable } from '@/hooks';
-import { DASHBOARD, COLUMNS_TABLE, TEXT_MODAL } from '@/constants';
+import { useAuth, useTable } from '@/hooks';
+import { DASHBOARD, COLUMNS_TABLE, TEXT_MODAL, BUTTONS_DATATABLE } from '@/constants';
 import { DashboardContainer, DataTable, DialogConfirmation } from '@/components';
 import { subscriptionsList } from '@/services';
 
 const Subscriptions = () => {
+  const { getAllowedButtonsDatatable } = useAuth();
+
   const { table } = useTable();
   const { openDialog, setOpenDialog, handleCloseDialog, dataDialog } = table;
   const { data, error, isLoading } = useQuery({
@@ -27,7 +29,7 @@ const Subscriptions = () => {
         error={error}
         loading={isLoading}
         numeration
-        btnActions={{ edit: true }}
+        btnActions={getAllowedButtonsDatatable(BUTTONS_DATATABLE.subscriptions)}
         orderByDefault="nombre"
       />
     </DashboardContainer>

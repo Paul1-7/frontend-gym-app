@@ -1,12 +1,12 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { useTable } from '@/hooks';
-import { DASHBOARD, COLUMNS_TABLE, TEXT_MODAL } from '@/constants';
+import { useAuth, useTable } from '@/hooks';
+import { DASHBOARD, COLUMNS_TABLE, TEXT_MODAL, BUTTONS_DATATABLE } from '@/constants';
 import { DashboardContainer, DataTable, DialogConfirmation } from '@/components';
 import { deletePlan, plansList } from '@/services';
 
-const buttonsActions = { edit: true, remove: true, detail: false };
-
 const Plans = () => {
+  const { getAllowedButtonsDatatable } = useAuth();
+
   const { table } = useTable();
   const { openDialog, setOpenDialog, handleCloseDialog, dataDialog } = table;
   const { data, error, isLoading, refetch } = useQuery({
@@ -42,7 +42,7 @@ const Plans = () => {
         error={error}
         loading={isLoading}
         numeration
-        btnActions={buttonsActions}
+        btnActions={getAllowedButtonsDatatable(BUTTONS_DATATABLE.plans)}
         orderByDefault="nombre"
       />
     </DashboardContainer>

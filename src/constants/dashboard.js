@@ -8,9 +8,8 @@ import { CardMembership } from '@mui/icons-material';
 import { MeetingRoom } from '@mui/icons-material';
 import { FitnessCenter } from '@mui/icons-material';
 import { Person } from '@mui/icons-material';
-import ROLES from './roles';
+import { SUBMENUS } from './subMenus';
 
-const { ADMINISTRADOR, RECEPCIONISTA } = ROLES;
 export const DASHBOARD = {
   employees: {
     default: {
@@ -20,6 +19,7 @@ export const DASHBOARD = {
         icon: Person,
         url: ROUTES.employees.add,
         name: 'Nuevo empleado',
+        idMenus: [SUBMENUS.EMPLOYEE_ADD_ID],
       },
     },
     add: {
@@ -39,6 +39,7 @@ export const DASHBOARD = {
         icon: Person,
         url: ROUTES.partners.add,
         name: 'Nuevo socio',
+        idMenus: [SUBMENUS.PARTNER_ADD_ID],
       },
     },
     add: {
@@ -58,7 +59,7 @@ export const DASHBOARD = {
         icon: FitnessCenter,
         url: ROUTES.disciplines.add,
         name: 'Nueva disciplina',
-        allowedRols: [ADMINISTRADOR, RECEPCIONISTA],
+        idMenus: [SUBMENUS.DISCIPLINE_ADD_ID],
       },
     },
     add: {
@@ -78,6 +79,7 @@ export const DASHBOARD = {
         icon: MeetingRoom,
         url: ROUTES.halls.add,
         name: 'Nuevo salón',
+        idMenus: [SUBMENUS.ROOM_ADD_ID],
       },
     },
     add: {
@@ -98,6 +100,7 @@ export const DASHBOARD = {
           icon: Category,
           url: ROUTES.categories.disciplines.add,
           name: 'Nueva categoria',
+          idMenus: [SUBMENUS.DISCIPLINE_CATEGORY_ADD_ID],
         },
       },
       add: {
@@ -117,6 +120,7 @@ export const DASHBOARD = {
           icon: Category,
           url: ROUTES.categories.equipments.add,
           name: 'Nueva categoria',
+          idMenus: [SUBMENUS.MACHINERY_CATEGORY_ADD_ID],
         },
       },
       add: {
@@ -136,6 +140,7 @@ export const DASHBOARD = {
           icon: Category,
           url: ROUTES.categories.products.add,
           name: 'Nueva categoria',
+          idMenus: [SUBMENUS.PRODUCT_CATEGORY_ADD_ID],
         },
       },
       add: {
@@ -156,6 +161,7 @@ export const DASHBOARD = {
         icon: CalendarMonth,
         url: ROUTES.planning.add,
         name: 'Nueva programacion',
+        idMenus: [SUBMENUS.CLASS_SCHEDULE_ADD_ID],
       },
     },
     add: {
@@ -179,6 +185,7 @@ export const DASHBOARD = {
         icon: Inventory,
         url: ROUTES.products.add,
         name: 'Nuevo producto',
+        idMenus: [SUBMENUS.PRODUCT_ADD_ID],
       },
     },
     add: {
@@ -198,6 +205,7 @@ export const DASHBOARD = {
         icon: CardMembership,
         url: ROUTES.plans.add,
         name: 'Nuevo plan',
+        idMenus: [SUBMENUS.PLAN_ADD_ID],
       },
     },
     add: {
@@ -217,6 +225,7 @@ export const DASHBOARD = {
         icon: Assignment,
         url: ROUTES.subscriptions.add,
         name: 'Nueva suscripción',
+        idMenus: [SUBMENUS.SUBSCRIPTION_ADD_ID],
       },
     },
     add: {
@@ -242,6 +251,7 @@ export const DASHBOARD = {
         icon: PointOfSale,
         url: ROUTES.sales.add,
         name: 'Nueva venta',
+        idMenus: [SUBMENUS.SALE_ADD_ID],
       },
     },
     add: {
@@ -261,6 +271,7 @@ export const DASHBOARD = {
         icon: FitnessCenter,
         url: ROUTES.equipment.add,
         name: 'Nueva maquinaria',
+        idMenus: [SUBMENUS.MACHINE_ADD_ID],
       },
     },
     add: {
