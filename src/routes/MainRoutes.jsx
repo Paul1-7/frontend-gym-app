@@ -57,6 +57,11 @@ const Equipments = lazy(() => import('@/pages/equipments/Equipments'));
 const AddEquipment = lazy(() => import('@/pages/equipments/AddEquipment'));
 const ModifyEquipment = lazy(() => import('@/pages/equipments/ModifyEquipment'));
 
+// Rols
+const Rols = lazy(() => import('@/pages/rols/Rols'));
+const AddRol = lazy(() => import('@/pages/rols/AddRol'));
+const ModifyRol = lazy(() => import('@/pages/rols/ModifyRol'));
+
 // reports
 const SalesReport = lazy(() => import('@/pages/reports/SalesReport'));
 const EquipmentReport = lazy(() => import('@/pages/reports/EquipmentReport'));
@@ -232,6 +237,17 @@ export default function Router() {
           <Route path={ROUTES.reports.sales} element={<SalesReport />} />
           <Route path={ROUTES.reports.equipments} element={<EquipmentReport />} />
           <Route path={ROUTES.reports.products} element={<ProductReport />} />
+          {/* Rols */}
+          <Route
+            path={ROUTES.rols.default}
+            element={
+              <DataTableProvider>
+                <Rols />
+              </DataTableProvider>
+            }
+          />
+          <Route path={ROUTES.rols.add} element={<AddRol />} />
+          <Route path={`${ROUTES.rols.modify}/:id`} element={<ModifyRol />} />
         </Route>
       </Route>
 

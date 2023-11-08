@@ -51,4 +51,9 @@ export const BUTTONS_DATATABLE = {
   subscriptions: {
     edit: SUBMENUS.SUBSCRIPTION_UPDATE_ID,
   },
+  rols: {
+    edit: SUBMENUS.ROL_UPDATE_ID,
+    remove: SUBMENUS.ROL_DELETE_ID,
+    detail: SUBMENUS.ROL_DETAIL_ID,
+  },
 };

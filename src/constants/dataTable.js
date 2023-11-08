@@ -102,6 +102,7 @@ const COLUMNS_TABLE = {
     { field: 'categorias', header: 'categorias', type: 'array' },
     { field: 'estado', header: 'estado', type: '' },
   ],
+  rols: [{ field: 'nombre', header: 'Nombre', type: '' }],
 };
 
 const TABLE_STATES = {

@@ -1,4 +1,5 @@
-export { default as Autocomplete } from './AutocompleteContainer';
+export { default as AutocompleteContainer } from './AutocompleteContainer';
+export { default as CheckboxContainer } from './CheckboxContainer';
 export { default as DatePicker } from './DatePicker';
 export { default as Input } from './Input';
 export { default as RadioGroup } from './RadioGroup';

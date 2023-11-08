@@ -6,7 +6,7 @@ import { objectByString } from '@/utils/dataHandler';
 import compare from 'just-compare';
 
 const SelectChipMemo = memo(
-  ({ name, label, methods, isArray, items, ...others }) => {
+  ({ name, label, methods, isArray, items = [], ...others }) => {
     const error = methods.formState.errors;
 
     const errorValue = isArray ? objectByString(error, name) : error[name];
@@ -24,6 +24,9 @@ const SelectChipMemo = memo(
         const valueObject = Object.values(item);
         return valueObject[0] === value;
       });
+
+      if (!found) return '';
+
       return Object?.values(found)?.[1];
     };
 

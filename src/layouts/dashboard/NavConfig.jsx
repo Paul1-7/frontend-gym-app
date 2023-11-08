@@ -100,6 +100,12 @@ const navConfig = [
     idMenus: [SUBMENUS.ROOM_LIST_ID],
   },
   {
+    title: 'roles',
+    path: ROUTES.rols.default,
+    icon: getIcon('eos-icons:cluster-role'),
+    idMenus: [SUBMENUS.ROL_LIST_ID],
+  },
+  {
     title: 'reportes',
     path: ROUTES.reports.default,
     icon: getIcon('material-symbols:book'),

@@ -1,5 +1,4 @@
 import { getBOBCurrency } from '@/utils/dataHandler';
-import { ROLES_ITEMS } from './inputs';
 import { add } from 'date-fns';
 
 export const ITEM_DEFAULT = 'default';
@@ -32,7 +31,7 @@ export const initialFormEmployee = {
   usuario: '',
   password: '',
   repetirPassword: '',
-  roles: [ROLES_ITEMS[2].idRol],
+  roles: [],
 };
 
 export const initialFormDiscipline = {
@@ -164,4 +163,10 @@ export const initialFormPlanning = {
 export const initialFormLogin = {
   usuario: '',
   password: '',
+};
+
+export const initialFormRoles = {
+  nombre: '',
+  idMenus: [],
+  menus: [],
 };

@@ -6,7 +6,7 @@ import schema from '@/schemas';
 import { Navigate } from 'react-router-dom';
 import { DashboardContainer, Form } from '@/components';
 import { ROUTES } from '@/routes/routes';
-import { getEmployeeById, modifyEmployee } from '@/services';
+import { getEmployeeById, modifyEmployee, rolsListItemsChip } from '@/services';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import EmployeeForm from './EmployeeForm';
@@ -31,15 +31,20 @@ const ModifyEmployee = () => {
     queryFn: () => getEmployeeById(id),
   });
 
+  const rols = useQuery({
+    queryKey: ['rols'],
+    queryFn: () => rolsListItemsChip(),
+  });
+
   useEffect(() => {
-    if (!employee.isSuccess) return;
+    if (!employee.isSuccess || !rols.isSuccess) return;
     methods.reset(employee.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true });
-  }, [employee.data]);
+  }, [employee.data, rols.data]);
 
   return (
     <DashboardContainer data={DASHBOARD.employees.modify}>
       <Form methods={methods} onSubmit={modifyEmployeeData.mutate}>
-        <EmployeeForm isLoading={modifyEmployeeData.isLoading} withState />
+        <EmployeeForm isLoading={modifyEmployeeData.isLoading} withState rols={rols.data} />
       </Form>
       {!modifyEmployeeData.isLoading && !modifyEmployeeData.isError && modifyEmployeeData.isSuccess && (
         <Navigate to={ROUTES.employees.default} />

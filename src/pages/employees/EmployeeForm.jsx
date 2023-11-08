@@ -1,12 +1,12 @@
 import { PropTypes } from 'prop-types';
 import { ButtonLink, Fieldset, Input, RadioGroup, SelectChip } from '@/components';
-import { ITEMS_RADIO_GROUP, ROLES_ITEMS } from '@/constants';
+import { ITEMS_RADIO_GROUP } from '@/constants';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const EmployeeForm = ({ isLoading, withState = false }) => {
+const EmployeeForm = ({ isLoading, withState = false, rols = [] }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -35,7 +35,7 @@ const EmployeeForm = ({ isLoading, withState = false }) => {
                 <Input label="Edad" name="edad" type="number" />
               </Grid>
               <Grid item xs={12} md={6}>
-                <SelectChip name="roles" label="Roles" items={ROLES_ITEMS} />
+                <SelectChip name="roles" label="Roles" items={rols} />
               </Grid>
               {withState && (
                 <Grid item xs={12} md={6}>
@@ -79,6 +79,7 @@ const EmployeeForm = ({ isLoading, withState = false }) => {
 };
 
 EmployeeForm.propTypes = {
+  rols: PropTypes.array,
   isLoading: PropTypes.bool,
   withState: PropTypes.bool,
 };

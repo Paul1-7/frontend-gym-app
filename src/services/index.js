@@ -10,6 +10,7 @@ export * from './partners';
 export * from './planningService';
 export * from './plansService';
 export * from './productsService';
+export * from './rolsService';
 export * from './salesService';
 export * from './schedulesService';
 export * from './subscriptionsService';

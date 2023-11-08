@@ -31,6 +31,26 @@ export const DASHBOARD = {
       description: 'Modifica un empleado existente para el acceso al sistema',
     },
   },
+  rols: {
+    default: {
+      title: 'Roles',
+      description: 'Lista de roles',
+      button: {
+        icon: Person,
+        url: ROUTES.rols.add,
+        name: 'Nuevo rol',
+        idMenus: [SUBMENUS.ROL_ADD_ID],
+      },
+    },
+    add: {
+      title: 'Agregar rol',
+      description: 'Agrega un rol para el acceso al sistema',
+    },
+    modify: {
+      title: 'Modificar rol',
+      description: 'Modifica un rol existente para el acceso al sistema',
+    },
+  },
   partners: {
     default: {
       title: 'Socios',
