@@ -36,10 +36,14 @@ export default function EquipmentReport() {
   });
   const watchedFormValues = formMethods.watch();
 
-  const { fileName, showAllRows, handleShowRows, searchTerm } = useReport({
+  const {
+    filename: fileName,
+    showAllRows,
+    handleShowRows,
+    searchTerm,
+  } = useReport({
     formMethods,
     criteriaOptions: EQUIPMENT_REPORT_CRITERIA_OPTIONS,
-
     initialFormOptions: initialFormEquipmentReport.options,
     filename: 'reporteMaquinarias',
   });

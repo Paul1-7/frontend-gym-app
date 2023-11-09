@@ -1,3 +1,4 @@
+import { equipmentsListReport, listSalesByDates, productsListReport } from '@/services';
 import { add } from 'date-fns';
 
 const dateEnd = new Date().toISOString();
@@ -59,63 +60,78 @@ export const PRODUCT_REPORT_SORT_OPTIONS = [
 ];
 
 export const COLUMNS_SALES_REPORT = [
-  { displayName: 'N°', id: 'index' },
-  { displayName: 'Código de venta', id: 'codVenta' },
-  { displayName: 'Cliente', id: 'cliente' },
-  { displayName: 'Vendedor', id: 'vendedor' },
-  { displayName: 'Total (Bs)', id: 'total' },
-  { displayName: 'Fecha de venta', id: 'fecha' },
+  { displayLabel: 'N°', key: 'index' },
+  { displayLabel: 'Código de venta', key: 'codVenta' },
+  { displayLabel: 'Cliente', key: 'cliente' },
+  { displayLabel: 'Vendedor', key: 'vendedor' },
+  { displayLabel: 'Total (Bs)', key: 'total' },
+  { displayLabel: 'Fecha de venta', key: 'fecha' },
 ];
 
 export const COLUMNS_EQUIPMENT_REPORT = [
-  { displayName: 'N°', id: 'index' },
-  { displayName: 'Código de maquinaria', id: 'codMaquinaria' },
-  { displayName: 'Nombre', id: 'nombre' },
-  { displayName: 'Marca', id: 'marca' },
-  { displayName: 'Modelo', id: 'modelo' },
-  { displayName: 'Fecha de adquisición', id: 'fechaAdquisicion' },
-  { displayName: 'Capacidad (kg)', id: 'capacidad' },
-  { displayName: 'Precio', id: 'precio' },
-  { displayName: 'Estado', id: 'estado' },
+  { displayLabel: 'N°', key: 'index' },
+  { displayLabel: 'Código de maquinaria', key: 'codMaquinaria' },
+  { displayLabel: 'Nombre', key: 'nombre' },
+  { displayLabel: 'Marca', key: 'marca' },
+  { displayLabel: 'Modelo', key: 'modelo' },
+  { displayLabel: 'Fecha de adquisición', key: 'fechaAdquisicion' },
+  { displayLabel: 'Capacidad (kg)', key: 'capacidad' },
+  { displayLabel: 'Precio', key: 'precio' },
+  { displayLabel: 'Estado', key: 'estado' },
 ];
 
 export const COLUMNS_SUBSCRIPTIONS_ALL_REPORT = [
-  { displayName: 'N°', id: 'index' },
-  { displayName: 'Socio', id: 'socio' },
-  { displayName: 'Nombre', id: 'nombre' },
-  { displayName: 'Marca', id: 'marca' },
-  { displayName: 'Modelo', id: 'modelo' },
-  { displayName: 'Fecha de adquisición', id: 'fechaAdquisicion' },
-  { displayName: 'Capacidad (kg)', id: 'capacidad' },
-  { displayName: 'Precio', id: 'precio' },
-  { displayName: 'Estado', id: 'estado' },
+  { displayLabel: 'N°', key: 'index' },
+  { displayLabel: 'Socio', key: 'socio' },
+  { displayLabel: 'Nombre', key: 'nombre' },
+  { displayLabel: 'Marca', key: 'marca' },
+  { displayLabel: 'Modelo', key: 'modelo' },
+  { displayLabel: 'Fecha de adquisición', key: 'fechaAdquisicion' },
+  { displayLabel: 'Capacidad (kg)', key: 'capacidad' },
+  { displayLabel: 'Precio', key: 'precio' },
+  { displayLabel: 'Estado', key: 'estado' },
 ];
 
 export const COLUMNS_PRODUCT_REPORT = [
-  { displayName: 'N°', id: 'index' },
-  { displayName: 'Nombre', id: 'nombre' },
-  { displayName: 'Precio de compra(Bs)', id: 'precioCompra' },
-  { displayName: 'Precio de venta (Bs)', id: 'precioVenta' },
-  { displayName: 'Stock', id: 'stock' },
-  { displayName: 'Fecha de vencimiento', id: 'fechaVencimiento' },
+  { displayLabel: 'N°', key: 'index' },
+  { displayLabel: 'Nombre', key: 'nombre' },
+  { displayLabel: 'Precio de compra(Bs)', key: 'precioCompra' },
+  { displayLabel: 'Precio de venta (Bs)', key: 'precioVenta' },
+  { displayLabel: 'Stock', key: 'stock' },
+  { displayLabel: 'Fecha de vencimiento', key: 'fechaVencimiento' },
 ];
 
 export const EQUIPMENT_REPORT_CRITERIA_OPTIONS = [
-  { id: '1', name: 'Todos los registros' },
-  { id: '2', name: 'Solo máquinas operativas' },
-  { id: '3', name: 'Solo máquinas en reparación' },
-  { id: '4', name: 'Solo máquinas fuera de servicio ' },
+  { id: '1', name: 'Todos los registros', columns: COLUMNS_EQUIPMENT_REPORT, service: equipmentsListReport },
+  { id: '2', name: 'Solo máquinas operativas', columns: COLUMNS_EQUIPMENT_REPORT, service: equipmentsListReport },
+  { id: '3', name: 'Solo máquinas en reparación', columns: COLUMNS_EQUIPMENT_REPORT, service: equipmentsListReport },
+  {
+    id: '4',
+    name: 'Solo máquinas fuera de servicio ',
+    columns: COLUMNS_EQUIPMENT_REPORT,
+    service: equipmentsListReport,
+  },
 ];
 
 export const PRODUCT_REPORT_CRITERIA_OPTIONS = [
-  { id: '1', name: 'Todos los registros' },
-  { id: '2', name: 'Solo productos con vencimiento' },
-  { id: '3', name: 'Solo productos sin vencimiento' },
+  { id: '1', name: 'Todos los registros', columns: COLUMNS_PRODUCT_REPORT, service: productsListReport },
+  { id: '2', name: 'Solo productos con vencimiento', columns: COLUMNS_PRODUCT_REPORT, service: productsListReport },
+  { id: '3', name: 'Solo productos sin vencimiento', columns: COLUMNS_PRODUCT_REPORT, service: productsListReport },
+];
+
+export const SALES_REPORT_CRITERIA_OPTIONS = [
+  { id: '1', name: 'Todos los registros', columns: COLUMNS_SALES_REPORT, service: listSalesByDates },
 ];
 
 export const SUBSCRIPTION_REPORT_CRITERIA_OPTIONS = [
-  { id: '1', name: 'Todos los registros', colums: COLUMNS_SUBSCRIPTIONS_ALL_REPORT },
-  { id: '2', name: 'Socios con mas suscripciones' },
-  { id: '3', name: 'Planes mas contratados' },
-  { id: '4', name: 'Suscripciones activas' },
+  {
+    id: '1',
+    name: 'Todos los registros',
+    colums: COLUMNS_SUBSCRIPTIONS_ALL_REPORT,
+    columns: COLUMNS_EQUIPMENT_REPORT,
+    service: equipmentsListReport,
+  },
+  { id: '2', name: 'Socios con mas suscripciones', columns: COLUMNS_EQUIPMENT_REPORT, service: equipmentsListReport },
+  { id: '3', name: 'Planes mas contratados', columns: COLUMNS_EQUIPMENT_REPORT, service: equipmentsListReport },
+  { id: '4', name: 'Suscripciones activas', columns: COLUMNS_EQUIPMENT_REPORT, service: equipmentsListReport },
 ];

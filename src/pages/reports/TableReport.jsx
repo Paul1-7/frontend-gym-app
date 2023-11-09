@@ -14,9 +14,9 @@ const TableReport = ({ columns = [], rows = [], showAllRows }) => {
       <Table>
         <TableHead>
           <TableRow>
-            {columns.map(({ displayName }, index) => (
+            {columns.map(({ displayLabel }, index) => (
               <TableCell key={index} align="center">
-                {displayName}
+                {displayLabel}
               </TableCell>
             ))}
           </TableRow>

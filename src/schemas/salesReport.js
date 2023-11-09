@@ -3,6 +3,10 @@ import * as yup from 'yup';
 
 const salesReport = yup.object().shape({
   options: yup.object().shape({
+    criterio: yup
+      .string()
+      .matches(regex.alphaNumeric, msg.alphaNumeric)
+      .test('noDefaultValue', 'Tiene que seleccionar una opción', (value) => value !== ITEM_DEFAULT),
     idDateRange: yup
       .string()
       .matches(regex.alphaNumeric, msg.alphaNumeric)

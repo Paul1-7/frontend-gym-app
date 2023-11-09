@@ -1,8 +1,17 @@
 import { useMemo, useState, useCallback } from 'react';
 import { REPORT_FREQUENCY_OPTIONS } from '@/constants';
 import { useRef } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
 
-export const useReport = ({ formMethods, initialFormOptions, filename = '', criteriaOptions }) => {
+export const useReport = ({
+  formMethods,
+  initialFormOptions,
+  filename = '',
+  criteriaOptions,
+  frequencyOptions,
+  fnOPtions,
+}) => {
   const [showAllRows, setShowAllRows] = useState(true);
   const selectedOptions = formMethods.watch();
   const CUSTOM_RANGE_DATE = '5';
@@ -24,7 +33,8 @@ export const useReport = ({ formMethods, initialFormOptions, filename = '', crit
   const getRangeFromFrequencyOptions = () => {
     const { options, customDateRange } = selectedOptions;
     const { idDateRange } = options;
-    selectedFrequency.current = REPORT_FREQUENCY_OPTIONS.find(({ id }) => id === idDateRange);
+    const frequency = frequencyOptions ?? REPORT_FREQUENCY_OPTIONS;
+    selectedFrequency.current = frequency?.find(({ id }) => id === idDateRange);
 
     if (selectedFrequency.current.id === CUSTOM_RANGE_DATE) {
       return {
@@ -50,10 +60,15 @@ export const useReport = ({ formMethods, initialFormOptions, filename = '', crit
 
     if (options.criterio) {
       params.criterio = options.criterio;
-      selectedCriterio.current = criteriaOptions.find(({ id }) => id === options.criterio);
     }
 
     params.orderBy = getOrderByFromOptions();
+
+    if (fnOPtions) {
+      params = { ...params, ...fnOPtions(options) };
+    }
+
+    selectedCriterio.current = criteriaOptions?.find(({ id }) => id === params?.criterio);
 
     return params;
   }, [selectedOptions]);
@@ -66,10 +81,25 @@ export const useReport = ({ formMethods, initialFormOptions, filename = '', crit
     selectedFrequency.current?.name ?? ''
   }`;
 
+  const responseReport = useQuery({
+    queryKey: ['report'],
+    queryFn: () => selectedCriterio.current?.service({ params: memoizedSearchTerm }),
+    enabled: false,
+    staleTime: 0,
+  });
+
+  useEffect(() => {
+    if (!memoizedSearchTerm || !Object.values(memoizedSearchTerm).length) return;
+    responseReport.refetch();
+  }, [memoizedSearchTerm]);
+
   return {
-    fileName: completedFileName,
+    filename: completedFileName,
     showAllRows,
     toggleShowRows,
     searchTerm: memoizedSearchTerm,
+    columns: selectedCriterio.current?.columns,
+    service: selectedCriterio.current?.service,
+    responseReport,
   };
 };

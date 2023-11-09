@@ -37,7 +37,12 @@ export default function SubscriptionsReport() {
   });
   const watchedFormValues = formMethods.watch();
 
-  const { fileName, showAllRows, toggleShowRows, searchTerm } = useReport({
+  const {
+    filename: fileName,
+    showAllRows,
+    toggleShowRows,
+    searchTerm,
+  } = useReport({
     formMethods,
     frequencyOptions: REPORT_FREQUENCY_OPTIONS,
     criteriaOptions: SUBSCRIPTION_REPORT_CRITERIA_OPTIONS,
