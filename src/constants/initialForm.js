@@ -120,7 +120,6 @@ export const initialFormSubscriptionReport = {
   options: {
     criterio: ITEM_DEFAULT,
     idDateRange: ITEM_DEFAULT,
-    orderBy: ITEM_DEFAULT,
   },
   customDateRange: {
     dateStart: new Date(),

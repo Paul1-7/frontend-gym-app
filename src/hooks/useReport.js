@@ -11,10 +11,12 @@ export const useReport = ({
   criteriaOptions,
   frequencyOptions,
   fnOPtions,
+  sendCriterio = true,
 }) => {
   const [showAllRows, setShowAllRows] = useState(true);
   const selectedOptions = formMethods.watch();
   const CUSTOM_RANGE_DATE = '5';
+  const ALL_DATES = '6';
 
   const selectedCriterio = useRef(null);
   const selectedFrequency = useRef(null);
@@ -35,6 +37,9 @@ export const useReport = ({
     const { idDateRange } = options;
     const frequency = frequencyOptions ?? REPORT_FREQUENCY_OPTIONS;
     selectedFrequency.current = frequency?.find(({ id }) => id === idDateRange);
+    console.log('TCL: getRangeFromFrequencyOptions -> selectedFrequency.current', selectedFrequency.current);
+
+    if (selectedFrequency.current.id === ALL_DATES) return {};
 
     if (selectedFrequency.current.id === CUSTOM_RANGE_DATE) {
       return {
@@ -54,6 +59,7 @@ export const useReport = ({
     const { options, customDateRange } = selectedOptions;
     let params = {};
 
+    console.log(options.idDateRange);
     if (options.idDateRange && customDateRange) {
       params = getRangeFromFrequencyOptions();
     }
@@ -62,13 +68,17 @@ export const useReport = ({
       params.criterio = options.criterio;
     }
 
-    params.orderBy = getOrderByFromOptions();
+    if (options.orderBy) {
+      params.orderBy = getOrderByFromOptions();
+    }
 
     if (fnOPtions) {
       params = { ...params, ...fnOPtions(options) };
     }
 
     selectedCriterio.current = criteriaOptions?.find(({ id }) => id === params?.criterio);
+
+    if (!sendCriterio) delete params.criterio;
 
     return params;
   }, [selectedOptions]);
@@ -89,7 +99,7 @@ export const useReport = ({
   });
 
   useEffect(() => {
-    if (!memoizedSearchTerm || !Object.values(memoizedSearchTerm).length) return;
+    if (!memoizedSearchTerm) return;
     responseReport.refetch();
   }, [memoizedSearchTerm]);
 

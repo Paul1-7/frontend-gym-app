@@ -24,9 +24,9 @@ const TableReport = ({ columns = [], rows = [], showAllRows }) => {
         <TableBody>
           {rows.map((row, index) => (
             <TableRow key={index} sx={showAllRows && index >= 10 ? { display: 'none', displayPrint: 'table-row' } : {}}>
-              {Object.values(row).map((value, index) => (
-                <TableCell key={value + index} component="th" scope="row" align="center" sx={styleTableCell}>
-                  {value}
+              {columns.map(({ key }, index) => (
+                <TableCell key={index + key} align="center" scope="row" sx={styleTableCell}>
+                  {row?.[key]}
                 </TableCell>
               ))}
             </TableRow>

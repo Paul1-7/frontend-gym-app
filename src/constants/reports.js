@@ -1,9 +1,23 @@
-import { equipmentsListReport, listSalesByDates, productsListReport } from '@/services';
+import {
+  equipmentsListReport,
+  getMostRequestedPlans,
+  getSubscriptionsActives,
+  listSalesByDates,
+  partnersWithLargerstSubscription,
+  productsListReport,
+  subscriptionsList,
+} from '@/services';
 import { add } from 'date-fns';
 
 const dateEnd = new Date().toISOString();
 
 export const REPORT_FREQUENCY_OPTIONS = [
+  {
+    id: '6',
+    name: 'Todas las fechas',
+    dateStart: null,
+    dateEnd: null,
+  },
   {
     id: '1',
     name: 'Diaria',
@@ -83,13 +97,26 @@ export const COLUMNS_EQUIPMENT_REPORT = [
 export const COLUMNS_SUBSCRIPTIONS_ALL_REPORT = [
   { displayLabel: 'N°', key: 'index' },
   { displayLabel: 'Socio', key: 'socio' },
+  { displayLabel: 'C.I.', key: 'ci' },
+  { displayLabel: 'Fecha de inicio', key: 'fechaInicio' },
+  { displayLabel: 'Fecha fin', key: 'fechaFin' },
+  { displayLabel: 'Plan', key: 'plan' },
+  { displayLabel: 'Cantidad', key: 'cantidad' },
+  { displayLabel: 'Monto cancelado (Bs)', key: 'montoCancelado' },
+];
+
+export const COLUMNS_SUBSCRIPTIONS_MOST_REQUESTED_PLANS = [
+  { displayLabel: 'N°', key: 'index' },
   { displayLabel: 'Nombre', key: 'nombre' },
-  { displayLabel: 'Marca', key: 'marca' },
-  { displayLabel: 'Modelo', key: 'modelo' },
-  { displayLabel: 'Fecha de adquisición', key: 'fechaAdquisicion' },
-  { displayLabel: 'Capacidad (kg)', key: 'capacidad' },
-  { displayLabel: 'Precio', key: 'precio' },
-  { displayLabel: 'Estado', key: 'estado' },
+  { displayLabel: 'Cantidad', key: 'cantidad' },
+];
+export const COLUMNS_PARNERS_LARGERST_SUBSCRIPTION = [
+  { displayLabel: 'N°', key: 'index' },
+  { displayLabel: 'Nombre', key: 'nombre' },
+  { displayLabel: 'Apellido 1', key: 'apellidoP' },
+  { displayLabel: 'Apellido 2', key: 'apellidoM' },
+  { displayLabel: 'C.I.', key: 'ci' },
+  { displayLabel: 'N° de suscripciones', key: 'numSuscrip' },
 ];
 
 export const COLUMNS_PRODUCT_REPORT = [
@@ -127,11 +154,25 @@ export const SUBSCRIPTION_REPORT_CRITERIA_OPTIONS = [
   {
     id: '1',
     name: 'Todos los registros',
-    colums: COLUMNS_SUBSCRIPTIONS_ALL_REPORT,
-    columns: COLUMNS_EQUIPMENT_REPORT,
-    service: equipmentsListReport,
+    columns: COLUMNS_SUBSCRIPTIONS_ALL_REPORT,
+    service: subscriptionsList,
   },
-  { id: '2', name: 'Socios con mas suscripciones', columns: COLUMNS_EQUIPMENT_REPORT, service: equipmentsListReport },
-  { id: '3', name: 'Planes mas contratados', columns: COLUMNS_EQUIPMENT_REPORT, service: equipmentsListReport },
-  { id: '4', name: 'Suscripciones activas', columns: COLUMNS_EQUIPMENT_REPORT, service: equipmentsListReport },
+  {
+    id: '2',
+    name: 'Socios con mas suscripciones',
+    columns: COLUMNS_PARNERS_LARGERST_SUBSCRIPTION,
+    service: partnersWithLargerstSubscription,
+  },
+  {
+    id: '3',
+    name: 'Planes más contratados',
+    columns: COLUMNS_SUBSCRIPTIONS_MOST_REQUESTED_PLANS,
+    service: getMostRequestedPlans,
+  },
+  {
+    id: '4',
+    name: 'Suscripciones activas',
+    columns: COLUMNS_SUBSCRIPTIONS_ALL_REPORT,
+    service: getSubscriptionsActives,
+  },
 ];

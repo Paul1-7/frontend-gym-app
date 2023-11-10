@@ -20,11 +20,13 @@ const ReportSummary = ({ sortOptions, frequencyOptions = [], watchedFormValues, 
           }`}</Typography>
         </Grid>
       )}
-      <Grid item xs={6}>
-        <Typography variant="body2" sx={{ lineHeight: 1.5 }}>{`Ordenado por: ${
-          sortOptions.find(({ id }) => id === watchedFormValues.orderBy)?.name ?? ''
-        }`}</Typography>
-      </Grid>
+      {sortOptions && (
+        <Grid item xs={6}>
+          <Typography variant="body2" sx={{ lineHeight: 1.5 }}>{`Ordenado por: ${
+            sortOptions.find(({ id }) => id === watchedFormValues.orderBy)?.name ?? ''
+          }`}</Typography>
+        </Grid>
+      )}
 
       <Grid item xs={6}>
         <Typography

@@ -1,14 +1,20 @@
-import { getPartnerListWithFullName } from '@/adapters';
+import { addIndexListAdapter, getPartnerListWithFullName } from '@/adapters';
 import Axios from '@/apis';
 
 export const URL_PARTNERS = {
   default: '/api/v1/socios',
+  withLargestSubscription: '/api/v1/socios/mayor-suscripciones',
 };
 
 export const partnersList = async () => {
   const response = await Axios.get(URL_PARTNERS.default);
   if (response.status >= 400) throw response.data;
   return response.data;
+};
+export const partnersWithLargerstSubscription = async ({ params } = {}) => {
+  const response = await Axios.get(URL_PARTNERS.withLargestSubscription, { params });
+  if (response.status >= 400) throw response.data;
+  return addIndexListAdapter(response.data);
 };
 
 export const partnersListFullName = async (query = '') => {
