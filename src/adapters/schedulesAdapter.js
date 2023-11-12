@@ -28,3 +28,17 @@ export const schedulesListItems = (data) =>
       salon,
     };
   });
+
+export const schedulesListToReportAdapter = (data) =>
+  data.map((item, idx) => {
+    const { entrenador, disciplina, salon, dia, estado } = item;
+    return {
+      ...item,
+      index: idx + 1,
+      dia: DAYS_ITEMS[dia],
+      entrenador: entrenador.nombre + ' ' + entrenador.apellidoP,
+      disciplina: disciplina.nombre,
+      salon: salon.nombre,
+      estado: estado === 1 ? 'activo' : 'no activo',
+    };
+  });

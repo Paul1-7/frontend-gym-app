@@ -108,6 +108,16 @@ const ITEMS_RADIO_REPORTES_SUSC = [
 
 export const DAYS_ITEMS = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
+export const DAYS_ITEMS_LIST = [
+  { id: 0, nombre: 'Domingo' },
+  { id: 1, nombre: 'Lunes' },
+  { id: 2, nombre: 'Martes' },
+  { id: 3, nombre: 'Miércoles' },
+  { id: 4, nombre: 'Jueves' },
+  { id: 5, nombre: 'Viernes' },
+  { id: 6, nombre: 'Sábado' },
+];
+
 const TEXT_MODAL = {
   delete: '¿Estas seguro de querer eliminar el registro seleccionado ? Esta accion no se puede deshacer',
 };

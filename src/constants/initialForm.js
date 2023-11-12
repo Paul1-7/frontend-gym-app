@@ -115,6 +115,14 @@ export const initialFormSaleReport = {
   },
 };
 
+export const initialFormScheduleReport = {
+  options: {
+    criterio: ITEM_DEFAULT,
+  },
+  idDisciplina: ITEM_DEFAULT,
+  dia: ITEM_DEFAULT,
+};
+
 export const initialFormSubscriptionReport = {
   options: {
     criterio: ITEM_DEFAULT,

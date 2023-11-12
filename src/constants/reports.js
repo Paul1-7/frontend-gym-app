@@ -7,6 +7,7 @@ import {
   partnerMoreBuyers,
   partnersWithLargerstSubscription,
   productsListReport,
+  schedulesListReport,
   subscriptionsList,
 } from '@/services';
 import { add } from 'date-fns';
@@ -128,6 +129,18 @@ export const COLUMNS_SUBSCRIPTIONS_MOST_REQUESTED_PLANS = [
   { displayLabel: 'Nombre', key: 'nombre' },
   { displayLabel: 'Cantidad', key: 'cantidad' },
 ];
+
+export const COLUMNS_SCHEDULES_REPORT = [
+  { displayLabel: 'N°', key: 'index' },
+  { displayLabel: 'Entrenador', key: 'entrenador' },
+  { displayLabel: 'Disciplina', key: 'disciplina' },
+  { displayLabel: 'Salón', key: 'salon' },
+  { displayLabel: 'Dia', key: 'dia' },
+  { displayLabel: 'Hora de entrada', key: 'horaEntrada' },
+  { displayLabel: 'Hora de salida', key: 'horaSalida' },
+  { displayLabel: 'Estado', key: 'estado' },
+];
+
 export const COLUMNS_PARNERS_LARGERST_SUBSCRIPTION = [
   { displayLabel: 'N°', key: 'index' },
   { displayLabel: 'Nombre', key: 'nombre' },
@@ -190,6 +203,45 @@ export const SALES_REPORT_CRITERIA_OPTIONS = [
   {
     id: '3',
     name: 'Clientes mas frecuentes',
+    columns: COLUMNS_CUSTOMERS_MORE_BUYERS_REPORT,
+    service: partnerMoreBuyers,
+  },
+];
+
+export const SCHEDULES_REPORT_CRITERIA_OPTIONS = [
+  { id: '1', name: 'Todos los registros de horarios', columns: COLUMNS_SCHEDULES_REPORT, service: schedulesListReport },
+  {
+    id: '2',
+    name: 'Horarios mediante una disciplina',
+    columns: COLUMNS_SCHEDULES_REPORT,
+    service: schedulesListReport,
+    dependsOn: 'idDisciplina',
+  },
+  {
+    id: '3',
+    name: 'Horarios mediante un dia',
+    columns: COLUMNS_SCHEDULES_REPORT,
+    service: schedulesListReport,
+    dependsOn: 'dia',
+  },
+];
+
+export const PLANNING_REPORT_CRITERIA_OPTIONS = [
+  {
+    id: '1',
+    name: 'Entrenadores con mas programación de clases',
+    columns: COLUMNS_CUSTOMERS_MORE_BUYERS_REPORT,
+    service: partnerMoreBuyers,
+  },
+  {
+    id: '2',
+    name: 'Socios con mas programación de clases',
+    columns: COLUMNS_CUSTOMERS_MORE_BUYERS_REPORT,
+    service: partnerMoreBuyers,
+  },
+  {
+    id: '3',
+    name: 'Disciplinas con mas programación de clases',
     columns: COLUMNS_CUSTOMERS_MORE_BUYERS_REPORT,
     service: partnerMoreBuyers,
   },

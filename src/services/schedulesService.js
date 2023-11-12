@@ -1,4 +1,8 @@
-import { schedulesListItems as schedulesListItemsAdapter, schedulesListToDetail } from '@/adapters';
+import {
+  schedulesListItems as schedulesListItemsAdapter,
+  schedulesListToDetail,
+  schedulesListToReportAdapter,
+} from '@/adapters';
 import Axios from '@/apis';
 
 export const URL_SCHEDULE = {
@@ -9,6 +13,11 @@ export const URL_SCHEDULE = {
 export const schedulesList = async () => {
   const response = await Axios.get(URL_SCHEDULE.default);
   return response.data;
+};
+
+export const schedulesListReport = async ({ params } = {}) => {
+  const response = await Axios.get(URL_SCHEDULE.default, { params });
+  return schedulesListToReportAdapter(response.data);
 };
 
 export const schedulesListItems = async () => {

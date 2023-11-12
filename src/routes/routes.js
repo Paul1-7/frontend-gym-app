@@ -88,7 +88,7 @@ export const ROUTES = {
     subscriptions: ADMIN_PATH + '/reportes/suscripciones',
     equipments: ADMIN_PATH + '/reportes/maquinarias',
     products: ADMIN_PATH + '/reportes/productos',
-    employees: ADMIN_PATH + '/reportes/empleados',
+    schedules: ADMIN_PATH + '/reportes/horarios',
   },
   auth: {
     login: 'ingreso',

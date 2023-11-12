@@ -67,6 +67,7 @@ const SalesReport = lazy(() => import('@/pages/reports/SalesReport'));
 const EquipmentReport = lazy(() => import('@/pages/reports/EquipmentReport'));
 const ProductReport = lazy(() => import('@/pages/reports/ProductReport'));
 const SubscriptionsReport = lazy(() => import('@/pages/reports/SubscriptionsReport'));
+const SchedulesReport = lazy(() => import('@/pages/reports/SchedulesReport'));
 
 const Sales = lazy(() => import('@/pages/sales/Sales'));
 const AddSale = lazy(() => import('@/pages/sales/AddSale'));
@@ -239,6 +240,7 @@ export default function Router() {
           <Route path={ROUTES.reports.equipments} element={<EquipmentReport />} />
           <Route path={ROUTES.reports.products} element={<ProductReport />} />
           <Route path={ROUTES.reports.subscriptions} element={<SubscriptionsReport />} />
+          <Route path={ROUTES.reports.schedules} element={<SchedulesReport />} />
           {/* Rols */}
           <Route
             path={ROUTES.rols.default}

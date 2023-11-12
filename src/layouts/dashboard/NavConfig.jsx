@@ -131,6 +131,11 @@ const navConfig = [
         path: ROUTES.reports.products,
         idMenus: [SUBMENUS.PRODUCT_REPORT_ID],
       },
+      {
+        title: 'Reporte de horarios',
+        path: ROUTES.reports.schedules,
+        idMenus: [SUBMENUS.SCHEDULES_REPORT_ID],
+      },
     ],
   },
 ];

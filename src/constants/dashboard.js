@@ -320,5 +320,13 @@ export const DASHBOARD = {
       title: 'Reportes de maquinarias',
       description: 'Genera reportes de las maquinarias que hay en el gimnacio en formato PDF o CSV',
     },
+    schedules: {
+      title: 'Reportes de horarios',
+      description: 'Genera reportes de los horarios que hay en el gimnacio en formato PDF o CSV',
+    },
+    planning: {
+      title: 'Reportes de programación de clases',
+      description: 'Genera reportes de las programaciones de las clases que hay en el gimnacio en formato PDF o CSV',
+    },
   },
 };
