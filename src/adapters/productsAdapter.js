@@ -17,15 +17,23 @@ export const getProductsAdapter = (items) => {
 
 export const getProductsToReport = (products) => {
   return products.map((product, index) => {
-    const { fechaVencimiento, nombre, precioCompra, precioVenta, stock } = product;
+    const { fechaVencimiento } = product;
 
     return {
       index: index + 1,
-      nombre,
-      precioCompra,
-      precioVenta,
-      stock,
+      ...product,
       fechaVencimiento: fechaVencimiento ? getDateLocale(fechaVencimiento) : 'N/A',
+      categoria: product.categoria.nombre,
+    };
+  });
+};
+
+export const getProductsMostPopularAdapter = (products) => {
+  return products.map((product, index) => {
+    return {
+      index: index + 1,
+      ...product,
+      categoria: product.categoria.nombre,
     };
   });
 };

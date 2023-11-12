@@ -108,7 +108,6 @@ export const initialFormSaleReport = {
   options: {
     idDateRange: ITEM_DEFAULT,
     criterio: ITEM_DEFAULT,
-    orderBy: ITEM_DEFAULT,
   },
   customDateRange: {
     dateStart: new Date(),
@@ -132,12 +131,14 @@ export const initialFormEquipmentReport = {
     criterio: ITEM_DEFAULT,
     orderBy: ITEM_DEFAULT,
   },
+  idCategoria: ITEM_DEFAULT,
 };
 export const initialFormProductReport = {
   options: {
     criterio: ITEM_DEFAULT,
     orderBy: ITEM_DEFAULT,
   },
+  idCategoria: ITEM_DEFAULT,
 };
 
 export const initialFormCategory = {

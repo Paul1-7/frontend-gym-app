@@ -3,10 +3,11 @@ import { REPORT_FREQUENCY_OPTIONS } from '@/constants';
 import { useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
+import compare from 'just-compare';
 
 export const useReport = ({
   formMethods,
-  initialFormOptions,
+  initialForm,
   filename = '',
   criteriaOptions,
   frequencyOptions,
@@ -15,6 +16,7 @@ export const useReport = ({
 }) => {
   const [showAllRows, setShowAllRows] = useState(true);
   const selectedOptions = formMethods.watch();
+  const prevMemoizedSearchTerm = useRef(null);
   const CUSTOM_RANGE_DATE = '5';
   const ALL_DATES = '6';
 
@@ -23,7 +25,7 @@ export const useReport = ({
 
   const hasOptionsByDefault = () => {
     const selectedValues = Object.values(selectedOptions.options);
-    const initialFormValues = Object.values(initialFormOptions);
+    const initialFormValues = Object.values(initialForm.options);
     return selectedValues.some((selectedValue) => initialFormValues.includes(selectedValue));
   };
 
@@ -37,7 +39,6 @@ export const useReport = ({
     const { idDateRange } = options;
     const frequency = frequencyOptions ?? REPORT_FREQUENCY_OPTIONS;
     selectedFrequency.current = frequency?.find(({ id }) => id === idDateRange);
-    console.log('TCL: getRangeFromFrequencyOptions -> selectedFrequency.current', selectedFrequency.current);
 
     if (selectedFrequency.current.id === ALL_DATES) return {};
 
@@ -55,11 +56,9 @@ export const useReport = ({
     if (hasOptionsByDefault()) {
       return null;
     }
-
     const { options, customDateRange } = selectedOptions;
     let params = {};
 
-    console.log(options.idDateRange);
     if (options.idDateRange && customDateRange) {
       params = getRangeFromFrequencyOptions();
     }
@@ -73,10 +72,16 @@ export const useReport = ({
     }
 
     if (fnOPtions) {
-      params = { ...params, ...fnOPtions(options) };
+      params = { ...params, ...fnOPtions(selectedOptions) };
     }
 
     selectedCriterio.current = criteriaOptions?.find(({ id }) => id === params?.criterio);
+
+    const criterioDependsOn = selectedCriterio.current?.dependsOn;
+
+    if (criterioDependsOn) {
+      if (selectedOptions[criterioDependsOn] === initialForm[criterioDependsOn]) return null;
+    }
 
     if (!sendCriterio) delete params.criterio;
 
@@ -95,13 +100,16 @@ export const useReport = ({
     queryKey: ['report'],
     queryFn: () => selectedCriterio.current?.service({ params: memoizedSearchTerm }),
     enabled: false,
-    staleTime: 0,
   });
 
   useEffect(() => {
     if (!memoizedSearchTerm) return;
-    responseReport.refetch();
-  }, [memoizedSearchTerm]);
+
+    if (!prevMemoizedSearchTerm.current || !compare(prevMemoizedSearchTerm.current, memoizedSearchTerm)) {
+      responseReport.refetch();
+    }
+    prevMemoizedSearchTerm.current = memoizedSearchTerm;
+  }, [memoizedSearchTerm, responseReport]);
 
   return {
     filename: completedFileName,

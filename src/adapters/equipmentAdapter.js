@@ -1,4 +1,4 @@
-import { getBOBCurrency, getDateLocale } from '@/utils';
+import { getDateLocale } from '@/utils';
 import { parseISO } from 'date-fns';
 
 export const equipmentWithDateParse = (data) => {
@@ -17,19 +17,14 @@ export const getEquipmentsAdapter = (items) => {
 };
 
 export const getEquipmentsToReport = (equipments) => {
-  return equipments.map((sale, index) => {
-    const { codMaquinaria, nombre, marca, modelo, fechaAdquisicion, capacidad, precio, estado } = sale;
+  return equipments.map((equipment, index) => {
+    const { fechaAdquisicion } = equipment;
 
     return {
       index: index + 1,
-      codMaquinaria,
-      nombre,
-      marca,
-      modelo,
+      ...equipment,
       fechaAdquisicion: getDateLocale(fechaAdquisicion),
-      capacidad,
-      precio: getBOBCurrency(precio),
-      estado,
+      categoria: equipment.categorias.map(({ nombre }) => nombre).toString(),
     };
   });
 };

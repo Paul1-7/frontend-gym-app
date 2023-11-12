@@ -31,7 +31,7 @@ export default function SubscriptionsReport() {
   const report = useReport({
     formMethods,
     criteriaOptions: SUBSCRIPTION_REPORT_CRITERIA_OPTIONS,
-    initialFormOptions: initialFormSubscriptionReport.options,
+    initialForm: initialFormSubscriptionReport,
     filename: 'reporte-suscripciones',
     sendCriterio: false,
   });

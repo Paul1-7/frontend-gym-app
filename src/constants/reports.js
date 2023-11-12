@@ -1,8 +1,10 @@
 import {
   equipmentsListReport,
   getMostRequestedPlans,
+  getProductsMostPopular,
   getSubscriptionsActives,
   listSalesByDates,
+  partnerMoreBuyers,
   partnersWithLargerstSubscription,
   productsListReport,
   subscriptionsList,
@@ -82,6 +84,21 @@ export const COLUMNS_SALES_REPORT = [
   { displayLabel: 'Fecha de venta', key: 'fecha' },
 ];
 
+export const COLUMNS_CUSTOMERS_MORE_BUYERS_REPORT = [
+  { displayLabel: 'N°', key: 'index' },
+  { displayLabel: 'Nombre', key: 'nombre' },
+  { displayLabel: 'Apellido 1', key: 'apellidoP' },
+  { displayLabel: 'Apellido 2', key: 'apellidoM' },
+  { displayLabel: 'Total de compras', key: 'totalCompras' },
+];
+
+export const COLUMNS_PRODUCTS_MOST_POPULAR_REPORT = [
+  { displayLabel: 'N°', key: 'index' },
+  { displayLabel: 'Nombre', key: 'nombre' },
+  { displayLabel: 'Categoria', key: 'categoria' },
+  { displayLabel: 'Total de ventas', key: 'totalVentas' },
+];
+
 export const COLUMNS_EQUIPMENT_REPORT = [
   { displayLabel: 'N°', key: 'index' },
   { displayLabel: 'Código de maquinaria', key: 'codMaquinaria' },
@@ -91,6 +108,7 @@ export const COLUMNS_EQUIPMENT_REPORT = [
   { displayLabel: 'Fecha de adquisición', key: 'fechaAdquisicion' },
   { displayLabel: 'Capacidad (kg)', key: 'capacidad' },
   { displayLabel: 'Precio', key: 'precio' },
+  { displayLabel: 'Categoria', key: 'categoria' },
   { displayLabel: 'Estado', key: 'estado' },
 ];
 
@@ -126,6 +144,7 @@ export const COLUMNS_PRODUCT_REPORT = [
   { displayLabel: 'Precio de venta (Bs)', key: 'precioVenta' },
   { displayLabel: 'Stock', key: 'stock' },
   { displayLabel: 'Fecha de vencimiento', key: 'fechaVencimiento' },
+  { displayLabel: 'Categoria', key: 'categoria' },
 ];
 
 export const EQUIPMENT_REPORT_CRITERIA_OPTIONS = [
@@ -138,16 +157,42 @@ export const EQUIPMENT_REPORT_CRITERIA_OPTIONS = [
     columns: COLUMNS_EQUIPMENT_REPORT,
     service: equipmentsListReport,
   },
+  {
+    id: '5',
+    name: 'Mediante una categoria',
+    columns: COLUMNS_EQUIPMENT_REPORT,
+    service: equipmentsListReport,
+    dependsOn: 'idCategoria',
+  },
 ];
 
 export const PRODUCT_REPORT_CRITERIA_OPTIONS = [
   { id: '1', name: 'Todos los registros', columns: COLUMNS_PRODUCT_REPORT, service: productsListReport },
   { id: '2', name: 'Solo productos con vencimiento', columns: COLUMNS_PRODUCT_REPORT, service: productsListReport },
   { id: '3', name: 'Solo productos sin vencimiento', columns: COLUMNS_PRODUCT_REPORT, service: productsListReport },
+  {
+    id: '4',
+    name: 'Mediante una categoria',
+    columns: COLUMNS_PRODUCT_REPORT,
+    service: productsListReport,
+    dependsOn: 'idCategoria',
+  },
 ];
 
 export const SALES_REPORT_CRITERIA_OPTIONS = [
   { id: '1', name: 'Todos los registros', columns: COLUMNS_SALES_REPORT, service: listSalesByDates },
+  {
+    id: '2',
+    name: 'Productos mas vendidos',
+    columns: COLUMNS_PRODUCTS_MOST_POPULAR_REPORT,
+    service: getProductsMostPopular,
+  },
+  {
+    id: '3',
+    name: 'Clientes mas frecuentes',
+    columns: COLUMNS_CUSTOMERS_MORE_BUYERS_REPORT,
+    service: partnerMoreBuyers,
+  },
 ];
 
 export const SUBSCRIPTION_REPORT_CRITERIA_OPTIONS = [

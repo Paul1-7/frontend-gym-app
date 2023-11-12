@@ -11,10 +11,6 @@ const subscriptionsReport = yup.object().shape({
       .string()
       .matches(regex.alphaNumeric, msg.alphaNumeric)
       .test('noDefaultValue', 'Tiene que seleccionar una opción', (value) => value !== ITEM_DEFAULT),
-    orderBy: yup
-      .string()
-      .matches(regex.alphaNumeric, msg.alphaNumeric)
-      .test('noDefaultValue', 'Tiene que seleccionar una opción', (value) => value !== ITEM_DEFAULT),
   }),
   customDateRange: yup.object().shape({
     dateStart: yup.date(),

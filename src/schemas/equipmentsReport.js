@@ -12,6 +12,10 @@ const equipmentsReport = yup.object().shape({
       .matches(regex.alphaNumeric, msg.alphaNumeric)
       .test('noDefaultValue', 'Tiene que seleccionar una opción', (value) => value !== ITEM_DEFAULT),
   }),
+  idCategoria: yup
+    .string()
+    .matches(regex.alphaNumeric, msg.alphaNumeric)
+    .test('noDefaultValue', 'Tiene que seleccionar una opción', (value) => value !== ITEM_DEFAULT),
 });
 
 export default equipmentsReport;

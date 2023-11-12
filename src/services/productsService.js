@@ -1,13 +1,25 @@
-import { getProductsAdapter, getProductsToReport, productWithDateParse } from '@/adapters';
+import {
+  addIndexListAdapter,
+  getProductsAdapter,
+  getProductsMostPopularAdapter,
+  getProductsToReport,
+  productWithDateParse,
+} from '@/adapters';
 import Axios from '@/apis';
 
 export const URL_PRODUCTS = {
   default: '/api/v1/productos',
+  mostPopular: '/api/v1/productos/mas-vendidos',
 };
 
 export const productsList = async () => {
   const response = await Axios.get(URL_PRODUCTS.default);
   return getProductsAdapter(response.data);
+};
+
+export const getProductsMostPopular = async ({ params } = {}) => {
+  const response = await Axios.get(URL_PRODUCTS.mostPopular, { params });
+  return getProductsMostPopularAdapter(response.data);
 };
 
 export const productsListReport = async ({ params }) => {

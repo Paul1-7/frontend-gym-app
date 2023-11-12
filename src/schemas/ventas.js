@@ -8,7 +8,7 @@ const products = yup.object().shape({
 
 const sells = yup.object().shape({
   fecha: yup.string().required(),
-  idSocio: yup.object(),
+  idSocio: yup.object().nullable(),
   idVendedor: yup.string(),
   productos: yup.array().of(products).required().min(1),
 });

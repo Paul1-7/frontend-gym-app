@@ -1,10 +1,4 @@
-import {
-  SALES_REPORT_SORT_OPTIONS,
-  DASHBOARD,
-  REPORT_FREQUENCY_OPTIONS,
-  initialFormSaleReport,
-  SALES_REPORT_CRITERIA_OPTIONS,
-} from '@/constants';
+import { DASHBOARD, REPORT_FREQUENCY_OPTIONS, initialFormSaleReport, SALES_REPORT_CRITERIA_OPTIONS } from '@/constants';
 import { useReport } from '@/hooks';
 import schema from '@/schemas';
 import { DashboardContainer, Select } from '@/components';
@@ -32,7 +26,7 @@ export default function SalesReport() {
 
   const report = useReport({
     formMethods,
-    initialFormOptions: initialFormSaleReport.options,
+    initialForm: initialFormSaleReport,
     filename: 'reporteVentas',
     criteriaOptions: SALES_REPORT_CRITERIA_OPTIONS,
   });
@@ -48,15 +42,11 @@ export default function SalesReport() {
             <Grid item xs={12} md={6}>
               <Select name="options.idDateRange" label="Rango de fechas" items={REPORT_FREQUENCY_OPTIONS} isArray />
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Select name="options.orderBy" label="Ordenar por" items={SALES_REPORT_SORT_OPTIONS} isArray />
-            </Grid>
             {watchedIdDateRange === '5' && <DateRangePicker />}
           </Grid>
         }
         formMethods={formMethods}
         criteriaOptions={SALES_REPORT_CRITERIA_OPTIONS}
-        sortOptions={SALES_REPORT_SORT_OPTIONS}
         reportNameTitle={'Reporte de ventas'}
         report={report}
         responseQuery={report.responseReport}

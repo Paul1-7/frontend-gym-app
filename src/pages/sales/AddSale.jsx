@@ -38,10 +38,10 @@ const AddSale = () => {
   });
 
   const handleSubmit = (data) => {
-    const { id: idSocio } = data.socio ?? {};
+    const { id: idSocio } = data.idSocio ?? {};
     const newData = {
       ...data,
-      idSocio: idSocio === ITEM_DEFAULT ? null : idSocio,
+      idSocio: idSocio === ITEM_DEFAULT || idSocio === undefined ? null : idSocio,
       idVendedor: authenticated.id,
     };
 
