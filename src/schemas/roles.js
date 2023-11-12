@@ -17,9 +17,6 @@ const roles = yup
           'is-main-selected',
           'Debes seleccionar un submenu con isMain=true para cada submenu con isMain=false',
           function (value) {
-            console.log('TCL: value', value);
-            const { idMenus } = this.parent;
-            console.log('TCL: idMenus', idMenus);
             const submenusWithIsMainFalse = value.filter((submenu) => submenu.isMain === false);
             const submenusWithIsMainTrue = value.filter((submenu) => submenu.isMain === true);
 

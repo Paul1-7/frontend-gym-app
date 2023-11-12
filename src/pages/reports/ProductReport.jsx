@@ -45,7 +45,6 @@ export default function ProductReport() {
     filename: 'reporte-producto',
     fnOPtions: handleParamsReport,
   });
-  console.log('entreaa');
   const categories = useQuery({
     queryKey: ['categoriesProducts'],
     queryFn: () => getCategoriesProductsItemsList(),

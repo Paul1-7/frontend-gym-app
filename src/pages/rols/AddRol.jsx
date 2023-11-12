@@ -18,8 +18,6 @@ const AddRol = () => {
     mode: 'all',
     criteriaMode: 'all',
   });
-  console.log('TCL: AddRol -> methods', methods.watch());
-  console.log('TCL: AddRol -> eerr', methods.formState.errors);
 
   const rol = useMutation({
     mutationFn: (data) => {
