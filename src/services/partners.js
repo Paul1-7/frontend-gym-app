@@ -5,6 +5,7 @@ export const URL_PARTNERS = {
   default: '/api/v1/socios',
   withLargestSubscription: '/api/v1/socios/mayor-suscripciones',
   moreBuyers: '/api/v1/socios/mas-compradores',
+  morePlanning: '/api/v1/socios/mas-programaciones',
 };
 
 export const partnersList = async () => {
@@ -16,6 +17,11 @@ export const partnersList = async () => {
 export const partnerMoreBuyers = async ({ params } = {}) => {
   const response = await Axios.get(URL_PARTNERS.moreBuyers, { params });
   if (response.status >= 400) throw response.data;
+  return addIndexListAdapter(response.data);
+};
+
+export const partnersMorePlanningList = async ({ params } = {}) => {
+  const response = await Axios.get(URL_PARTNERS.morePlanning, { params });
   return addIndexListAdapter(response.data);
 };
 

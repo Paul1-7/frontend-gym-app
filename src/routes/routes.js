@@ -89,6 +89,7 @@ export const ROUTES = {
     equipments: ADMIN_PATH + '/reportes/maquinarias',
     products: ADMIN_PATH + '/reportes/productos',
     schedules: ADMIN_PATH + '/reportes/horarios',
+    planning: ADMIN_PATH + '/reportes/programacion-clases',
   },
   auth: {
     login: 'ingreso',

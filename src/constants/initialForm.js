@@ -134,6 +134,17 @@ export const initialFormSubscriptionReport = {
   },
 };
 
+export const initialFormPlanningReport = {
+  options: {
+    criterio: ITEM_DEFAULT,
+    idDateRange: ITEM_DEFAULT,
+  },
+  customDateRange: {
+    dateStart: new Date(),
+    dateEnd: add(new Date(), { days: 1 }),
+  },
+};
+
 export const initialFormEquipmentReport = {
   options: {
     criterio: ITEM_DEFAULT,

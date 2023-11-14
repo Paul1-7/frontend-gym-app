@@ -136,6 +136,11 @@ const navConfig = [
         path: ROUTES.reports.schedules,
         idMenus: [SUBMENUS.SCHEDULES_REPORT_ID],
       },
+      {
+        title: 'Reporte de programación de clases',
+        path: ROUTES.reports.planning,
+        idMenus: [SUBMENUS.PLANNING_REPORT_ID],
+      },
     ],
   },
 ];

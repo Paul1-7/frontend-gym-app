@@ -4,11 +4,14 @@ import {
   getProductsMostPopular,
   getSubscriptionsActives,
   listSalesByDates,
+  mostScheduledDisciplines,
   partnerMoreBuyers,
+  partnersMorePlanningList,
   partnersWithLargerstSubscription,
   productsListReport,
   schedulesListReport,
   subscriptionsList,
+  trainersMorePlanningList,
 } from '@/services';
 import { add } from 'date-fns';
 
@@ -91,6 +94,19 @@ export const COLUMNS_CUSTOMERS_MORE_BUYERS_REPORT = [
   { displayLabel: 'Apellido 1', key: 'apellidoP' },
   { displayLabel: 'Apellido 2', key: 'apellidoM' },
   { displayLabel: 'Total de compras', key: 'totalCompras' },
+];
+
+export const COLUMNS_TRAINERS_MORE_PLANNING_REPORT = [
+  { displayLabel: 'N°', key: 'index' },
+  { displayLabel: 'Nombre', key: 'nombre' },
+  { displayLabel: 'Apellido 1', key: 'apellidoP' },
+  { displayLabel: 'Apellido 2', key: 'apellidoM' },
+  { displayLabel: 'Total de programaciones', key: 'totalProgramaciones' },
+];
+export const COLUMNS_MOST_SCHEDULED_DISCIPLINES_REPORT = [
+  { displayLabel: 'N°', key: 'index' },
+  { displayLabel: 'Nombre', key: 'nombre' },
+  { displayLabel: 'Total de programaciones', key: 'totalProgramaciones' },
 ];
 
 export const COLUMNS_PRODUCTS_MOST_POPULAR_REPORT = [
@@ -230,20 +246,20 @@ export const PLANNING_REPORT_CRITERIA_OPTIONS = [
   {
     id: '1',
     name: 'Entrenadores con mas programación de clases',
-    columns: COLUMNS_CUSTOMERS_MORE_BUYERS_REPORT,
-    service: partnerMoreBuyers,
+    columns: COLUMNS_TRAINERS_MORE_PLANNING_REPORT,
+    service: trainersMorePlanningList,
   },
   {
     id: '2',
     name: 'Socios con mas programación de clases',
-    columns: COLUMNS_CUSTOMERS_MORE_BUYERS_REPORT,
-    service: partnerMoreBuyers,
+    columns: COLUMNS_TRAINERS_MORE_PLANNING_REPORT,
+    service: partnersMorePlanningList,
   },
   {
     id: '3',
     name: 'Disciplinas con mas programación de clases',
-    columns: COLUMNS_CUSTOMERS_MORE_BUYERS_REPORT,
-    service: partnerMoreBuyers,
+    columns: COLUMNS_MOST_SCHEDULED_DISCIPLINES_REPORT,
+    service: mostScheduledDisciplines,
   },
 ];
 
