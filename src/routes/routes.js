@@ -2,6 +2,7 @@ export const ADMIN_PATH = '/administracion';
 
 export const ROUTES = {
   default: ADMIN_PATH + '/app',
+  start: ADMIN_PATH + '/inicio',
   partners: {
     default: ADMIN_PATH + '/socios',
     add: ADMIN_PATH + '/socios/agregar',

@@ -54,29 +54,6 @@ const RECURRENT_ITEMS_RADIO_GROUP = [
   },
 ];
 
-const ROLES_ITEMS = [
-  {
-    idRol: '35b63ba1-8019-4836-83a4-c51a42b2f3ec',
-    nombre: 'Administrador',
-  },
-  {
-    idRol: '576fae95-3e51-45b8-9b46-9a93c35e8c20',
-    nombre: 'Recepcionista',
-  },
-  {
-    idRol: '12322c7b-dc62-400f-83e2-3b308d7bace8',
-    nombre: 'Entrenador',
-  },
-  {
-    idRol: 'd036ff13-a438-4469-8a65-f8f62f559319',
-    nombre: 'Limpieza',
-  },
-  {
-    idRol: '28e921f8-043e-4911-a111-9ad9f31317f6',
-    nombre: 'Socio',
-  },
-];
-
 export const TYPES_CATEGORIES_ITEMS = [
   { id: '0', name: 'Disciplina' },
   { id: '1', name: 'Equipamientos' },
@@ -124,7 +101,6 @@ const TEXT_MODAL = {
 
 export {
   ITEMS_RADIO_GROUP,
-  ROLES_ITEMS,
   RECURRENT_ITEMS_RADIO_GROUP,
   ITEMS_SUSCRIPCIONES_REPORTE,
   ITEMS_RADIO_REPORTES_SUSC,

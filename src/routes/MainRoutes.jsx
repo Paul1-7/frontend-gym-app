@@ -4,6 +4,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { ADMIN_PATH, ROUTES } from './routes';
 import PrivateRoutes from './PrivateRoutes';
 
+const DashboardApp = lazy(() => import('@/pages/DashboardApp'));
 const Partners = lazy(() => import('@/pages/partners/Partners'));
 const AddPartner = lazy(() => import('@/pages/partners/AddPartner'));
 const ModifyPartner = lazy(() => import('@/pages/partners/ModifyPartner'));
@@ -83,9 +84,10 @@ const DashboardLayout = lazy(() => import('@/layouts/dashboard'));
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to={ROUTES.subscriptions.default} />} />
+      <Route path="/" element={<Navigate to={ROUTES.start} />} />
       <Route element={<PrivateRoutes />}>
         <Route element={<DashboardLayout />} path={ADMIN_PATH}>
+          <Route path={ROUTES.start} element={<DashboardApp />} />
           {/* Socios */}
           <Route
             path={ROUTES.partners.default}

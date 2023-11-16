@@ -37,7 +37,7 @@ export default function Login() {
     if (!data) return;
 
     login(data.data);
-    navigate(ROUTES.subscriptions.default);
+    navigate(ROUTES.start);
   }, [data]);
 
   return (

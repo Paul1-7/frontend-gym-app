@@ -7,6 +7,11 @@ const getIcon = (name) => <Iconify icon={name} width={22} height={22} />;
 
 const navConfig = [
   {
+    title: 'inicio',
+    path: ROUTES.start,
+    icon: getIcon('material-symbols:dashboard'),
+  },
+  {
     title: 'socios',
     path: ROUTES.partners.default,
     icon: getIcon('eva:people-fill'),
