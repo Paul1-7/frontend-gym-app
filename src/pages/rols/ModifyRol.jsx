@@ -1,51 +1,57 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { DASHBOARD, initialFormHall } from '@/constants';
+import { DASHBOARD, initialFormRoles } from '@/constants';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import schema from '@/schemas';
 import { Navigate } from 'react-router-dom';
 import { DashboardContainer, Form } from '@/components';
 import { ROUTES } from '@/routes/routes';
-import { getHallById, modifyHall } from '@/services';
+import { getRolById, modifyRol } from '@/services';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import HallForm from './HallForm';
+import RolForm from './RolForm';
+import { menuItemsList } from '@/services/menusService';
 
-const ModifyEmployee = () => {
+const ModifyRol = () => {
   const { id } = useParams();
   const methods = useForm({
-    resolver: yupResolver(schema.salones),
-    defaultValues: initialFormHall,
+    resolver: yupResolver(schema.roles),
+    defaultValues: initialFormRoles,
     mode: 'all',
     criteriaMode: 'all',
   });
 
-  const modifyHallData = useMutation({
+  const modifyRolData = useMutation({
     mutationFn: (data) => {
-      return modifyHall({ data, id });
+      return modifyRol({ data, id });
     },
   });
 
-  const hall = useQuery({
-    queryKey: ['discipline'],
-    queryFn: () => getHallById(id),
+  const rol = useQuery({
+    queryKey: ['rol'],
+    queryFn: () => getRolById(id),
+  });
+
+  const menus = useQuery({
+    queryKey: ['menus'],
+    queryFn: () => menuItemsList(),
   });
 
   useEffect(() => {
-    if (!hall.isSuccess) return;
-    methods.reset(hall.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true });
-  }, [hall.data]);
+    if (!rol.isSuccess || !menus.isSuccess) return;
+    methods.reset(rol.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true });
+  }, [rol.data, menus.data]);
 
   return (
-    <DashboardContainer data={DASHBOARD.halls.modify}>
-      <Form methods={methods} onSubmit={modifyHallData.mutate}>
-        <HallForm isLoading={modifyHallData.isLoading} withState />
+    <DashboardContainer data={DASHBOARD.rols.modify}>
+      <Form methods={methods} onSubmit={modifyRolData.mutate}>
+        <RolForm isLoading={modifyRolData.isLoading} menus={menus.data} />
       </Form>
-      {!modifyHallData.isLoading && !modifyHallData.isError && modifyHallData.isSuccess && (
-        <Navigate to={ROUTES.halls.default} />
+      {!modifyRolData.isLoading && !modifyRolData.isError && modifyRolData.isSuccess && (
+        <Navigate to={ROUTES.rols.default} />
       )}
     </DashboardContainer>
   );
 };
 
-export default ModifyEmployee;
+export default ModifyRol;

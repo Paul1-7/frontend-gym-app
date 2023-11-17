@@ -1,4 +1,4 @@
-import { getRolsListChipAdapter } from '@/adapters';
+import { getRolToModify, getRolsListChipAdapter } from '@/adapters';
 import Axios from '@/apis';
 
 export const URL_ROL = {
@@ -17,7 +17,7 @@ export const rolsListItemsChip = async ({ params = {} } = {}) => {
 
 export const getRolById = async (id) => {
   const response = await Axios.get(`${URL_ROL.default}/${id}`);
-  return response.data;
+  return getRolToModify(response.data);
 };
 
 export const addRol = async ({ data }) => Axios.post(URL_ROL.default, data);

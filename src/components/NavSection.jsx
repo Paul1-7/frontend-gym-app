@@ -144,13 +144,24 @@ export default function NavSection({ navConfig, ...other }) {
   const { pathname } = useLocation();
   const { isAllowedRol } = useAuth();
 
-  const allowedMenus = navConfig.filter(({ idMenus, children }) => {
-    if (isAllowedRol(idMenus) && children) {
-      return children.some(({ idMenus: idMenusChildren }) => isAllowedRol(idMenusChildren));
-    }
+  const filterMenuItems = (items) => {
+    return items.reduce((filteredItems, item) => {
+      const hasAllowedChildren = item.children && filterMenuItems(item.children).length > 0;
+      const allowed = isAllowedRol(item.idMenus) || hasAllowedChildren;
 
-    return isAllowedRol(idMenus);
-  });
+      if (allowed) {
+        const newItem = {
+          ...item,
+          children: hasAllowedChildren ? filterMenuItems(item.children) : undefined,
+        };
+        filteredItems.push(newItem);
+      }
+
+      return filteredItems;
+    }, []);
+  };
+
+  const allowedMenus = filterMenuItems(navConfig);
 
   const match = (path) => (path ? !!matchPath({ path, end: false }, pathname) : false);
 

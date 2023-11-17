@@ -114,7 +114,14 @@ const navConfig = [
     title: 'reportes',
     path: ROUTES.reports.default,
     icon: getIcon('material-symbols:book'),
-    idMenus: [SUBMENUS.SALES_REPORT_ID, SUBMENUS.MACHINE_REPORT_ID, SUBMENUS.SUBSCRIPTION_REPORT_ID],
+    idMenus: [
+      SUBMENUS.SALES_REPORT_ID,
+      SUBMENUS.MACHINE_REPORT_ID,
+      SUBMENUS.SUBSCRIPTION_REPORT_ID,
+      SUBMENUS.PRODUCT_REPORT_ID,
+      SUBMENUS.SCHEDULES_REPORT_ID,
+      SUBMENUS.PLANNING_REPORT_ID,
+    ],
     children: [
       {
         idMenus: [SUBMENUS.SUBSCRIPTION_REPORT_ID],
