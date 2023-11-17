@@ -6,10 +6,11 @@ import MenuPopover from '@/components/MenuPopover';
 import { useAuth } from '@/hooks';
 import { stringAvatar } from '@/utils';
 import { ExitToAppOutlined } from '@mui/icons-material';
+import { Check } from '@mui/icons-material';
 
 export default function AccountPopover() {
-  const { authenticated, logout } = useAuth();
-  const { nombre, apellidoP, apellidoM, roles = [] } = authenticated ?? {};
+  const { authenticated, logout, handleSelectedRol } = useAuth();
+  const { nombre, apellidoP, apellidoM, roles = [], selectedRol } = authenticated ?? {};
 
   const [open, setOpen] = useState(null);
 
@@ -44,9 +45,18 @@ export default function AccountPopover() {
           </Typography>
           {roles
             .filter(({ nombre }) => nombre !== 'Socio')
-            .map(({ nombre }) => (
-              <Chip key={nombre} variant="outlined" label={nombre} />
-            ))}
+            .map(({ nombre }) => {
+              const isSelectedRol = selectedRol === nombre;
+              return (
+                <Chip
+                  key={nombre}
+                  variant={isSelectedRol ? 'filled' : 'outlined'}
+                  label={nombre}
+                  onClick={() => handleSelectedRol(nombre)}
+                  icon={isSelectedRol ? <Check /> : null}
+                />
+              );
+            })}
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />

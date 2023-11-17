@@ -6,6 +6,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { SnackbarProvider } from 'notistack';
 import { SnackbarUtilitiesConfigurator } from './utils/snackbar-manager.jsx';
+import { AuthProvider } from './context/AuthContext.jsx';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,14 +26,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <HelmetProvider>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <SnackbarProvider
-          autoHideDuration={4000}
-          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-          preventDuplicate
-        >
-          <SnackbarUtilitiesConfigurator />
-          <App />
-        </SnackbarProvider>
+        <AuthProvider>
+          <SnackbarProvider
+            autoHideDuration={4000}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+            preventDuplicate
+          >
+            <SnackbarUtilitiesConfigurator />
+            <App />
+          </SnackbarProvider>
+        </AuthProvider>
       </QueryClientProvider>
     </BrowserRouter>
   </HelmetProvider>

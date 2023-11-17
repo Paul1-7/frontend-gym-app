@@ -2,6 +2,7 @@ import { bgLogin } from '@/assets';
 import { Form, Input, Logo, Page } from '@/components';
 import { initialFormLogin } from '@/constants';
 import { useAuth } from '@/hooks';
+import navConfig from '@/layouts/dashboard/NavConfig';
 import { ROUTES } from '@/routes';
 import schema from '@/schemas';
 import { sendCredencials } from '@/services';
@@ -36,7 +37,7 @@ export default function Login() {
   useEffect(() => {
     if (!data) return;
 
-    login(data.data);
+    login({ ...data.data, idLocalSubmenus: navConfig });
     navigate(ROUTES.start);
   }, [data]);
 

@@ -45,7 +45,7 @@ export default function DashboardNavbar({ onOpenSidebar }) {
         <Stack justifyContent={'space-between'} flexDirection={'row'} sx={{ width: '100%' }} alignItems={'center'}>
           <div></div>
           <Typography color={'text.primary'} variant="h3" sx={{ textShadow: 'rgba(0,0,0,0.3) 4px 3px 4px' }}>
-            GIMNACIO ACTIVE LIFE DE TARIJA
+            GIMNASIO ACTIVE LIFE DE TARIJA
           </Typography>
           <AccountPopover />
         </Stack>

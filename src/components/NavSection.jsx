@@ -7,6 +7,8 @@ import { Box, List, Collapse, ListItemText, ListItemIcon, ListItemButton } from 
 //
 import Iconify from './Iconify';
 import { useAuth } from '@/hooks';
+import compare from 'just-compare';
+import { useEffect } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -142,7 +144,7 @@ NavSection.propTypes = {
 
 export default function NavSection({ navConfig, ...other }) {
   const { pathname } = useLocation();
-  const { isAllowedRol } = useAuth();
+  const { isAllowedRol } = useAuth() ?? {};
 
   const filterMenuItems = (items) => {
     return items.reduce((filteredItems, item) => {
