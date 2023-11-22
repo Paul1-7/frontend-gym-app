@@ -2,10 +2,10 @@ import { PropTypes } from 'prop-types';
 import { ButtonLink, CheckboxContainer, Input } from '@/components';
 import { Save } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
-import { Grid, Stack, Typography } from '@mui/material';
+import { Grid, Stack, Typography, Alert } from '@mui/material';
 import { ROUTES } from '@/routes/routes';
 
-const HallForm = ({ isLoading, menus = [] }) => {
+const RolForm = ({ isLoading, menus = [], errorMenu }) => {
   return (
     <>
       <Grid container sx={{ display: 'grid' }} spacing={2}>
@@ -29,6 +29,11 @@ const HallForm = ({ isLoading, menus = [] }) => {
           </Grid>
         </Grid>
       </Grid>
+      {errorMenu && (
+        <Alert severity="error" variant="outlined" sx={{ mt: 2 }}>
+          {errorMenu}
+        </Alert>
+      )}
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '2rem', gap: '1rem' }}>
         <ButtonLink variant="outlined" color="error" to={ROUTES.halls.default}>
           Cancelar
@@ -48,9 +53,10 @@ const HallForm = ({ isLoading, menus = [] }) => {
   );
 };
 
-HallForm.propTypes = {
+RolForm.propTypes = {
   isLoading: PropTypes.bool,
   menus: PropTypes.array,
+  errorMenu: PropTypes.string,
 };
 
-export default HallForm;
+export default RolForm;

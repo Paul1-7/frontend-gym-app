@@ -18,6 +18,7 @@ const AddRol = () => {
     mode: 'all',
     criteriaMode: 'all',
   });
+  const errorMenus = methods.formState.errors?.menus?.message;
 
   const rol = useMutation({
     mutationFn: (data) => {
@@ -36,10 +37,14 @@ const AddRol = () => {
     methods.setValue('menus', menus.data);
   }, [menus.data]);
 
+  const handleSubmit = (data) => {
+    rol.mutate(data);
+  };
+
   return (
     <DashboardContainer data={DASHBOARD.rols.add}>
-      <Form methods={methods} onSubmit={rol.mutate}>
-        <RolForm isLoading={rol.isLoading} menus={menus.data} />
+      <Form methods={methods} onSubmit={handleSubmit}>
+        <RolForm isLoading={rol.isLoading} menus={menus.data} errorMenu={errorMenus} />
       </Form>
       {!rol.isLoading && !rol.isError && rol.isSuccess && <Navigate to={ROUTES.rols.default} />}
     </DashboardContainer>

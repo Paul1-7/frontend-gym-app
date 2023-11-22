@@ -21,6 +21,8 @@ const ModifyRol = () => {
     criteriaMode: 'all',
   });
 
+  const errorMenus = methods.formState.errors?.menus?.message;
+
   const modifyRolData = useMutation({
     mutationFn: (data) => {
       return modifyRol({ data, id });
@@ -40,12 +42,13 @@ const ModifyRol = () => {
   useEffect(() => {
     if (!rol.isSuccess || !menus.isSuccess) return;
     methods.reset(rol.data, { keepErrors: true, keepIsValid: true, keepDefaultValues: true });
+    methods.setValue('menus', menus.data);
   }, [rol.data, menus.data]);
 
   return (
     <DashboardContainer data={DASHBOARD.rols.modify}>
       <Form methods={methods} onSubmit={modifyRolData.mutate}>
-        <RolForm isLoading={modifyRolData.isLoading} menus={menus.data} />
+        <RolForm isLoading={modifyRolData.isLoading} menus={menus.data} errorMenu={errorMenus} />
       </Form>
       {!modifyRolData.isLoading && !modifyRolData.isError && modifyRolData.isSuccess && (
         <Navigate to={ROUTES.rols.default} />

@@ -1,32 +1,29 @@
 import { msg, regex } from '@/constants/validaciones';
 import * as yup from 'yup';
+const roles = yup.object().shape({
+  nombre: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
+  idMenus: yup.array().of(yup.string()).min(1, 'Tienes que elegir al menos un menú'),
+  menus: yup.array().test({
+    test: (menus, { parent }) => {
+      const { idMenus } = parent;
+      let hasMainSubmenu = true;
 
-const roles = yup
-  .object()
-  .shape({
-    nombre: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
-    idMenus: yup.array().of(yup.string()).min(1, 'Tienes que elegir al menos un menú'),
-    menus: yup.array(),
-  })
-  .when('idMenus', {
-    is: (idMenus) => idMenus && idMenus.length > 0,
-    then: () =>
-      yup
-        .array()
-        .test(
-          'is-main-selected',
-          'Debes seleccionar un submenu con isMain=true para cada submenu con isMain=false',
-          function (value) {
-            const submenusWithIsMainFalse = value.filter((submenu) => submenu.isMain === false);
-            const submenusWithIsMainTrue = value.filter((submenu) => submenu.isMain === true);
+      menus.forEach(({ submenus }) => {
+        if (!hasMainSubmenu) return;
 
-            const isValid = submenusWithIsMainFalse.every((submenu) => {
-              return submenusWithIsMainTrue.some((mainSubmenu) => mainSubmenu.id === submenu.id);
-            });
+        const filteredSubmenus = submenus.filter(({ value }) => idMenus.includes(value));
 
-            return isValid;
-          }
-        ),
-  });
+        if (!filteredSubmenus.length) {
+          return;
+        }
+
+        hasMainSubmenu = filteredSubmenus.some(({ others }) => others.isMain);
+      });
+
+      return hasMainSubmenu;
+    },
+    message: `Tiene que seleccionar la lista del módulo si selecciona agregar, modificar, eliminar o detalle`,
+  }),
+});
 
 export default roles;
