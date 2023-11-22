@@ -10,8 +10,8 @@ const COLUMNS_TABLE = {
   employees: [
     { field: 'ci', header: 'Ci', type: '' },
     { field: 'nombre', header: 'Nombre', type: '' },
-    { field: 'apellidoM', header: 'Ap. Materno', type: '' },
     { field: 'apellidoP', header: 'Ap. Paterno', type: '' },
+    { field: 'apellidoM', header: 'Ap. Materno', type: '' },
     { field: 'edad', header: 'Edad', type: '' },
     { field: 'celular', header: 'Celular', type: '' },
     { field: 'roles', header: 'Roles', type: 'array' },

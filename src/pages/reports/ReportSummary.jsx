@@ -1,9 +1,13 @@
+import { useAuth } from '@/hooks';
 import { getDateTimeFormat } from '@/utils';
 import { Grid, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
 const ReportSummary = ({ sortOptions, frequencyOptions = [], watchedFormValues, criteriaOptions = [] }) => {
   const { criterio, idDateRange } = watchedFormValues;
+  const { authenticated } = useAuth() ?? {};
+  const { selectedRol, nombre, apellidoM, apellidoP } = authenticated ?? {};
+
   return (
     <Grid container wrap="wrap">
       {criterio && (
@@ -39,7 +43,13 @@ const ReportSummary = ({ sortOptions, frequencyOptions = [], watchedFormValues, 
         >{`Fecha del reporte: ${getDateTimeFormat(new Date())}`}</Typography>
       </Grid>
       <Grid item xs={6} sx={{ display: 'none', displayPrint: 'inherit' }}>
-        <Typography variant="body2" sx={{ lineHeight: 1.5 }}>{`Realizado por: `}</Typography>
+        <Typography
+          variant="body2"
+          sx={{ lineHeight: 1.5 }}
+        >{`Realizado por: ${nombre} ${apellidoP} ${apellidoM}`}</Typography>
+      </Grid>
+      <Grid item xs={6} sx={{ display: 'none', displayPrint: 'inherit' }}>
+        <Typography variant="body2" sx={{ lineHeight: 1.5 }}>{`Rol: ${selectedRol} `}</Typography>
       </Grid>
     </Grid>
   );

@@ -76,7 +76,7 @@ const SaleDetail = () => {
           <Grid item xs={6}>
             <Typography component="h3">
               <span style={{ fontWeight: 600 }}>Nombre/Razon social: </span>
-              {data?.socio?.nombre ?? ''} {data?.socio?.apellidoP ?? ''}
+              {data?.socio?.nombre ?? ''} {data?.socio?.apellidoP ?? 'N/A'}
             </Typography>
           </Grid>
           <Grid item xs={6} sx={sxNoPrint}>

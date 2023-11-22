@@ -15,7 +15,7 @@ const empleados = yup.object().shape({
   direccion: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
   estado: yup.string().required().matches(regex.number, msg.number).required(),
   usuario: yup.string().matches(regex.alphaNumeric, msg.alphaNumeric).required(),
-  password: yup.string().required(),
+  password: yup.string().min(4, 'Tiene que ser de al menos 4 caracteres'),
   repetirPassword: yup.string().oneOf([yup.ref('password'), null], 'Las constraseñas no coinciden'),
   roles: yup.array().of(yup.string()).required().min(1, 'tiene que seleccionar un rol'),
 });
