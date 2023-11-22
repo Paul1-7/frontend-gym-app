@@ -9,7 +9,7 @@ import { ITEM_DEFAULT } from '@/constants';
 import compare from 'just-compare';
 
 const SelectMemo = memo(
-  ({ name, label, isArray, methods, items, ...others }) => {
+  ({ name, label, isArray, methods, items = [], ...others }) => {
     const error = methods.formState.errors;
     const errorValue = isArray ? objectByString(error, name) : error[name];
 

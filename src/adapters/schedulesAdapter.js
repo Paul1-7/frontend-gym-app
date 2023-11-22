@@ -14,9 +14,13 @@ export const schedulesListToDetail = (data) =>
 
 export const schedulesListItems = (data) =>
   data.map(({ horarioEntrada, horarioSalida, dia, salon, entrenador, disciplina, id }) => {
-    const { nombre, apellidoP } = entrenador;
+    const { nombre, apellidoP } = entrenador ?? {};
+
+    const fullname =
+      nombre && apellidoP ? `${nombre} ${apellidoP}` : 'La persona ya no desempeña el papel o rol de entrenador.';
+
     const { nombre: disciplineName } = disciplina;
-    const fullName = `${nombre} ${apellidoP}`;
+    const fullName = fullname;
     const startTime = format(new Date(horarioEntrada), 'HH:mm');
     const finishTime = format(new Date(horarioSalida), 'HH:mm');
     const dayName = DAYS_ITEMS[dia];
@@ -36,7 +40,7 @@ export const schedulesListToReportAdapter = (data) =>
       ...item,
       index: idx + 1,
       dia: DAYS_ITEMS[dia],
-      entrenador: entrenador.nombre + ' ' + entrenador.apellidoP,
+      entrenador: entrenador?.nombre + ' ' + entrenador?.apellidoP,
       disciplina: disciplina.nombre,
       salon: salon.nombre,
       estado: estado === 1 ? 'activo' : 'no activo',
