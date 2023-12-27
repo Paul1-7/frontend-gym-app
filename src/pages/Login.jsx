@@ -8,7 +8,7 @@ import schema from '@/schemas';
 import { sendCredencials } from '@/services';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
-import { Box, Card, CardContent, Stack, Typography } from '@mui/material';
+import { Box, Card, CardContent, Stack, Typography, Alert } from '@mui/material';
 import { useMutation } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
@@ -68,6 +68,12 @@ export default function Login() {
         >
           <CardContent sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', gap: 2 }}>
             <Logo sx={{ height: 60 }} />
+            <Alert severity="info" sx={{ mb: 3, display: 'flex', alignItems: 'center' }}>
+              <Stack sx={{ display: 'flex', flexDirection: 'column' }}>
+                <span>User: admin</span>
+                <span> Password: admin</span>
+              </Stack>
+            </Alert>
             <Form methods={methods} onSubmit={handleSubmit}>
               <Stack gap={2}>
                 <Input name={'usuario'} label={'Usuario'} />
